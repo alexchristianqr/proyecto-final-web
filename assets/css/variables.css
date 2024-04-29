@@ -1,6 +1,6 @@
 :root {
     --primary: #1e1f22;
-    --secondary: #FFF;
+    --secondary: darkred;
     --tertiary: #666;
     --primary-color-text: var(--primary);
     --secondary-color-text: var(--secondary);

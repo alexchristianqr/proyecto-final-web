@@ -39,15 +39,15 @@
 }
 
 .wrapper.style1 {
-    background-color: #5e42a6;
+    background-color: darkblue;
 }
 
 .wrapper.style1-alt {
-    background-color: #493382;
+    background-color: var(--primary) /* darkslategrey; */
 }
 
 .wrapper.style2 {
-    background-color: #5052b5;
+    background-color: darkred;
 }
 
 .wrapper.style2-alt {
@@ -55,7 +55,7 @@
 }
 
 .wrapper.style3 {
-    background-color: #b74e91;
+    background-color: darkgoldenrod;
 }
 
 .wrapper.style3-alt {
