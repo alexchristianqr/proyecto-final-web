@@ -1,3 +1,5 @@
+@import "variables.css";
+
 @import "buttons.css";
 @import "spotlights.css";
 @import "wrapper.css";
@@ -87,7 +89,7 @@ html {
 }
 
 body {
-    background: #312450;
+    background: var(--primary);
 }
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
