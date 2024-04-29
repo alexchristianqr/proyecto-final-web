@@ -1,0 +1,30 @@
+/* Footer */
+
+#sidebar + #wrapper + #footer {
+    margin-left: 18em;
+}
+
+@media screen and (max-width: 1280px) {
+
+    #sidebar + #wrapper + #footer {
+        margin-left: 0;
+    }
+
+}
+
+#footer > .inner a {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+#footer > .inner a:hover {
+    border-bottom-color: transparent;
+}
+
+#footer > .inner .menu {
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.15);
+}
+
+#header + #wrapper + #footer > .inner {
+    margin: 0 auto;
+}
