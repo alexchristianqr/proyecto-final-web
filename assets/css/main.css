@@ -1,5 +1,8 @@
 @import "_variables.css";
 
+@import "table.css";
+@import "form.css";
+@import "rows.css";
 @import "buttons.css";
 @import "spotlights.css";
 @import "wrapper.css";
@@ -107,7 +110,7 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 /* Type */
 
 body, input, select, textarea {
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--color-dark);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16.5pt;
     font-weight: normal;
@@ -319,3 +322,6 @@ hr.major {
     text-align: right;
 }
 
+.color-black {
+    color: var(--color-black);
+}

@@ -60,7 +60,7 @@ body.is-ie .spotlights > section {
     -webkit-justify-content: center;
     -ms-justify-content: center;
     justify-content: center;
-    width: 50em;
+    width: 100%;
     -ms-flex: 1;
 }
 
@@ -123,8 +123,6 @@ body.is-preload .spotlights > section > .content > .inner {
 
     .spotlights > section.inactive > .content > .inner,
     body.is-preload .spotlights > section > .content > .inner {
-        -moz-transform: translateY(1em);
-        -webkit-transform: translateY(1em);
         -ms-transform: translateY(1em);
         transform: translateY(1em);
     }

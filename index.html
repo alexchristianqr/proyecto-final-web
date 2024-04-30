@@ -14,7 +14,7 @@
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#multimedia">Fotos y Videos</a></li>
-                <li><a href="#reserva">Reservaciones</a></li>
+                <li><a href="#reservaciones">Reservaciones</a></li>
                 <li><a href="#contactanos">Contáctanos</a></li>
             </ul>
         </nav>
@@ -25,20 +25,22 @@
 <!-- Wrapper -->
 <div id="wrapper">
 
-    <!-- Intro -->
+    <!-- Inicio -->
     <section id="inicio" class="wrapper style1 fullscreen fade-up">
         <div class="inner">
             <h1>Hotel <span style="font-weight: 700">"EL BANDIDO"</span></h1>
-            <p>Donde tus aventuras empiezan y tus preocupaciones desaparecen.</p>
+            <p style="opacity: 0.75; color: rgba(255, 255, 255, 0.55)">Donde tus aventuras empiezan y tus preocupaciones
+                desaparecen.</p>
             <ul class="actions">
                 <li><a href="#multimedia" class="button scrolly">Obtener mas información</a></li>
             </ul>
         </div>
     </section>
 
+    <!-- Fotos y Videos -->
     <section id="multimedia" class="wrapper style2 spotlights">
         <section>
-            <div class="content" style="width: 100%">
+            <div class="content">
                 <div class="features">
                     <div id="gallery">
                         <div><img src="https://picsum.photos/600/600/?image=512"/><a href="#lightbox-1"></a></div>
@@ -172,6 +174,96 @@
             </div>
         </section>
     </section>
+    <!-- -->
+
+    <!-- Reservaciones -->
+    <section id="reservaciones" class="wrapper style3 spotlights">
+        <section>
+            <div class="content">
+                <form>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="fechaEntrada">Desde</label>
+                            <input id="fechaEntrada" type="text" value="30/04/2024">
+                        </div>
+                        <div class="col-2">
+                            <label for="fechaSalida">Hasta</label>
+                            <input id="fechaSalida" type="text" value="30/04/2024">
+                        </div>
+                        <div class="col-4">
+                            <label for="comboHabitacionHuesped">Habitación / Huésped</label>
+                            <select id="comboHabitacionHuesped">
+                                <option value="">- seleccionar -</option>
+                                <option value="1">Habitaciones/ (Máximo: 3 habitaciones por persona)</option>
+                                <option value="1">Adultos / (Máximo: 8 huéspedes en total por habitación)</option>
+                                <option value="1">Niños / (Máximo: 8 huéspedes en total por habitación)</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label style="color: transparent">.</label>
+                            <button class="button primary fit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+<!--                <div class="table-wrapper">-->
+<!--                    <table class="alt">-->
+<!--                        <thead>-->
+<!--                        <tr>-->
+<!--                            <th>Name</th>-->
+<!--                            <th>Description</th>-->
+<!--                            <th>Price</th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                            <td>Item One</td>-->
+<!--                            <td>Ante turpis integer aliquet porttitor.</td>-->
+<!--                            <td>29.99</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>Item Two</td>-->
+<!--                            <td>Vis ac commodo adipiscing arcu aliquet.</td>-->
+<!--                            <td>19.99</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>Item Three</td>-->
+<!--                            <td> Morbi faucibus arcu accumsan lorem.</td>-->
+<!--                            <td>29.99</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>Item Four</td>-->
+<!--                            <td>Vitae integer tempus condimentum.</td>-->
+<!--                            <td>19.99</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>Item Five</td>-->
+<!--                            <td>Ante turpis integer aliquet porttitor.</td>-->
+<!--                            <td>29.99</td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                        <tfoot>-->
+<!--                        <tr>-->
+<!--                            <td colspan="2"></td>-->
+<!--                            <td>100.00</td>-->
+<!--                        </tr>-->
+<!--                        </tfoot>-->
+<!--                    </table>-->
+<!--                </div>-->
+            </div>
+        </section>
+        <section>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur commodi distinctio
+                            exercitationem nemo neque obcaecati praesentium recusandae reprehenderit sequi similique,
+                            suscipit tempore tenetur. Dolores fugit, harum incidunt repudiandae saepe voluptate!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- -->
 
 </div>
 <!-- -->

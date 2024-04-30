@@ -4,7 +4,10 @@
     --tertiary: #666;
     --primary-color-text: var(--primary);
     --secondary-color-text: var(--secondary);
+    --color-dark: #1e1f22;
     --color-black: #000;
     --color-black-transparent: rgba(0, 0, 0, 0.5);
     --color-white: #fff;
+    --border-color-red:var(--secondary);
+    --border-color-white: #FFF;
 }

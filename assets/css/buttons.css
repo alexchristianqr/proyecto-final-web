@@ -96,8 +96,8 @@ input[type="reset"].primary,
 input[type="button"].primary,
 button.primary,
 .button.primary {
-    background-color: #ffffff;
-    color: #312450 !important;
+    background-color: var(--secondary);
+    color: var(--color-white) !important;
 }
 
 input[type="submit"].primary:after,
