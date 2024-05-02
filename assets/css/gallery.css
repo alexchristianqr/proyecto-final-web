@@ -1,8 +1,10 @@
+/* Galeria */
+
 #gallery {
     display: grid;
     height: calc(100vh - 10px);
     grid-template: repeat(6, 1fr)/repeat(6, 1fr);
-    grid-gap: 0.25em;
+    grid-gap: 2px;
 }
 
 @media (max-width: 800px) {
@@ -58,6 +60,7 @@
 #gallery > div {
     background-color: var(--primary);
 }
+
 #gallery > div:hover img {
     opacity: 0.5;
 }

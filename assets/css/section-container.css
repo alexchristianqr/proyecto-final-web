@@ -1,6 +1,6 @@
-/* Spotlights */
+/* Container */
 
-.spotlights > section {
+.section-container > section {
     display: -moz-flex;
     display: -webkit-flex;
     display: -ms-flex;
@@ -12,11 +12,11 @@
     min-height: 22.5em;
 }
 
-body.is-ie .spotlights > section {
+body.is-ie .section-container > section {
     min-height: 0;
 }
 
-.spotlights > section > .image {
+.section-container > section > .image {
     background-position: center center;
     background-size: cover;
     border-radius: 0;
@@ -25,12 +25,12 @@ body.is-ie .spotlights > section {
     width: 25em;
 }
 
-.spotlights > section > .image img {
+.section-container > section > .image img {
     border-radius: 0;
     display: block;
 }
 
-.spotlights > section > .image:before {
+.section-container > section > .image:before {
     -moz-transition: opacity 1s ease;
     -webkit-transition: opacity 1s ease;
     -ms-transition: opacity 1s ease;
@@ -46,7 +46,7 @@ body.is-ie .spotlights > section {
     width: 100%;
 }
 
-.spotlights > section > .content {
+.section-container > section > .content {
     padding: 4em 5em 2em 5em ;
     display: -moz-flex;
     display: -webkit-flex;
@@ -64,7 +64,7 @@ body.is-ie .spotlights > section {
     -ms-flex: 1;
 }
 
-.spotlights > section > .content > .inner {
+.section-container > section > .content > .inner {
     -moz-transform: translateX(0) translateY(0);
     -webkit-transform: translateX(0) translateY(0);
     -ms-transform: translateX(0) translateY(0);
@@ -76,21 +76,21 @@ body.is-ie .spotlights > section {
     opacity: 1;
 }
 
-.spotlights > section:nth-child(2) {
+.section-container > section:nth-child(2) {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-.spotlights > section:nth-child(3) {
+.section-container > section:nth-child(3) {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-.spotlights > section.inactive > .image:before,
-body.is-preload .spotlights > section > .image:before {
+.section-container > section.inactive > .image:before,
+body.is-preload .section-container > section > .image:before {
     opacity: 1;
 }
 
-.spotlights > section.inactive > .content > .inner,
-body.is-preload .spotlights > section > .content > .inner {
+.section-container > section.inactive > .content > .inner,
+body.is-preload .section-container > section > .content > .inner {
     -moz-transform: translateX(-1em);
     -webkit-transform: translateX(-1em);
     -ms-transform: translateX(-1em);
@@ -100,7 +100,7 @@ body.is-preload .spotlights > section > .content > .inner {
 
 @media screen and (max-width: 1680px) {
 
-    .spotlights > section > .content {
+    .section-container > section > .content {
         padding: 0 4em 0 4em;
     }
 
@@ -108,21 +108,21 @@ body.is-preload .spotlights > section > .content > .inner {
 
 @media screen and (max-width: 980px) {
 
-    .spotlights > section {
+    .section-container > section {
         display: block;
     }
 
-    .spotlights > section > .image {
+    .section-container > section > .image {
         width: 100%;
         height: 50vh;
     }
 
-    .spotlights > section > .content {
+    .section-container > section > .content {
         width: 100%;
     }
 
-    .spotlights > section.inactive > .content > .inner,
-    body.is-preload .spotlights > section > .content > .inner {
+    .section-container > section.inactive > .content > .inner,
+    body.is-preload .section-container > section > .content > .inner {
         -ms-transform: translateY(1em);
         transform: translateY(1em);
     }
@@ -131,12 +131,12 @@ body.is-preload .spotlights > section > .content > .inner {
 
 @media screen and (max-width: 736px) {
 
-    .spotlights > section > .image {
+    .section-container > section > .image {
         height: 50vh;
         min-height: 15em;
     }
 
-    .spotlights > section > .content {
+    .section-container > section > .content {
         padding: 3em 2em 1em 2em ;
     }
 
