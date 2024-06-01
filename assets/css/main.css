@@ -1,10 +1,10 @@
 @import "font.css";
 @import "_variables.css";
 
-@import "table.css";
-@import "form.css";
-@import "rows.css";
-@import "buttons.css";
+/* @import "table.css"; */
+/* @import "form.css"; */
+/* @import "rows.css"; */
+/* @import "buttons.css"; */
 @import "section-container.css";
 @import "wrapper.css";
 @import "wrapper-main.css";
@@ -14,32 +14,36 @@
 @import "menu.css";
 @import "gallery.css";
 
-html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
-pre, a, abbr, acronym, address, big, cite,
-code, del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var, b,
-u, i, center, dl, dt, dd, ol, ul, li, fieldset,
-form, label, legend, table, caption, tbody,
-tfoot, thead, tr, th, td, article, aside,
-canvas, details, embed, figure, figcaption,
-footer, header, hgroup, menu, nav, output, ruby,
-section, summary, time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    vertical-align: baseline;
+html,body#app {
+overflow-x: hidden;
+    width: 100vw;
 }
+/*html, body, div, span, applet, object,*/
+/*iframe, h1, h2, h3, h4, h5, h6, p, blockquote,*/
+/*pre, a, abbr, acronym, address, big, cite,*/
+/*code, del, dfn, em, img, ins, kbd, q, s, samp,*/
+/*small, strike, strong, sub, sup, tt, var, b,*/
+/*u, i, center, dl, dt, dd, ol, ul, li, fieldset,*/
+/*form, label, legend, table, caption, tbody,*/
+/*tfoot, thead, tr, th, td, article, aside,*/
+/*canvas, details, embed, figure, figcaption,*/
+/*footer, header, hgroup, menu, nav, output, ruby,*/
+/*section, summary, time, mark, audio, video {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    border: 0;*/
+/*    font: inherit;*/
+/*    vertical-align: baseline;*/
+/*}*/
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
-body {
-    line-height: 1;
-}
+/*body {*/
+/*    line-height: 1;*/
+/*}*/
 
 ol, ul {
     list-style: none;
@@ -58,9 +62,9 @@ table {
     border-spacing: 0;
 }
 
-body {
-    -webkit-text-size-adjust: none;
-}
+/*body {*/
+/*    -webkit-text-size-adjust: none;*/
+/*}*/
 
 mark {
     background-color: transparent;
@@ -73,50 +77,50 @@ input, select, textarea {
 
 /* Basic */
 
-body {
-    -ms-overflow-style: scrollbar;
-}
+/*body {*/
+/*    -ms-overflow-style: scrollbar;*/
+/*}*/
 
-@media screen and (max-width: 480px) {
+/*@media screen and (max-width: 480px) {*/
 
-    html, body {
-        min-width: 320px;
-    }
+/*    html, body {*/
+/*        min-width: 320px;*/
+/*    }*/
 
-}
+/*}*/
 
-html {
-    box-sizing: border-box;
-}
+/*html {*/
+/*    box-sizing: border-box;*/
+/*}*/
 
-*, *:before, *:after {
-    box-sizing: inherit;
-}
+/**, *:before, *:after {*/
+/*    box-sizing: inherit;*/
+/*}*/
 
-body {
-    background: var(--primary);
-}
+/*body {*/
+/*    background: var(--primary);*/
+/*}*/
 
-body.is-preload *, body.is-preload *:before, body.is-preload *:after {
-    -moz-animation: none !important;
-    -webkit-animation: none !important;
-    -ms-animation: none !important;
-    animation: none !important;
-    -moz-transition: none !important;
-    -webkit-transition: none !important;
-    -ms-transition: none !important;
-    transition: none !important;
-}
+/*body.is-preload *, body.is-preload *:before, body.is-preload *:after {*/
+/*    -moz-animation: none !important;*/
+/*    -webkit-animation: none !important;*/
+/*    -ms-animation: none !important;*/
+/*    animation: none !important;*/
+/*    -moz-transition: none !important;*/
+/*    -webkit-transition: none !important;*/
+/*    -ms-transition: none !important;*/
+/*    transition: none !important;*/
+/*}*/
 
 /* Type */
 
-body, input, select, textarea {
-    color: var(--color-dark);
-    /*font-family: Arial, Helvetica, sans-serif;*/
-    font-size: 16.5pt;
-    font-weight: normal;
-    line-height: 1.75;
-}
+/*body, input, select, textarea {*/
+/*    color: var(--color-dark);*/
+/*    font-family: Arial, Helvetica, sans-serif;*/
+/*    font-size: 16.5pt;*/
+/*    font-weight: normal;*/
+/*    line-height: 1.75;*/
+/*}*/
 
 @media screen and (max-width: 1680px) {
 
@@ -152,15 +156,15 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    border-bottom-color: transparent;
-    color: #ffffff;
-}
+/*a:hover {*/
+/*    border-bottom-color: transparent;*/
+/*    color: #ffffff;*/
+/*}*/
 
-strong, b {
-    color: #ffffff;
-    font-weight: bold;
-}
+/*strong, b {*/
+/*    color: #ffffff;*/
+/*    font-weight: bold;*/
+/*}*/
 
 em, i {
     font-style: italic;
@@ -171,7 +175,7 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #ffffff;
+    color: var(--color-black);
     font-weight: bold;
     line-height: 1.5;
     margin: 0 0 0.5em 0;
@@ -326,3 +330,6 @@ hr.major {
 .color-black {
     color: var(--color-black);
 }
+
+.vh-50 { height: 50vh !important; }
+.vh-75 { height: 75vh !important; }

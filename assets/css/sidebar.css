@@ -218,12 +218,11 @@ body.is-ie #sidebar > .inner {
     border: 0;
     color: rgba(255, 255, 255, 0.35);
     display: block;
-    font-size: 0.55em;
     font-weight: bold;
     letter-spacing: 0.25em;
-    line-height: 1.75;
+    line-height: 1.5;
     outline: 0;
-    padding: 1.35em 0;
+    padding: 1em 0;
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
