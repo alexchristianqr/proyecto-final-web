@@ -9,6 +9,7 @@
     <link href="libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue-icons.css" rel="stylesheet" />
     <link href="assets/css/main.css" rel="stylesheet" />
 
+    <!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>-->
     <script src="libs/vue-2.7.16/package/dist/vue.js"></script>
     <script src="libs/bootstrap-4.6.2/package/dist/js/bootstrap.js"></script>
     <script src="libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.js"></script>
@@ -25,8 +26,8 @@
               <li><a href="#inicio" class="text-lg-right">Inicio</a></li>
               <li><a href="#galeria">Galeria</a></li>
               <li><a href="#reservaciones">Reservaciones</a></li>
-              <li><a href="#suscripcion">Suscripción</a></li>
-              <li><a href="#cuenta">Mi Cuenta</a></li>
+              <li><a href="#suscripcion">Boletín</a></li>
+              <li><a href="account.html" target="_parent">Iniciar Sesión</a></li>
             </ul>
           </nav>
         </div>
@@ -212,7 +213,7 @@
             <b-row>
               <b-col cols="7">
                 <div>
-                  <b-form @submit.prevent="submitFormReservacion">
+                  <b-form ref="formReservacion" @submit.prevent="submitFormReservacion">
                     <b-row>
                       <b-col cols="12">
                         <b-form-group label="Nombre Completo:" label-size="lg">
@@ -227,7 +228,7 @@
                       <b-col cols="12">
                         <b-form-group label="Tipo de Habitación:" label-size="lg">
                           <b-form-select size="lg" v-model="formReservacion.habitacion">
-                            <b-form-select-option :value="v.key" v-for="(v,k) in tipoHabitaciones">{{v.value}} </b-form-select-option>
+                            <b-form-select-option v-for="(v,k) in tipoHabitaciones" :key="k" :value="v.key">{{v.value}} </b-form-select-option>
                           </b-form-select>
                         </b-form-group>
                       </b-col>
@@ -268,38 +269,6 @@
               </b-col>
             </b-row>
           </div>
-        </section>
-        <!-- -->
-
-        <!-- Boletin Informativo -->
-        <section class="wrapper vh-50 bg-light" id="suscripcion">
-          <div class="pt-xl-5 px-xl-5 pb-xl-1">
-            <h1 class="color-black">Boletín Informativo</h1>
-          </div>
-          <b-row>
-            <b-col cols="8" class="offset-2">
-              <div class="py-xl-5">
-                <b-card class="align-middle shadow-lg p-0 m-0">
-                  <b-card-body class="p-0 m-0">
-                    <div class="p-xl-3">
-                      <b-form>
-                        <b-row>
-                          <b-col cols="9">
-                            <b-form-group description="Suscríbete para ontener información relevante, novedades y promociones.">
-                              <b-form-input autocomplete="on" size="lg" type="text" v-model="formReservacion.nombre" placeholder="Correo electrónico"></b-form-input>
-                            </b-form-group>
-                          </b-col>
-                          <b-col cols="3">
-                            <b-button variant="danger" size="lg" block> Suscriberme </b-button>
-                          </b-col>
-                        </b-row>
-                      </b-form>
-                    </div>
-                  </b-card-body>
-                </b-card>
-              </div>
-            </b-col>
-          </b-row>
         </section>
         <!-- -->
 
@@ -366,6 +335,38 @@
           </section>
         </section>
         <!-- -->
+
+        <!-- Boletin Informativo -->
+        <section class="wrapper vh-100 bg-light" id="suscripcion">
+          <div class="pt-xl-5 px-xl-5 pb-xl-1">
+            <h1 class="color-black">Boletín Informativo</h1>
+          </div>
+          <b-row>
+            <b-col cols="8" class="offset-2">
+              <div class="py-xl-5">
+                <b-card class="align-middle shadow-lg p-0 m-0">
+                  <b-card-body class="p-0 m-0">
+                    <div class="p-xl-3">
+                      <b-form>
+                        <b-row>
+                          <b-col cols="9">
+                            <b-form-group description="Suscríbete para ontener información relevante, novedades y promociones.">
+                              <b-form-input autocomplete="on" size="lg" type="text" v-model="formReservacion.nombre" placeholder="Correo electrónico"></b-form-input>
+                            </b-form-group>
+                          </b-col>
+                          <b-col cols="3">
+                            <b-button variant="danger" size="lg" block> Suscriberme </b-button>
+                          </b-col>
+                        </b-row>
+                      </b-form>
+                    </div>
+                  </b-card-body>
+                </b-card>
+              </div>
+            </b-col>
+          </b-row>
+        </section>
+        <!-- -->
       </div>
       <!-- -->
 
@@ -378,7 +379,9 @@
           </ul>
         </div>
       </footer>
+      <!-- -->
     </div>
-    <script src="assets/js/index.js"></script>
+
+    <script src="src/index.js"></script>
   </body>
 </html>

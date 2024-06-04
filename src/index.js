@@ -1,5 +1,5 @@
-new Vue({
-  el: "#app",
+  new Vue({
+    el: "#app",
   data: () => ({
     fieldsReservaciones: [
       {
