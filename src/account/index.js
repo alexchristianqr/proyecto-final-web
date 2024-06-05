@@ -1,19 +1,18 @@
 new Vue({
   el: "#app",
   data: () => ({
-    formLogin: {
-      nombre: null,
+    formAccount: {
+      fullname: null,
       email: null,
-      habitacion: "simple",
-      fecha_entrada: null,
-      fecha_salida: null
+      password: null,
+      repeat_password: null
     }
   }),
   mounted() {
   },
   methods: {
-    submitFormLogin() {
-      this.itemsReservaciones.push(this.formReservacion);
+    submitFormAccount() {
+      console.log(this.formAccount);
     }
   }
 });

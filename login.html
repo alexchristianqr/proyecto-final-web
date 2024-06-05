@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Cuenta</title>
+  <title>Inicio de Sesión</title>
 
   <script src="libs/jquery.min.js"></script>
 
@@ -23,38 +23,44 @@
     <b-row class="vh-100">
       <b-col cols="6" class="offset-3 my-auto">
         <div class="py-lg-5">
-          <h1>Nuevo Usuario</h1>
+          <h1>Inicio de Sesión</h1>
         </div>
-        <b-form ref="formAccount" @submit.prevent="submitFormAccount">
+        <b-form ref="formLogin" @submit.prevent="submitFormLogin">
           <b-row>
             <b-col cols="12">
-              <b-form-group label="Nombre completo:" label-size="lg">
-                <b-form-input autocomplete="on" size="lg" type="text" v-model="formAccount.fullname"></b-form-input>
-              </b-form-group>
-            </b-col>
-            <b-col cols="12">
               <b-form-group label="Email:" label-size="lg">
-                <b-form-input autocomplete="on" size="lg" type="email" v-model="formAccount.email"></b-form-input>
+                <b-form-input autocomplete="on" size="lg" type="email" v-model="formLogin.email"></b-form-input>
               </b-form-group>
             </b-col>
             <b-col cols="12">
               <b-form-group label="Contraseña:" label-size="lg">
-                <b-form-input autocomplete="on" size="lg" type="password" v-model="formAccount.email"></b-form-input>
+                <b-form-input autocomplete="on" size="lg" type="password" v-model="formLogin.email"></b-form-input>
               </b-form-group>
             </b-col>
             <b-col cols="12">
               <b-form-group class="py-3">
                 <b-button size="lg" type="submit" variant="danger">
-                  <i class="bi bi-save"></i>
-                  Crear Cuenta
+                  <i class="bi bi-box-arrow-in-right"></i>
+                  Entrar
                 </b-button>
               </b-form-group>
             </b-col>
             <b-col cols="12">
               <b-form-group class="py-2 text-center">
                 <div>
-                  Ya tengo una cuenta registrada,
-                  <b-link variant="link" class="font-weight-bold" href="login.html" size="lg">iniciar sesión</b-link>
+                  ¡Soy nuevo! entonces,
+                  <b-link variant="link" class="font-weight-bold" href="account.html" size="lg">crear cuenta
+                  </b-link>
+                </div>
+              </b-form-group>
+            </b-col>
+            <b-col cols="12">
+              <b-form-group class="py-0 my-0 text-center" style="font-size: 13px">
+                <div>
+                  Visítanos en:
+                  <b-link variant="link" href="index.html">
+                    https://alexchristianqr.github.io/hotelelbandido
+                  </b-link>
                 </div>
               </b-form-group>
             </b-col>
@@ -64,6 +70,6 @@
     </b-row>
   </div>
 </div>
-<script src="src/account/index.js"></script>
+<script src="src/login/index.js"></script>
 </body>
 </html>

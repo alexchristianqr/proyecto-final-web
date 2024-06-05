@@ -27,7 +27,7 @@
           <li><a href="#galeria">Galeria</a></li>
           <li><a href="#reservaciones">Reservaciones</a></li>
           <li><a href="#suscripcion">Boletín</a></li>
-          <li><a href="account.html" target="_parent">Iniciar Sesión</a></li>
+          <li><a href="login.html" target="_parent">Iniciar Sesión</a></li>
         </ul>
       </nav>
     </div>
@@ -222,84 +222,84 @@
     <!-- -->
 
     <!-- Reservar -->
-    <section class="wrapper vh-100 bg-white h-100" id="reserva">
-      <div class="pt-xl-5 pb-xl-1 px-xl-5">
-        <h1 class="color-black">Reservación</h1>
-      </div>
-      <div class="p-xl-5">
-        <b-row>
-          <b-col cols="7">
-            <div>
-              <b-form ref="formReservacion" @submit.prevent="submitFormReservacion">
-                <b-row>
-                  <b-col cols="12">
-                    <b-form-group label="Nombre Completo:" label-size="lg">
-                      <b-form-input autocomplete="on" size="lg" type="text"
-                                    v-model="formReservacion.nombre"></b-form-input>
-                    </b-form-group>
-                  </b-col>
-                  <b-col cols="12">
-                    <b-form-group label="Correo Electrónico:" label-size="lg">
-                      <b-form-input autocomplete="on" size="lg" type="email"
-                                    v-model="formReservacion.email"></b-form-input>
-                    </b-form-group>
-                  </b-col>
-                  <b-col cols="12">
-                    <b-form-group label="Tipo de Habitación:" label-size="lg">
-                      <b-form-select size="lg" v-model="formReservacion.habitacion">
-                        <b-form-select-option v-for="(v,k) in tipoHabitaciones" :key="k" :value="v.key">{{v.value}}
-                        </b-form-select-option>
-                      </b-form-select>
-                    </b-form-group>
-                  </b-col>
-                  <b-col cols="12">
-                    <b-form-group label="Fecha de Entrada:" label-size="lg">
-                      <b-input-group size="lg">
-                        <b-form-input autocomplete="off" id="fecha_entrada" placeholder="YYYY-MM-DD" readonly
-                                      type="text" v-model="formReservacion.fecha_entrada"></b-form-input>
-                        <b-input-group-append>
-                          <b-form-datepicker @context="onSeleccionarFechaEntrada" aria-controls="fecha_entrada"
-                                             button-only right
-                                             v-model="formReservacion.fecha_entrada"></b-form-datepicker>
-                        </b-input-group-append>
-                      </b-input-group>
-                    </b-form-group>
-                  </b-col>
-                  <b-col cols="12">
-                    <b-form-group label="Fecha de Salida:" label-size="lg">
-                      <b-input-group size="lg">
-                        <b-form-input autocomplete="off" id="fecha_salida" placeholder="YYYY-MM-DD" readonly type="text"
-                                      v-model="formReservacion.fecha_salida"></b-form-input>
-                        <b-input-group-append>
-                          <b-form-datepicker @context="onSeleccionarFechaSalida" aria-controls="fecha_salida"
-                                             button-only right
-                                             v-model="formReservacion.fecha_salida"></b-form-datepicker>
-                        </b-input-group-append>
-                      </b-input-group>
-                    </b-form-group>
-                  </b-col>
-                  <b-col cols="12">
-                    <b-form-group class="py-3">
-                      <b-button size="lg" type="submit" variant="danger">
-                        <b-icon-save></b-icon-save>
-                        Reservar
-                      </b-button>
-                    </b-form-group>
-                  </b-col>
-                </b-row>
-              </b-form>
-            </div>
-          </b-col>
-          <b-col cols="5">
-            <div class="p-xl-5 my-auto mx-auto">
-              <b-img src="./assets/imagenes/reserva_002.png" fluid center width="500px"></b-img>
-              <div style="text-justify: inter-word">Todas nuestras reservas de habitación incluye <b>Balcón Privado, TV
-                QLED 65', Netflix Free y una Cerveza Artesanal.</b></div>
-            </div>
-          </b-col>
-        </b-row>
-      </div>
-    </section>
+    <!--    <section class="wrapper vh-100 bg-white h-100" id="reserva">-->
+    <!--      <div class="pt-xl-5 pb-xl-1 px-xl-5">-->
+    <!--        <h1 class="color-black">Reservación</h1>-->
+    <!--      </div>-->
+    <!--      <div class="p-xl-5">-->
+    <!--        <b-row>-->
+    <!--          <b-col cols="7">-->
+    <!--            <div>-->
+    <!--              <b-form ref="formReservacion" @submit.prevent="submitFormReservacion">-->
+    <!--                <b-row>-->
+    <!--                  <b-col cols="12">-->
+    <!--                    <b-form-group label="Nombre Completo:" label-size="lg">-->
+    <!--                      <b-form-input autocomplete="on" size="lg" type="text"-->
+    <!--                                    v-model="formReservacion.nombre"></b-form-input>-->
+    <!--                    </b-form-group>-->
+    <!--                  </b-col>-->
+    <!--                  <b-col cols="12">-->
+    <!--                    <b-form-group label="Correo Electrónico:" label-size="lg">-->
+    <!--                      <b-form-input autocomplete="on" size="lg" type="email"-->
+    <!--                                    v-model="formReservacion.email"></b-form-input>-->
+    <!--                    </b-form-group>-->
+    <!--                  </b-col>-->
+    <!--                  <b-col cols="12">-->
+    <!--                    <b-form-group label="Tipo de Habitación:" label-size="lg">-->
+    <!--                      <b-form-select size="lg" v-model="formReservacion.habitacion">-->
+    <!--                        <b-form-select-option v-for="(v,k) in tipoHabitaciones" :key="k" :value="v.key">{{v.value}}-->
+    <!--                        </b-form-select-option>-->
+    <!--                      </b-form-select>-->
+    <!--                    </b-form-group>-->
+    <!--                  </b-col>-->
+    <!--                  <b-col cols="12">-->
+    <!--                    <b-form-group label="Fecha de Entrada:" label-size="lg">-->
+    <!--                      <b-input-group size="lg">-->
+    <!--                        <b-form-input autocomplete="off" id="fecha_entrada" placeholder="YYYY-MM-DD" readonly-->
+    <!--                                      type="text" v-model="formReservacion.fecha_entrada"></b-form-input>-->
+    <!--                        <b-input-group-append>-->
+    <!--                          <b-form-datepicker @context="onSeleccionarFechaEntrada" aria-controls="fecha_entrada"-->
+    <!--                                             button-only right-->
+    <!--                                             v-model="formReservacion.fecha_entrada"></b-form-datepicker>-->
+    <!--                        </b-input-group-append>-->
+    <!--                      </b-input-group>-->
+    <!--                    </b-form-group>-->
+    <!--                  </b-col>-->
+    <!--                  <b-col cols="12">-->
+    <!--                    <b-form-group label="Fecha de Salida:" label-size="lg">-->
+    <!--                      <b-input-group size="lg">-->
+    <!--                        <b-form-input autocomplete="off" id="fecha_salida" placeholder="YYYY-MM-DD" readonly type="text"-->
+    <!--                                      v-model="formReservacion.fecha_salida"></b-form-input>-->
+    <!--                        <b-input-group-append>-->
+    <!--                          <b-form-datepicker @context="onSeleccionarFechaSalida" aria-controls="fecha_salida"-->
+    <!--                                             button-only right-->
+    <!--                                             v-model="formReservacion.fecha_salida"></b-form-datepicker>-->
+    <!--                        </b-input-group-append>-->
+    <!--                      </b-input-group>-->
+    <!--                    </b-form-group>-->
+    <!--                  </b-col>-->
+    <!--                  <b-col cols="12">-->
+    <!--                    <b-form-group class="py-3">-->
+    <!--                      <b-button size="lg" type="submit" variant="danger">-->
+    <!--                        <b-icon-save></b-icon-save>-->
+    <!--                        Reservar-->
+    <!--                      </b-button>-->
+    <!--                    </b-form-group>-->
+    <!--                  </b-col>-->
+    <!--                </b-row>-->
+    <!--              </b-form>-->
+    <!--            </div>-->
+    <!--          </b-col>-->
+    <!--          <b-col cols="5">-->
+    <!--            <div class="p-xl-5 my-auto mx-auto">-->
+    <!--              <b-img src="./assets/imagenes/reserva_002.png" fluid center width="500px"></b-img>-->
+    <!--              <div style="text-justify: inter-word">Todas nuestras reservas de habitación incluye <b>Balcón Privado, TV-->
+    <!--                QLED 65', Netflix Free y una Cerveza Artesanal.</b></div>-->
+    <!--            </div>-->
+    <!--          </b-col>-->
+    <!--        </b-row>-->
+    <!--      </div>-->
+    <!--    </section>-->
     <!-- -->
 
     <!-- Reservaciones -->
