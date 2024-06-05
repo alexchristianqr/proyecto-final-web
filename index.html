@@ -48,6 +48,8 @@
     </section>
     <!-- -->
 
+    <myalex></myalex>
+
     <!-- Fotos y Videos -->
     <section class="wrapper style2 section-container" id="galeria">
       <section>
@@ -361,11 +363,11 @@
               <b-table :fields="fieldsReservaciones" :items="itemsReservaciones" hover striped>
                 <template #cell(actions)="row">
                   <b-button v-b-tooltip.hover title="Ver detalle de la Reserva" size="lg" class="mr-1" variant="info">
-                    <b-icon-search />
+                    <b-icon icon="search"></b-icon>
                   </b-button>
                   <b-button v-b-tooltip.hover title="Descargar Comprobante de Pago" size="lg" class="mr-1"
                             variant="danger">
-                    <b-icon-download />
+                    <b-icon icon="download"></b-icon>
                   </b-button>
                 </template>
               </b-table>
