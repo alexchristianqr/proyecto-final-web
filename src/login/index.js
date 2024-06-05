@@ -14,6 +14,7 @@ new Vue({
   methods: {
     submitFormLogin() {
       console.log(this.formLogin);
+      window.location.replace("reserva.html");
     }
   }
 });
