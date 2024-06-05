@@ -1,15 +1,15 @@
-import VNode from 'core/vdom/vnode'
-import { Component } from './component'
+import VNode from "core/vdom/vnode";
+import { Component } from "./component";
 
 export type ComponentWithCacheContext = {
-  type: 'ComponentWithCache'
+  type: "ComponentWithCache"
   bufferIndex: number
   buffer: Array<string>
   key: string
 }
 
 export type ElementContext = {
-  type: 'Element'
+  type: "Element"
   children: Array<VNode>
   rendered: number
   endTag: string
@@ -17,7 +17,7 @@ export type ElementContext = {
 }
 
 export type ComponentContext = {
-  type: 'Component'
+  type: "Component"
   prevActive: Component
 }
 

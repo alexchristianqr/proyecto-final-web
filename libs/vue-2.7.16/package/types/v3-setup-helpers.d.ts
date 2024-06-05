@@ -1,8 +1,8 @@
-import { EmitFn, EmitsOptions } from './v3-setup-context'
+import { EmitFn, EmitsOptions } from "./v3-setup-context";
 import {
   ComponentObjectPropsOptions,
   ExtractPropTypes
-} from './v3-component-props'
+} from "./v3-component-props";
 
 /**
  * Vue `<script setup>` compiler macro for declaring component props. The
@@ -99,8 +99,7 @@ type InferDefaults<T> = {
   [K in keyof T]?: InferDefault<T, NotUndefined<T[K]>>
 }
 
-type InferDefault<P, T> = T extends
-  | null
+type InferDefault<P, T> = T extends | null
   | number
   | string
   | boolean
@@ -147,8 +146,8 @@ type _defineExpose = typeof defineExpose
 type _withDefaults = typeof withDefaults
 
 declare global {
-  const defineProps: _defineProps
-  const defineEmits: _defineEmits
-  const defineExpose: _defineExpose
-  const withDefaults: _withDefaults
+  const defineProps: _defineProps;
+  const defineEmits: _defineEmits;
+  const defineExpose: _defineExpose;
+  const withDefaults: _withDefaults;
 }

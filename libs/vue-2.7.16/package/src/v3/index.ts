@@ -2,7 +2,7 @@
  * Note: also update dist/vue.runtime.mjs when adding new exports to this file.
  */
 
-export const version: string = '__VERSION__'
+export const version: string = "__VERSION__";
 
 export {
   ref,
@@ -22,7 +22,7 @@ export {
   ShallowUnwrapRef,
   RefUnwrapBailTypes,
   CustomRefFactory
-} from './reactivity/ref'
+} from "./reactivity/ref";
 
 export {
   reactive,
@@ -36,9 +36,9 @@ export {
   ReactiveFlags,
   ShallowReactive,
   UnwrapNestedRefs
-} from './reactivity/reactive'
+} from "./reactivity/reactive";
 
-export { readonly, shallowReadonly, DeepReadonly } from './reactivity/readonly'
+export { readonly, shallowReadonly, DeepReadonly } from "./reactivity/readonly";
 
 export {
   computed,
@@ -47,7 +47,7 @@ export {
   WritableComputedOptions,
   ComputedGetter,
   ComputedSetter
-} from './reactivity/computed'
+} from "./reactivity/computed";
 
 export {
   watch,
@@ -60,37 +60,37 @@ export {
   WatchCallback,
   WatchSource,
   WatchStopHandle
-} from './apiWatch'
+} from "./apiWatch";
 
 export {
   EffectScope,
   effectScope,
   onScopeDispose,
   getCurrentScope
-} from './reactivity/effectScope'
+} from "./reactivity/effectScope";
 
-export { DebuggerOptions, DebuggerEvent, DebuggerEventExtraInfo } from './debug'
+export { DebuggerOptions, DebuggerEvent, DebuggerEventExtraInfo } from "./debug";
 
-export { TrackOpTypes, TriggerOpTypes } from './reactivity/operations'
+export { TrackOpTypes, TriggerOpTypes } from "./reactivity/operations";
 
-export { provide, inject, InjectionKey } from './apiInject'
+export { provide, inject, InjectionKey } from "./apiInject";
 
-export { h } from './h'
-export { getCurrentInstance } from './currentInstance'
-export { useSlots, useAttrs, useListeners, mergeDefaults } from './apiSetup'
-export { nextTick } from 'core/util/next-tick'
-export { set, del } from 'core/observer'
+export { h } from "./h";
+export { getCurrentInstance } from "./currentInstance";
+export { useSlots, useAttrs, useListeners, mergeDefaults } from "./apiSetup";
+export { nextTick } from "core/util/next-tick";
+export { set, del } from "core/observer";
 
-export { useCssModule } from './sfc-helpers/useCssModule'
-export { useCssVars } from './sfc-helpers/useCssVars'
+export { useCssModule } from "./sfc-helpers/useCssModule";
+export { useCssVars } from "./sfc-helpers/useCssVars";
 
 /**
  * @internal type is manually declared in <root>/types/v3-define-component.d.ts
  */
 export function defineComponent(options: any) {
-  return options
+  return options;
 }
 
-export { defineAsyncComponent } from './apiAsyncComponent'
+export { defineAsyncComponent } from "./apiAsyncComponent";
 
-export * from './apiLifecycle'
+export * from "./apiLifecycle";

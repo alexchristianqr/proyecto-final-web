@@ -1,11 +1,11 @@
-import * as V from './index'
+import * as V from "./index";
 import {
   DefaultData,
   DefaultProps,
   DefaultMethods,
   DefaultComputed,
   PropsDefinition
-} from './options'
+} from "./options";
 
 // Expose some types for backward compatibility...
 declare namespace Vue {
@@ -61,7 +61,8 @@ declare namespace Vue {
   export type VNodeDirective = V.VNodeDirective
 }
 
-declare class Vue extends V.default {}
+declare class Vue extends V.default {
+}
 
 export = Vue
 

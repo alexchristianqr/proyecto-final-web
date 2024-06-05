@@ -1,11 +1,11 @@
-import type { VNodeDirective, VNode } from './vnode'
+import type { VNodeDirective, VNode } from "./vnode";
 
 export type DirectiveModifiers = Record<string, boolean>
 
 export interface DirectiveBinding<V> extends Readonly<VNodeDirective> {
-  readonly modifiers: DirectiveModifiers
-  readonly value: V
-  readonly oldValue: V | null
+  readonly modifiers: DirectiveModifiers;
+  readonly value: V;
+  readonly oldValue: V | null;
 }
 
 export type DirectiveHook<T = any, Prev = VNode | null, V = any> = (
@@ -16,12 +16,13 @@ export type DirectiveHook<T = any, Prev = VNode | null, V = any> = (
 ) => void
 
 export interface ObjectDirective<T = any, V = any> {
-  bind?: DirectiveHook<T, any, V>
-  inserted?: DirectiveHook<T, any, V>
-  update?: DirectiveHook<T, any, V>
-  componentUpdated?: DirectiveHook<T, any, V>
-  unbind?: DirectiveHook<T, any, V>
+  bind?: DirectiveHook<T, any, V>;
+  inserted?: DirectiveHook<T, any, V>;
+  update?: DirectiveHook<T, any, V>;
+  componentUpdated?: DirectiveHook<T, any, V>;
+  unbind?: DirectiveHook<T, any, V>;
 }
+
 export type FunctionDirective<T = any, V = any> = DirectiveHook<T, any, V>
 
 export type Directive<T = any, V = any> =

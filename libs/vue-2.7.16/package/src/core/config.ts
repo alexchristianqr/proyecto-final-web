@@ -1,36 +1,36 @@
-import { no, noop, identity } from 'shared/util'
+import { no, noop, identity } from "shared/util";
 
-import { LIFECYCLE_HOOKS } from 'shared/constants'
-import type { Component } from 'types/component'
+import { LIFECYCLE_HOOKS } from "shared/constants";
+import type { Component } from "types/component";
 
 /**
  * @internal
  */
 export interface Config {
   // user
-  optionMergeStrategies: { [key: string]: Function }
-  silent: boolean
-  productionTip: boolean
-  performance: boolean
-  devtools: boolean
-  errorHandler?: (err: Error, vm: Component | null, info: string) => void
-  warnHandler?: (msg: string, vm: Component | null, trace: string) => void
-  ignoredElements: Array<string | RegExp>
-  keyCodes: { [key: string]: number | Array<number> }
+  optionMergeStrategies: { [key: string]: Function };
+  silent: boolean;
+  productionTip: boolean;
+  performance: boolean;
+  devtools: boolean;
+  errorHandler?: (err: Error, vm: Component | null, info: string) => void;
+  warnHandler?: (msg: string, vm: Component | null, trace: string) => void;
+  ignoredElements: Array<string | RegExp>;
+  keyCodes: { [key: string]: number | Array<number> };
 
   // platform
-  isReservedTag: (x: string) => boolean | undefined
-  isReservedAttr: (x: string) => true | undefined
-  parsePlatformTagName: (x: string) => string
-  isUnknownElement: (x: string) => boolean
-  getTagNamespace: (x: string) => string | undefined
-  mustUseProp: (tag: string, type?: string | null, name?: string) => boolean
+  isReservedTag: (x: string) => boolean | undefined;
+  isReservedAttr: (x: string) => true | undefined;
+  parsePlatformTagName: (x: string) => string;
+  isUnknownElement: (x: string) => boolean;
+  getTagNamespace: (x: string) => string | undefined;
+  mustUseProp: (tag: string, type?: string | null, name?: string) => boolean;
 
   // private
-  async: boolean
+  async: boolean;
 
   // legacy
-  _lifecycleHooks: Array<string>
+  _lifecycleHooks: Array<string>;
 }
 
 export default {
@@ -125,4 +125,4 @@ export default {
    * Exposed for legacy reasons
    */
   _lifecycleHooks: LIFECYCLE_HOOKS
-} as unknown as Config
+} as unknown as Config;

@@ -1,29 +1,29 @@
-import { isServerRendering, noop, warn, def, isFunction } from 'core/util'
-import { Ref, RefFlag } from './ref'
-import Watcher from 'core/observer/watcher'
-import Dep from 'core/observer/dep'
-import { currentInstance } from '../currentInstance'
-import { ReactiveFlags } from './reactive'
-import { TrackOpTypes } from './operations'
-import { DebuggerOptions } from '../debug'
+import { isServerRendering, noop, warn, def, isFunction } from "core/util";
+import { Ref, RefFlag } from "./ref";
+import Watcher from "core/observer/watcher";
+import Dep from "core/observer/dep";
+import { currentInstance } from "../currentInstance";
+import { ReactiveFlags } from "./reactive";
+import { TrackOpTypes } from "./operations";
+import { DebuggerOptions } from "../debug";
 
-declare const ComputedRefSymbol: unique symbol
+declare const ComputedRefSymbol: unique symbol;
 
 export interface ComputedRef<T = any> extends WritableComputedRef<T> {
-  readonly value: T
-  [ComputedRefSymbol]: true
+  readonly value: T;
+  [ComputedRefSymbol]: true;
 }
 
 export interface WritableComputedRef<T> extends Ref<T> {
-  readonly effect: any /* Watcher */
+  readonly effect: any; /* Watcher */
 }
 
 export type ComputedGetter<T> = (...args: any[]) => T
 export type ComputedSetter<T> = (v: T) => void
 
 export interface WritableComputedOptions<T> {
-  get: ComputedGetter<T>
-  set: ComputedSetter<T>
+  get: ComputedGetter<T>;
+  set: ComputedSetter<T>;
 }
 
 export function computed<T>(
@@ -38,29 +38,29 @@ export function computed<T>(
   getterOrOptions: ComputedGetter<T> | WritableComputedOptions<T>,
   debugOptions?: DebuggerOptions
 ) {
-  let getter: ComputedGetter<T>
-  let setter: ComputedSetter<T>
+  let getter: ComputedGetter<T>;
+  let setter: ComputedSetter<T>;
 
-  const onlyGetter = isFunction(getterOrOptions)
+  const onlyGetter = isFunction(getterOrOptions);
   if (onlyGetter) {
-    getter = getterOrOptions
+    getter = getterOrOptions;
     setter = __DEV__
       ? () => {
-          warn('Write operation failed: computed value is readonly')
-        }
-      : noop
+        warn("Write operation failed: computed value is readonly");
+      }
+      : noop;
   } else {
-    getter = getterOrOptions.get
-    setter = getterOrOptions.set
+    getter = getterOrOptions.get;
+    setter = getterOrOptions.set;
   }
 
   const watcher = isServerRendering()
     ? null
-    : new Watcher(currentInstance, getter, noop, { lazy: true })
+    : new Watcher(currentInstance, getter, noop, { lazy: true });
 
   if (__DEV__ && watcher && debugOptions) {
-    watcher.onTrack = debugOptions.onTrack
-    watcher.onTrigger = debugOptions.onTrigger
+    watcher.onTrack = debugOptions.onTrack;
+    watcher.onTrigger = debugOptions.onTrigger;
   }
 
   const ref = {
@@ -70,7 +70,7 @@ export function computed<T>(
     get value() {
       if (watcher) {
         if (watcher.dirty) {
-          watcher.evaluate()
+          watcher.evaluate();
         }
         if (Dep.target) {
           if (__DEV__ && Dep.target.onTrack) {
@@ -78,23 +78,23 @@ export function computed<T>(
               effect: Dep.target,
               target: ref,
               type: TrackOpTypes.GET,
-              key: 'value'
-            })
+              key: "value"
+            });
           }
-          watcher.depend()
+          watcher.depend();
         }
-        return watcher.value
+        return watcher.value;
       } else {
-        return getter()
+        return getter();
       }
     },
     set value(newVal) {
-      setter(newVal)
+      setter(newVal);
     }
-  } as any
+  } as any;
 
-  def(ref, RefFlag, true)
-  def(ref, ReactiveFlags.IS_READONLY, onlyGetter)
+  def(ref, RefFlag, true);
+  def(ref, ReactiveFlags.IS_READONLY, onlyGetter);
 
-  return ref
+  return ref;
 }

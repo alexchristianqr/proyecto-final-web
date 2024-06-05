@@ -1,10 +1,10 @@
-import VNode, { cloneVNode } from './vnode'
-import { createElement } from './create-element'
-import { resolveInject } from '../instance/inject'
-import { normalizeChildren } from '../vdom/helpers/normalize-children'
-import { resolveSlots } from '../instance/render-helpers/resolve-slots'
-import { normalizeScopedSlots } from '../vdom/helpers/normalize-scoped-slots'
-import { installRenderHelpers } from '../instance/render-helpers/index'
+import VNode, { cloneVNode } from "./vnode";
+import { createElement } from "./create-element";
+import { resolveInject } from "../instance/inject";
+import { normalizeChildren } from "../vdom/helpers/normalize-children";
+import { resolveSlots } from "../instance/render-helpers/resolve-slots";
+import { normalizeScopedSlots } from "../vdom/helpers/normalize-scoped-slots";
+import { installRenderHelpers } from "../instance/render-helpers/index";
 
 import {
   isDef,
@@ -14,9 +14,9 @@ import {
   camelize,
   emptyObject,
   validateProp
-} from '../util/index'
-import type { Component } from 'types/component'
-import type { VNodeData } from 'types/vnode'
+} from "../util/index";
+import type { Component } from "types/component";
+import type { VNodeData } from "types/vnode";
 
 export function FunctionalRenderContext(
   data: VNodeData,
@@ -25,77 +25,77 @@ export function FunctionalRenderContext(
   parent: Component,
   Ctor: typeof Component
 ) {
-  const options = Ctor.options
+  const options = Ctor.options;
   // ensure the createElement function in functional components
   // gets a unique context - this is necessary for correct named slot check
-  let contextVm
-  if (hasOwn(parent, '_uid')) {
-    contextVm = Object.create(parent)
-    contextVm._original = parent
+  let contextVm;
+  if (hasOwn(parent, "_uid")) {
+    contextVm = Object.create(parent);
+    contextVm._original = parent;
   } else {
     // the context vm passed in is a functional context as well.
     // in this case we want to make sure we are able to get a hold to the
     // real context instance.
-    contextVm = parent
+    contextVm = parent;
     // @ts-ignore
-    parent = parent._original
+    parent = parent._original;
   }
-  const isCompiled = isTrue(options._compiled)
-  const needNormalization = !isCompiled
+  const isCompiled = isTrue(options._compiled);
+  const needNormalization = !isCompiled;
 
-  this.data = data
-  this.props = props
-  this.children = children
-  this.parent = parent
-  this.listeners = data.on || emptyObject
-  this.injections = resolveInject(options.inject, parent)
+  this.data = data;
+  this.props = props;
+  this.children = children;
+  this.parent = parent;
+  this.listeners = data.on || emptyObject;
+  this.injections = resolveInject(options.inject, parent);
   this.slots = () => {
     if (!this.$slots) {
       normalizeScopedSlots(
         parent,
         data.scopedSlots,
         (this.$slots = resolveSlots(children, parent))
-      )
+      );
     }
-    return this.$slots
-  }
+    return this.$slots;
+  };
 
-  Object.defineProperty(this, 'scopedSlots', {
+  Object.defineProperty(this, "scopedSlots", {
     enumerable: true,
     get() {
-      return normalizeScopedSlots(parent, data.scopedSlots, this.slots())
+      return normalizeScopedSlots(parent, data.scopedSlots, this.slots());
     }
-  } as any)
+  } as any);
 
   // support for compiled functional template
   if (isCompiled) {
     // exposing $options for renderStatic()
-    this.$options = options
+    this.$options = options;
     // pre-resolve slots for renderSlot()
-    this.$slots = this.slots()
+    this.$slots = this.slots();
     this.$scopedSlots = normalizeScopedSlots(
       parent,
       data.scopedSlots,
       this.$slots
-    )
+    );
   }
 
   if (options._scopeId) {
     this._c = (a, b, c, d) => {
-      const vnode = createElement(contextVm, a, b, c, d, needNormalization)
+      const vnode = createElement(contextVm, a, b, c, d, needNormalization);
       if (vnode && !isArray(vnode)) {
-        vnode.fnScopeId = options._scopeId
-        vnode.fnContext = parent
+        vnode.fnScopeId = options._scopeId;
+        vnode.fnContext = parent;
       }
-      return vnode
-    }
+      return vnode;
+    };
   } else {
     this._c = (a, b, c, d) =>
-      createElement(contextVm, a, b, c, d, needNormalization)
+      createElement(contextVm, a, b, c, d, needNormalization);
   }
 }
 
-installRenderHelpers(FunctionalRenderContext.prototype)
+installRenderHelpers(FunctionalRenderContext.prototype);
 
 export function createFunctionalComponent(
   Ctor: typeof Component,
@@ -104,16 +104,16 @@ export function createFunctionalComponent(
   contextVm: Component,
   children?: Array<VNode>
 ): VNode | Array<VNode> | void {
-  const options = Ctor.options
-  const props = {}
-  const propOptions = options.props
+  const options = Ctor.options;
+  const props = {};
+  const propOptions = options.props;
   if (isDef(propOptions)) {
     for (const key in propOptions) {
-      props[key] = validateProp(key, propOptions, propsData || emptyObject)
+      props[key] = validateProp(key, propOptions, propsData || emptyObject);
     }
   } else {
-    if (isDef(data.attrs)) mergeProps(props, data.attrs)
-    if (isDef(data.props)) mergeProps(props, data.props)
+    if (isDef(data.attrs)) mergeProps(props, data.attrs);
+    if (isDef(data.props)) mergeProps(props, data.props);
   }
 
   const renderContext = new FunctionalRenderContext(
@@ -122,9 +122,9 @@ export function createFunctionalComponent(
     children,
     contextVm,
     Ctor
-  )
+  );
 
-  const vnode = options.render.call(null, renderContext._c, renderContext)
+  const vnode = options.render.call(null, renderContext._c, renderContext);
 
   if (vnode instanceof VNode) {
     return cloneAndMarkFunctionalResult(
@@ -133,10 +133,10 @@ export function createFunctionalComponent(
       renderContext.parent,
       options,
       renderContext
-    )
+    );
   } else if (isArray(vnode)) {
-    const vnodes = normalizeChildren(vnode) || []
-    const res = new Array(vnodes.length)
+    const vnodes = normalizeChildren(vnode) || [];
+    const res = new Array(vnodes.length);
     for (let i = 0; i < vnodes.length; i++) {
       res[i] = cloneAndMarkFunctionalResult(
         vnodes[i],
@@ -144,9 +144,9 @@ export function createFunctionalComponent(
         renderContext.parent,
         options,
         renderContext
-      )
+      );
     }
-    return res
+    return res;
   }
 }
 
@@ -160,21 +160,21 @@ function cloneAndMarkFunctionalResult(
   // #7817 clone node before setting fnContext, otherwise if the node is reused
   // (e.g. it was from a cached normal slot) the fnContext causes named slots
   // that should not be matched to match.
-  const clone = cloneVNode(vnode)
-  clone.fnContext = contextVm
-  clone.fnOptions = options
+  const clone = cloneVNode(vnode);
+  clone.fnContext = contextVm;
+  clone.fnOptions = options;
   if (__DEV__) {
     ;(clone.devtoolsMeta = clone.devtoolsMeta || ({} as any)).renderContext =
-      renderContext
+      renderContext;
   }
   if (data.slot) {
-    ;(clone.data || (clone.data = {})).slot = data.slot
+    ;(clone.data || (clone.data = {})).slot = data.slot;
   }
-  return clone
+  return clone;
 }
 
 function mergeProps(to, from) {
   for (const key in from) {
-    to[camelize(key)] = from[key]
+    to[camelize(key)] = from[key];
   }
 }

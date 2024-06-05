@@ -1,17 +1,17 @@
-import { PluginCreator, Rule, AtRule } from 'postcss'
-import selectorParser from 'postcss-selector-parser'
+import { PluginCreator, Rule, AtRule } from "postcss";
+import selectorParser from "postcss-selector-parser";
 
-const animationNameRE = /^(-\w+-)?animation-name$/
-const animationRE = /^(-\w+-)?animation$/
+const animationNameRE = /^(-\w+-)?animation-name$/;
+const animationRE = /^(-\w+-)?animation$/;
 
-const scopedPlugin: PluginCreator<string> = (id = '') => {
-  const keyframes = Object.create(null)
-  const shortId = id.replace(/^data-v-/, '')
+const scopedPlugin: PluginCreator<string> = (id = "") => {
+  const keyframes = Object.create(null);
+  const shortId = id.replace(/^data-v-/, "");
 
   return {
-    postcssPlugin: 'vue-sfc-scoped',
+    postcssPlugin: "vue-sfc-scoped",
     Rule(rule) {
-      processRule(id, rule)
+      processRule(id, rule);
     },
     AtRule(node) {
       if (
@@ -19,7 +19,7 @@ const scopedPlugin: PluginCreator<string> = (id = '') => {
         !node.params.endsWith(`-${shortId}`)
       ) {
         // register keyframes
-        keyframes[node.params] = node.params = node.params + '-' + shortId
+        keyframes[node.params] = node.params = node.params + "-" + shortId;
       }
     },
     OnceExit(root) {
@@ -32,49 +32,49 @@ const scopedPlugin: PluginCreator<string> = (id = '') => {
         root.walkDecls(decl => {
           if (animationNameRE.test(decl.prop)) {
             decl.value = decl.value
-              .split(',')
+              .split(",")
               .map(v => keyframes[v.trim()] || v.trim())
-              .join(',')
+              .join(",");
           }
           // shorthand
           if (animationRE.test(decl.prop)) {
             decl.value = decl.value
-              .split(',')
+              .split(",")
               .map(v => {
-                const vals = v.trim().split(/\s+/)
-                const i = vals.findIndex(val => keyframes[val])
+                const vals = v.trim().split(/\s+/);
+                const i = vals.findIndex(val => keyframes[val]);
                 if (i !== -1) {
-                  vals.splice(i, 1, keyframes[vals[i]])
-                  return vals.join(' ')
+                  vals.splice(i, 1, keyframes[vals[i]]);
+                  return vals.join(" ");
                 } else {
-                  return v
+                  return v;
                 }
               })
-              .join(',')
+              .join(",");
           }
-        })
+        });
       }
     }
-  }
-}
+  };
+};
 
-const processedRules = new WeakSet<Rule>()
+const processedRules = new WeakSet<Rule>();
 
 function processRule(id: string, rule: Rule) {
   if (
     processedRules.has(rule) ||
     (rule.parent &&
-      rule.parent.type === 'atrule' &&
+      rule.parent.type === "atrule" &&
       /-?keyframes$/.test((rule.parent as AtRule).name))
   ) {
-    return
+    return;
   }
-  processedRules.add(rule)
+  processedRules.add(rule);
   rule.selector = selectorParser(selectorRoot => {
     selectorRoot.each(selector => {
-      rewriteSelector(id, selector, selectorRoot)
-    })
-  }).processSync(rule.selector)
+      rewriteSelector(id, selector, selectorRoot);
+    });
+  }).processSync(rule.selector);
 }
 
 function rewriteSelector(
@@ -82,48 +82,48 @@ function rewriteSelector(
   selector: selectorParser.Selector,
   selectorRoot: selectorParser.Root
 ) {
-  let node: selectorParser.Node | null = null
-  let shouldInject = true
+  let node: selectorParser.Node | null = null;
+  let shouldInject = true;
   // find the last child node to insert attribute selector
   selector.each(n => {
     // DEPRECATED ">>>" and "/deep/" combinator
     if (
-      n.type === 'combinator' &&
-      (n.value === '>>>' || n.value === '/deep/')
+      n.type === "combinator" &&
+      (n.value === ">>>" || n.value === "/deep/")
     ) {
-      n.value = ' '
-      n.spaces.before = n.spaces.after = ''
+      n.value = " ";
+      n.spaces.before = n.spaces.after = "";
       // warn(
       //   `the >>> and /deep/ combinators have been deprecated. ` +
       //     `Use :deep() instead.`
       // )
-      return false
+      return false;
     }
 
-    if (n.type === 'pseudo') {
-      const { value } = n
+    if (n.type === "pseudo") {
+      const { value } = n;
       // deep: inject [id] attribute at the node before the ::v-deep
       // combinator.
-      if (value === ':deep' || value === '::v-deep') {
+      if (value === ":deep" || value === "::v-deep") {
         if (n.nodes.length) {
           // .foo ::v-deep(.bar) -> .foo[xxxxxxx] .bar
           // replace the current node with ::v-deep's inner selector
-          let last: selectorParser.Selector['nodes'][0] = n
+          let last: selectorParser.Selector["nodes"][0] = n;
           n.nodes[0].each(ss => {
-            selector.insertAfter(last, ss)
-            last = ss
-          })
+            selector.insertAfter(last, ss);
+            last = ss;
+          });
           // insert a space combinator before if it doesn't already have one
-          const prev = selector.at(selector.index(n) - 1)
+          const prev = selector.at(selector.index(n) - 1);
           if (!prev || !isSpaceCombinator(prev)) {
             selector.insertAfter(
               n,
               selectorParser.combinator({
-                value: ' '
+                value: " "
               })
-            )
+            );
           }
-          selector.removeChild(n)
+          selector.removeChild(n);
         } else {
           // DEPRECATED usage in v3
           // .foo ::v-deep .bar -> .foo[xxxxxxx] .bar
@@ -131,13 +131,13 @@ function rewriteSelector(
           //   `::v-deep usage as a combinator has ` +
           //     `been deprecated. Use :deep(<inner-selector>) instead.`
           // )
-          const prev = selector.at(selector.index(n) - 1)
+          const prev = selector.at(selector.index(n) - 1);
           if (prev && isSpaceCombinator(prev)) {
-            selector.removeChild(prev)
+            selector.removeChild(prev);
           }
-          selector.removeChild(n)
+          selector.removeChild(n);
         }
-        return false
+        return false;
       }
 
       // !!! Vue 2 does not have :slotted support
@@ -159,25 +159,25 @@ function rewriteSelector(
 
       // global: replace with inner selector and do not inject [id].
       // ::v-global(.foo) -> .foo
-      if (value === ':global' || value === '::v-global') {
-        selectorRoot.insertAfter(selector, n.nodes[0])
-        selectorRoot.removeChild(selector)
-        return false
+      if (value === ":global" || value === "::v-global") {
+        selectorRoot.insertAfter(selector, n.nodes[0]);
+        selectorRoot.removeChild(selector);
+        return false;
       }
     }
 
-    if (n.type !== 'pseudo' && n.type !== 'combinator') {
-      node = n
+    if (n.type !== "pseudo" && n.type !== "combinator") {
+      node = n;
     }
-  })
+  });
 
   if (node) {
-    ;(node as selectorParser.Node).spaces.after = ''
+    ;(node as selectorParser.Node).spaces.after = "";
   } else {
     // For deep selectors & standalone pseudo selectors,
     // the attribute selectors are prepended rather than appended.
     // So all leading spaces must be eliminated to avoid problems.
-    selector.first.spaces.before = ''
+    selector.first.spaces.before = "";
   }
 
   if (shouldInject) {
@@ -191,13 +191,13 @@ function rewriteSelector(
         raws: {},
         quoteMark: `"`
       })
-    )
+    );
   }
 }
 
 function isSpaceCombinator(node: selectorParser.Node) {
-  return node.type === 'combinator' && /^\s+$/.test(node.value)
+  return node.type === "combinator" && /^\s+$/.test(node.value);
 }
 
-scopedPlugin.postcss = true
-export default scopedPlugin
+scopedPlugin.postcss = true;
+export default scopedPlugin;

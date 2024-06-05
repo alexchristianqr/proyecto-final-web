@@ -1,5 +1,5 @@
-  new Vue({
-    el: "#app",
+new Vue({
+  el: "#app",
   data: () => ({
     fieldsReservaciones: [
       {
@@ -39,9 +39,27 @@
       }
     ],
     itemsReservaciones: [
-      { fullname: "Alex Quispe", email: "alex.quispe@gmail.com", habitacion: "Habitacion Simple", fecha_entrada: "31-05-2024", fecha_salida: "31-05-2024" },
-      { fullname: "Alex Quispe", email: "alex.quispe@gmail.com", habitacion: "Habitacion Simple", fecha_entrada: "31-05-2024", fecha_salida: "31-05-2024" },
-      { fullname: "Alex Quispe", email: "alex.quispe@gmail.com", habitacion: "Habitacion Simple", fecha_entrada: "31-05-2024", fecha_salida: "31-05-2024" }
+      {
+        fullname: "Alex Quispe",
+        email: "alex.quispe@gmail.com",
+        habitacion: "Habitacion Simple",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        fullname: "Alex Quispe",
+        email: "alex.quispe@gmail.com",
+        habitacion: "Habitacion Simple",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        fullname: "Alex Quispe",
+        email: "alex.quispe@gmail.com",
+        habitacion: "Habitacion Simple",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      }
     ],
     tipoHabitaciones: [
       { key: "simple", value: "Habitacion Simple" },
@@ -61,7 +79,8 @@
       fecha_salida: null
     }
   }),
-  mounted() {},
+  mounted() {
+  },
   methods: {
     submitFormReservacion() {
       this.itemsReservaciones.push(this.formReservacion);

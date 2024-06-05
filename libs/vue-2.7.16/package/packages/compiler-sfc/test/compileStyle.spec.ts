@@ -1,203 +1,203 @@
-import { parse } from '../src/parse'
-import { compileStyle, compileStyleAsync } from '../src/compileStyle'
+import { parse } from "../src/parse";
+import { compileStyle, compileStyleAsync } from "../src/compileStyle";
 
-test('preprocess less', () => {
+test("preprocess less", () => {
   const style = parse({
     source:
-      '<style lang="less">\n' +
-      '@red: rgb(255, 0, 0);\n' +
-      '.color { color: @red; }\n' +
-      '</style>\n',
-    filename: 'example.vue',
+      "<style lang=\"less\">\n" +
+      "@red: rgb(255, 0, 0);\n" +
+      ".color { color: @red; }\n" +
+      "</style>\n",
+    filename: "example.vue",
     sourceMap: true
-  }).styles[0]
+  }).styles[0];
 
   const result = compileStyle({
-    id: 'v-scope-xxx',
-    filename: 'example.vue',
+    id: "v-scope-xxx",
+    filename: "example.vue",
     source: style.content,
     map: style.map,
     scoped: false,
     preprocessLang: style.lang
-  })
+  });
 
-  expect(result.errors.length).toBe(0)
-  expect(result.code).toEqual(expect.stringContaining('color: #ff0000;'))
-  expect(result.map).toBeTruthy()
-})
+  expect(result.errors.length).toBe(0);
+  expect(result.code).toEqual(expect.stringContaining("color: #ff0000;"));
+  expect(result.map).toBeTruthy();
+});
 
-test('preprocess scss', () => {
+test("preprocess scss", () => {
   const style = parse({
     source:
-      '<style lang="scss">\n' +
-      '$red: red;\n' +
-      '.color { color: $red; }\n' +
-      '</style>\n',
-    filename: 'example.vue',
+      "<style lang=\"scss\">\n" +
+      "$red: red;\n" +
+      ".color { color: $red; }\n" +
+      "</style>\n",
+    filename: "example.vue",
     sourceMap: true
-  }).styles[0]
+  }).styles[0];
   const result = compileStyle({
-    id: 'v-scope-xxx',
-    filename: 'example.vue',
+    id: "v-scope-xxx",
+    filename: "example.vue",
     source: style.content,
     map: style.map,
     scoped: false,
     preprocessLang: style.lang
-  })
+  });
 
-  expect(result.errors.length).toBe(0)
-  expect(result.code).toMatch('color: red;')
-  expect(result.map).toBeTruthy()
-})
+  expect(result.errors.length).toBe(0);
+  expect(result.code).toMatch("color: red;");
+  expect(result.map).toBeTruthy();
+});
 
-test('preprocess sass', () => {
+test("preprocess sass", () => {
   const style = parse({
     source:
-      '<style lang="sass">\n' +
-      '$red: red\n' +
-      '.color\n' +
-      '   color: $red\n' +
-      '</style>\n',
-    filename: 'example.vue',
+      "<style lang=\"sass\">\n" +
+      "$red: red\n" +
+      ".color\n" +
+      "   color: $red\n" +
+      "</style>\n",
+    filename: "example.vue",
     sourceMap: true
-  }).styles[0]
+  }).styles[0];
   const result = compileStyle({
-    id: 'v-scope-xxx',
-    filename: 'example.vue',
+    id: "v-scope-xxx",
+    filename: "example.vue",
     source: style.content,
     map: style.map,
     scoped: false,
     preprocessLang: style.lang
-  })
+  });
 
-  expect(result.errors.length).toBe(0)
-  expect(result.code).toMatch('color: red;')
-  expect(result.map).toBeTruthy()
-})
+  expect(result.errors.length).toBe(0);
+  expect(result.code).toMatch("color: red;");
+  expect(result.map).toBeTruthy();
+});
 
-test('preprocess stylus', () => {
+test("preprocess stylus", () => {
   const style = parse({
     source:
-      '<style lang="styl">\n' +
-      'red-color = rgb(255, 0, 0);\n' +
-      '.color\n' +
-      '   color: red-color\n' +
-      '</style>\n',
-    filename: 'example.vue',
+      "<style lang=\"styl\">\n" +
+      "red-color = rgb(255, 0, 0);\n" +
+      ".color\n" +
+      "   color: red-color\n" +
+      "</style>\n",
+    filename: "example.vue",
     sourceMap: true
-  }).styles[0]
+  }).styles[0];
   const result = compileStyle({
-    id: 'v-scope-xxx',
-    filename: 'example.vue',
+    id: "v-scope-xxx",
+    filename: "example.vue",
     source: style.content,
     map: style.map,
     scoped: false,
     preprocessLang: style.lang
-  })
+  });
 
-  expect(result.errors.length).toBe(0)
-  expect(result.code).toEqual(expect.stringContaining('color: #f00;'))
-  expect(result.map).toBeTruthy()
-})
+  expect(result.errors.length).toBe(0);
+  expect(result.code).toEqual(expect.stringContaining("color: #f00;"));
+  expect(result.map).toBeTruthy();
+});
 
-test('custom postcss plugin', () => {
-  const spy = vi.fn()
+test("custom postcss plugin", () => {
+  const spy = vi.fn();
 
   compileStyle({
-    id: 'v-scope-xxx',
-    filename: 'example.vue',
-    source: '.foo { color: red }',
+    id: "v-scope-xxx",
+    filename: "example.vue",
+    source: ".foo { color: red }",
     scoped: false,
-    postcssPlugins: [require('postcss').plugin('test-plugin', () => spy)()]
-  })
+    postcssPlugins: [require("postcss").plugin("test-plugin", () => spy)()]
+  });
 
-  expect(spy).toHaveBeenCalled()
-})
+  expect(spy).toHaveBeenCalled();
+});
 
-test('custom postcss options', () => {
+test("custom postcss options", () => {
   const result = compileStyle({
-    id: 'v-scope-xxx',
-    filename: 'example.vue',
-    source: '.foo { color: red }',
+    id: "v-scope-xxx",
+    filename: "example.vue",
+    source: ".foo { color: red }",
     scoped: false,
-    postcssOptions: { random: 'foo' }
-  })
+    postcssOptions: { random: "foo" }
+  });
 
-  expect((result.rawResult as any).opts.random).toBe('foo')
-})
+  expect((result.rawResult as any).opts.random).toBe("foo");
+});
 
-test('async postcss plugin in sync mode', () => {
+test("async postcss plugin in sync mode", () => {
   const result = compileStyle({
-    id: 'v-scope-xxx',
-    filename: 'example.vue',
-    source: '.foo { color: red }',
+    id: "v-scope-xxx",
+    filename: "example.vue",
+    source: ".foo { color: red }",
     scoped: false,
     postcssPlugins: [
-      require('postcss').plugin(
-        'test-plugin',
+      require("postcss").plugin(
+        "test-plugin",
         () => async (result: any) => result
       )
     ]
-  })
+  });
 
-  expect(result.errors).toHaveLength(1)
-})
+  expect(result.errors).toHaveLength(1);
+});
 
-test('async postcss plugin', async () => {
+test("async postcss plugin", async () => {
   const promise = compileStyleAsync({
-    id: 'v-scope-xxx',
-    filename: 'example.vue',
-    source: '.foo { color: red }',
+    id: "v-scope-xxx",
+    filename: "example.vue",
+    source: ".foo { color: red }",
     scoped: false,
     postcssPlugins: [
-      require('postcss').plugin(
-        'test-plugin',
+      require("postcss").plugin(
+        "test-plugin",
         () => async (result: any) => result
       )
     ]
-  })
+  });
 
-  expect(promise instanceof Promise).toBe(true)
+  expect(promise instanceof Promise).toBe(true);
 
-  const result = await promise
-  expect(result.errors).toHaveLength(0)
-  expect(result.code).toEqual(expect.stringContaining('color: red'))
-})
+  const result = await promise;
+  expect(result.errors).toHaveLength(0);
+  expect(result.code).toEqual(expect.stringContaining("color: red"));
+});
 
-test('media query', () => {
+test("media query", () => {
   const result = compileStyle({
-    id: 'v-scope-xxx',
+    id: "v-scope-xxx",
     scoped: true,
-    filename: 'example.vue',
+    filename: "example.vue",
     source: `
 @media print {
   .foo {
     color: #000;
   }
 }`
-  })
+  });
 
-  expect(result.errors).toHaveLength(0)
+  expect(result.errors).toHaveLength(0);
   expect(result.code).toContain(
-    '@media print {\n.foo[v-scope-xxx] {\n    color: #000;\n}\n}'
-  )
-})
+    "@media print {\n.foo[v-scope-xxx] {\n    color: #000;\n}\n}"
+  );
+});
 
-test('supports query', () => {
+test("supports query", () => {
   const result = compileStyle({
-    id: 'v-scope-xxx',
+    id: "v-scope-xxx",
     scoped: true,
-    filename: 'example.vue',
+    filename: "example.vue",
     source: `
 @supports ( color: #000 ) {
   .foo {
     color: #000;
   }
 }`
-  })
+  });
 
-  expect(result.errors).toHaveLength(0)
+  expect(result.errors).toHaveLength(0);
   expect(result.code).toContain(
-    '@supports ( color: #000 ) {\n.foo[v-scope-xxx] {\n    color: #000;\n}\n}'
-  )
-})
+    "@supports ( color: #000 ) {\n.foo[v-scope-xxx] {\n    color: #000;\n}\n}"
+  );
+});

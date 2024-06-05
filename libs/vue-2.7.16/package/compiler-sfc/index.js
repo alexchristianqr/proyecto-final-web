@@ -1,1 +1,1 @@
-module.exports = require('@vue/compiler-sfc')
+module.exports = require("@vue/compiler-sfc");

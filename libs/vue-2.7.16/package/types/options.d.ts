@@ -1,13 +1,13 @@
-import { Vue, CreateElement, CombinedVueInstance } from './vue'
-import { VNode, VNodeData, VNodeDirective, NormalizedScopedSlot } from './vnode'
-import { SetupContext } from './v3-setup-context'
-import { DebuggerEvent } from './v3-generated'
-import { DefineComponent } from './v3-define-component'
-import { ComponentOptionsMixin } from './v3-component-options'
-import { ObjectDirective, FunctionDirective } from './v3-directive'
+import { Vue, CreateElement, CombinedVueInstance } from "./vue";
+import { VNode, VNodeData, VNodeDirective, NormalizedScopedSlot } from "./vnode";
+import { SetupContext } from "./v3-setup-context";
+import { DebuggerEvent } from "./v3-generated";
+import { DefineComponent } from "./v3-define-component";
+import { ComponentOptionsMixin } from "./v3-component-options";
+import { ObjectDirective, FunctionDirective } from "./v3-directive";
 
 type Constructor = {
-  new (...args: any[]): any
+  new(...args: any[]): any
 }
 
 // we don't support infer props in async component
@@ -176,118 +176,138 @@ export interface ComponentOptions<
   Mixin extends ComponentOptionsMixin = ComponentOptionsMixin,
   Extends extends ComponentOptionsMixin = ComponentOptionsMixin
 > {
-  data?: Data
-  props?: PropsDef
-  propsData?: object
-  computed?: Accessors<Computed>
-  methods?: Methods
-  watch?: Record<string, WatchOptionsWithHandler<any> | WatchHandler<any> | Array<WatchOptionsWithHandler<any> | WatchHandler<any>>>
+  data?: Data;
+  props?: PropsDef;
+  propsData?: object;
+  computed?: Accessors<Computed>;
+  methods?: Methods;
+  watch?: Record<string, WatchOptionsWithHandler<any> | WatchHandler<any> | Array<WatchOptionsWithHandler<any> | WatchHandler<any>>>;
 
   setup?: (
     this: void,
     props: Props,
     ctx: SetupContext
-  ) => Promise<RawBindings> | RawBindings | ((h: CreateElement) => VNode) | void
+  ) => Promise<RawBindings> | RawBindings | ((h: CreateElement) => VNode) | void;
 
-  el?: Element | string
-  template?: string
+  el?: Element | string;
+  template?: string;
+
   // hack is for functional component type inference, should not be used in user code
   render?(
     createElement: CreateElement,
     hack: RenderContext<Props>
-  ): VNode | null | void
-  renderError?(createElement: CreateElement, err: Error): VNode
-  staticRenderFns?: ((createElement: CreateElement) => VNode)[]
+  ): VNode | null | void;
 
-  beforeCreate?(this: V): void
-  created?(): void
-  beforeDestroy?(): void
-  destroyed?(): void
-  beforeMount?(): void
-  mounted?(): void
-  beforeUpdate?(): void
-  updated?(): void
-  activated?(): void
-  deactivated?(): void
-  errorCaptured?(err: Error, vm: Vue, info: string): boolean | void
-  serverPrefetch?(): Promise<void>
-  renderTracked?(e: DebuggerEvent): void
-  renderTriggerd?(e: DebuggerEvent): void
+  renderError?(createElement: CreateElement, err: Error): VNode;
 
-  directives?: { [key: string]: DirectiveFunction | DirectiveOptions }
+  staticRenderFns?: ((createElement: CreateElement) => VNode)[];
+
+  beforeCreate?(this: V): void;
+
+  created?(): void;
+
+  beforeDestroy?(): void;
+
+  destroyed?(): void;
+
+  beforeMount?(): void;
+
+  mounted?(): void;
+
+  beforeUpdate?(): void;
+
+  updated?(): void;
+
+  activated?(): void;
+
+  deactivated?(): void;
+
+  errorCaptured?(err: Error, vm: Vue, info: string): boolean | void;
+
+  serverPrefetch?(): Promise<void>;
+
+  renderTracked?(e: DebuggerEvent): void;
+
+  renderTriggerd?(e: DebuggerEvent): void;
+
+  directives?: { [key: string]: DirectiveFunction | DirectiveOptions };
   components?: {
     [key: string]:
       | {}
       | Component<any, any, any, any, any>
       | AsyncComponent<any, any, any, any>
-  }
-  transitions?: { [key: string]: object }
-  filters?: { [key: string]: Function }
+  };
+  transitions?: { [key: string]: object };
+  filters?: { [key: string]: Function };
 
-  provide?: object | (() => object)
-  inject?: InjectOptions
+  provide?: object | (() => object);
+  inject?: InjectOptions;
 
   model?: {
     prop?: string
     event?: string
-  }
+  };
 
-  parent?: Vue
-  mixins?: (Mixin | ComponentOptions<Vue> | typeof Vue)[]
-  name?: string
+  parent?: Vue;
+  mixins?: (Mixin | ComponentOptions<Vue> | typeof Vue)[];
+  name?: string;
   // for SFC auto name inference w/ ts-loader check
-  __name?: string
+  __name?: string;
   // TODO: support properly inferred 'extends'
-  extends?: Extends | ComponentOptions<Vue> | typeof Vue
-  delimiters?: [string, string]
-  comments?: boolean
-  inheritAttrs?: boolean
+  extends?: Extends | ComponentOptions<Vue> | typeof Vue;
+  delimiters?: [string, string];
+  comments?: boolean;
+  inheritAttrs?: boolean;
 }
 
 export interface FunctionalComponentOptions<
   Props = DefaultProps,
   PropDefs = PropsDefinition<Props>
 > {
-  name?: string
-  props?: PropDefs
+  name?: string;
+  props?: PropDefs;
   model?: {
     prop?: string
     event?: string
-  }
-  inject?: InjectOptions
-  functional: boolean
+  };
+  inject?: InjectOptions;
+  functional: boolean;
+
   render?(
     this: undefined,
     createElement: CreateElement,
     context: RenderContext<Props>
-  ): VNode | VNode[]
+  ): VNode | VNode[];
 }
 
 export interface RenderContext<Props = DefaultProps> {
-  props: Props
-  children: VNode[]
-  slots(): any
-  data: VNodeData
-  parent: Vue
-  listeners: { [key: string]: Function | Function[] }
-  scopedSlots: { [key: string]: NormalizedScopedSlot }
-  injections: any
+  props: Props;
+  children: VNode[];
+
+  slots(): any;
+
+  data: VNodeData;
+  parent: Vue;
+  listeners: { [key: string]: Function | Function[] };
+  scopedSlots: { [key: string]: NormalizedScopedSlot };
+  injections: any;
 }
 
 export type Prop<T> =
   | { (): T }
-  | { new (...args: never[]): T & object }
-  | { new (...args: string[]): Function }
+  | { new(...args: never[]): T & object }
+  | { new(...args: string[]): Function }
 
 export type PropType<T> = Prop<T> | Prop<T>[]
 
 export type PropValidator<T> = PropOptions<T> | PropType<T>
 
 export interface PropOptions<T = any> {
-  type?: PropType<T>
-  required?: boolean
-  default?: T | null | undefined | (() => T | null | undefined)
-  validator?(value: unknown): boolean
+  type?: PropType<T>;
+  required?: boolean;
+  default?: T | null | undefined | (() => T | null | undefined);
+
+  validator?(value: unknown): boolean;
 }
 
 export type RecordPropsDefinition<T> = {
@@ -299,24 +319,26 @@ export type PropsDefinition<T> =
   | RecordPropsDefinition<T>
 
 export interface ComputedOptions<T> {
-  get?(): T
-  set?(value: T): void
-  cache?: boolean
+  get?(): T;
+
+  set?(value: T): void;
+
+  cache?: boolean;
 }
 
 export type WatchHandler<T> = string | ((val: T, oldVal: T) => void)
 
 export interface WatchOptions {
-  deep?: boolean
-  immediate?: boolean
+  deep?: boolean;
+  immediate?: boolean;
 }
 
 export interface WatchOptionsWithHandler<T> extends WatchOptions {
-  handler: WatchHandler<T>
+  handler: WatchHandler<T>;
 }
 
 export interface DirectiveBinding extends Readonly<VNodeDirective> {
-  readonly modifiers: { [key: string]: boolean }
+  readonly modifiers: { [key: string]: boolean };
 }
 
 /**
@@ -333,17 +355,17 @@ export type DirectiveFunction = (
  * @deprecated use {@link ObjectDirective} instead
  */
 export interface DirectiveOptions {
-  bind?: DirectiveFunction
-  inserted?: DirectiveFunction
-  update?: DirectiveFunction
-  componentUpdated?: DirectiveFunction
-  unbind?: DirectiveFunction
+  bind?: DirectiveFunction;
+  inserted?: DirectiveFunction;
+  update?: DirectiveFunction;
+  componentUpdated?: DirectiveFunction;
+  unbind?: DirectiveFunction;
 }
 
 export type InjectKey = string | symbol
 
 export type InjectOptions =
   | {
-      [key: string]: InjectKey | { from?: InjectKey; default?: any }
-    }
+  [key: string]: InjectKey | { from?: InjectKey; default?: any }
+}
   | string[]

@@ -2,18 +2,18 @@ import {
   DebuggerEvent,
   ShallowUnwrapRef,
   UnwrapNestedRefs
-} from './v3-generated'
-import { UnionToIntersection } from './common'
+} from "./v3-generated";
+import { UnionToIntersection } from "./common";
 
-import { Vue, VueConstructor } from './vue'
+import { Vue, VueConstructor } from "./vue";
 import {
   ComputedOptions,
   MethodOptions,
   ExtractComputedReturns,
   ComponentOptionsMixin,
   ComponentOptionsBase
-} from './v3-component-options'
-import { EmitFn, EmitsOptions } from './v3-setup-context'
+} from "./v3-component-options";
+import { EmitFn, EmitsOptions } from "./v3-setup-context";
 
 /**
  * Custom properties added to component instances in any way and can be accessed through `this`
@@ -29,11 +29,12 @@ import { EmitFn, EmitsOptions } from './v3-setup-context'
  * }
  * ```
  */
-export interface ComponentCustomProperties {}
+export interface ComponentCustomProperties {
+}
 
 export type ComponentInstance = InstanceType<VueConstructor>
 
-export type OptionTypesKeys = 'P' | 'B' | 'D' | 'C' | 'M' | 'Defaults'
+export type OptionTypesKeys = "P" | "B" | "D" | "C" | "M" | "Defaults"
 
 export type OptionTypesType<
   P = {},
@@ -58,26 +59,26 @@ type IsDefaultMixinComponent<T> = T extends ComponentOptionsMixin
   : false
 
 type MixinToOptionTypes<T> = T extends ComponentOptionsBase<
-  infer P,
-  infer B,
-  infer D,
-  infer C,
-  infer M,
-  infer Mixin,
-  infer Extends,
-  any,
-  any,
-  infer Defaults
->
+    infer P,
+    infer B,
+    infer D,
+    infer C,
+    infer M,
+    infer Mixin,
+    infer Extends,
+    any,
+    any,
+    infer Defaults
+  >
   ? OptionTypesType<P & {}, B & {}, D & {}, C & {}, M & {}, Defaults & {}> &
-      IntersectionMixin<Mixin> &
-      IntersectionMixin<Extends>
+  IntersectionMixin<Mixin> &
+  IntersectionMixin<Extends>
   : never
 
 // ExtractMixin(map type) is used to resolve circularly references
 type ExtractMixin<T> = {
   Mixin: MixinToOptionTypes<T>
-}[T extends ComponentOptionsMixin ? 'Mixin' : never]
+}[T extends ComponentOptionsMixin ? "Mixin" : never]
 
 export type IntersectionMixin<T> = IsDefaultMixinComponent<T> extends true
   ? OptionTypesType<{}, {}, {}, {}, {}, {}>
@@ -103,14 +104,14 @@ export type CreateComponentPublicInstance<
   Defaults = {},
   MakeDefaultsOptional extends boolean = false,
   PublicMixin = IntersectionMixin<Mixin> & IntersectionMixin<Extends>,
-  PublicP = UnwrapMixinsType<PublicMixin, 'P'> & EnsureNonVoid<P>,
-  PublicB = UnwrapMixinsType<PublicMixin, 'B'> & EnsureNonVoid<B>,
-  PublicD = UnwrapMixinsType<PublicMixin, 'D'> & EnsureNonVoid<D>,
-  PublicC extends ComputedOptions = UnwrapMixinsType<PublicMixin, 'C'> &
+  PublicP = UnwrapMixinsType<PublicMixin, "P"> & EnsureNonVoid<P>,
+  PublicB = UnwrapMixinsType<PublicMixin, "B"> & EnsureNonVoid<B>,
+  PublicD = UnwrapMixinsType<PublicMixin, "D"> & EnsureNonVoid<D>,
+  PublicC extends ComputedOptions = UnwrapMixinsType<PublicMixin, "C"> &
     EnsureNonVoid<C>,
-  PublicM extends MethodOptions = UnwrapMixinsType<PublicMixin, 'M'> &
+  PublicM extends MethodOptions = UnwrapMixinsType<PublicMixin, "M"> &
     EnsureNonVoid<M>,
-  PublicDefaults = UnwrapMixinsType<PublicMixin, 'Defaults'> &
+  PublicDefaults = UnwrapMixinsType<PublicMixin, "Defaults"> &
     EnsureNonVoid<Defaults>
 > = ComponentPublicInstance<
   PublicP,
@@ -173,16 +174,17 @@ interface Vue3Instance<
   MakeDefaultsOptional,
   Options
 > extends Vue<
-    D,
-    Readonly<
-      MakeDefaultsOptional extends true
-        ? Partial<Defaults> & Omit<P & PublicProps, keyof Defaults>
-        : P & PublicProps
-    >,
-    ComponentPublicInstance,
-    Options & MergedComponentOptionsOverride,
-    EmitFn<E>
-  > {}
+  D,
+  Readonly<
+    MakeDefaultsOptional extends true
+      ? Partial<Defaults> & Omit<P & PublicProps, keyof Defaults>
+      : P & PublicProps
+  >,
+  ComponentPublicInstance,
+  Options & MergedComponentOptionsOverride,
+  EmitFn<E>
+> {
+}
 
 type MergedHook<T = () => void> = T | T[]
 
@@ -228,5 +230,5 @@ export type ComponentPublicInstanceConstructor<
   C extends ComputedOptions = ComputedOptions,
   M extends MethodOptions = MethodOptions
 > = {
-  new (...args: any[]): T
+  new(...args: any[]): T
 }

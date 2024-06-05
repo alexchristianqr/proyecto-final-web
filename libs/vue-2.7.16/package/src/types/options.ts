@@ -1,7 +1,7 @@
-import VNode from 'core/vdom/vnode'
-import { DebuggerEvent } from 'v3/debug'
-import { SetupContext } from 'v3/apiSetup'
-import { Component } from './component'
+import VNode from "core/vdom/vnode";
+import { DebuggerEvent } from "v3/debug";
+import { SetupContext } from "v3/apiSetup";
+import { Component } from "./component";
 
 export type InternalComponentOptions = {
   _isComponent: true
@@ -34,10 +34,10 @@ export type ComponentOptions = {
     [key: string]:
       | Function
       | {
-          get?: Function
-          set?: Function
-          cache?: boolean
-        }
+      get?: Function
+      set?: Function
+      cache?: boolean
+    }
   }
   methods?: { [key: string]: Function }
   watch?: { [key: string]: Function | string }

@@ -1,10 +1,10 @@
-import VNode from 'core/vdom/vnode'
-import { namespaceMap } from 'web/util/index'
+import VNode from "core/vdom/vnode";
+import { namespaceMap } from "web/util/index";
 
 export function createElement(tagName: string, vnode: VNode): Element {
-  const elm = document.createElement(tagName)
-  if (tagName !== 'select') {
-    return elm
+  const elm = document.createElement(tagName);
+  if (tagName !== "select") {
+    return elm;
   }
   // false or null will remove the attribute but undefined will not
   if (
@@ -12,21 +12,21 @@ export function createElement(tagName: string, vnode: VNode): Element {
     vnode.data.attrs &&
     vnode.data.attrs.multiple !== undefined
   ) {
-    elm.setAttribute('multiple', 'multiple')
+    elm.setAttribute("multiple", "multiple");
   }
-  return elm
+  return elm;
 }
 
 export function createElementNS(namespace: string, tagName: string): Element {
-  return document.createElementNS(namespaceMap[namespace], tagName)
+  return document.createElementNS(namespaceMap[namespace], tagName);
 }
 
 export function createTextNode(text: string): Text {
-  return document.createTextNode(text)
+  return document.createTextNode(text);
 }
 
 export function createComment(text: string): Comment {
-  return document.createComment(text)
+  return document.createComment(text);
 }
 
 export function insertBefore(
@@ -34,33 +34,33 @@ export function insertBefore(
   newNode: Node,
   referenceNode: Node
 ) {
-  parentNode.insertBefore(newNode, referenceNode)
+  parentNode.insertBefore(newNode, referenceNode);
 }
 
 export function removeChild(node: Node, child: Node) {
-  node.removeChild(child)
+  node.removeChild(child);
 }
 
 export function appendChild(node: Node, child: Node) {
-  node.appendChild(child)
+  node.appendChild(child);
 }
 
 export function parentNode(node: Node) {
-  return node.parentNode
+  return node.parentNode;
 }
 
 export function nextSibling(node: Node) {
-  return node.nextSibling
+  return node.nextSibling;
 }
 
 export function tagName(node: Element): string {
-  return node.tagName
+  return node.tagName;
 }
 
 export function setTextContent(node: Node, text: string) {
-  node.textContent = text
+  node.textContent = text;
 }
 
 export function setStyleScope(node: Element, scopeId: string) {
-  node.setAttribute(scopeId, '')
+  node.setAttribute(scopeId, "");
 }

@@ -1,33 +1,33 @@
-import { SourceMapGenerator } from 'source-map'
-import { RawSourceMap, TemplateCompiler } from './types'
+import { SourceMapGenerator } from "source-map";
+import { RawSourceMap, TemplateCompiler } from "./types";
 import {
   parseComponent,
   VueTemplateCompilerParseOptions,
   SFCDescriptor,
   DEFAULT_FILENAME
-} from './parseComponent'
+} from "./parseComponent";
 
-import hash from 'hash-sum'
-import LRU from 'lru-cache'
-import { hmrShouldReload } from './compileScript'
-import { parseCssVars } from './cssVars'
+import hash from "hash-sum";
+import LRU from "lru-cache";
+import { hmrShouldReload } from "./compileScript";
+import { parseCssVars } from "./cssVars";
 
-const cache = new LRU<string, SFCDescriptor>(100)
+const cache = new LRU<string, SFCDescriptor>(100);
 
-const splitRE = /\r?\n/g
-const emptyRE = /^(?:\/\/)?\s*$/
+const splitRE = /\r?\n/g;
+const emptyRE = /^(?:\/\/)?\s*$/;
 
 export interface SFCParseOptions {
-  source: string
-  filename?: string
-  compiler?: TemplateCompiler
-  compilerParseOptions?: VueTemplateCompilerParseOptions
-  sourceRoot?: string
-  sourceMap?: boolean
+  source: string;
+  filename?: string;
+  compiler?: TemplateCompiler;
+  compilerParseOptions?: VueTemplateCompilerParseOptions;
+  sourceRoot?: string;
+  sourceMap?: boolean;
   /**
    * @deprecated use `sourceMap` instead.
    */
-  needMap?: boolean
+  needMap?: boolean;
 }
 
 export function parse(options: SFCParseOptions): SFCDescriptor {
@@ -36,34 +36,34 @@ export function parse(options: SFCParseOptions): SFCDescriptor {
     filename = DEFAULT_FILENAME,
     compiler,
     compilerParseOptions = { pad: false } as VueTemplateCompilerParseOptions,
-    sourceRoot = '',
+    sourceRoot = "",
     needMap = true,
     sourceMap = needMap
-  } = options
+  } = options;
   const cacheKey = hash(
     filename + source + JSON.stringify(compilerParseOptions)
-  )
+  );
 
-  let output = cache.get(cacheKey)
+  let output = cache.get(cacheKey);
   if (output) {
-    return output
+    return output;
   }
 
   if (compiler) {
     // user-provided compiler
-    output = compiler.parseComponent(source, compilerParseOptions)
+    output = compiler.parseComponent(source, compilerParseOptions);
   } else {
     // use built-in compiler
-    output = parseComponent(source, compilerParseOptions)
+    output = parseComponent(source, compilerParseOptions);
   }
 
-  output.filename = filename
+  output.filename = filename;
 
   // parse CSS vars
-  output.cssVars = parseCssVars(output)
+  output.cssVars = parseCssVars(output);
 
   output.shouldForceReload = prevImports =>
-    hmrShouldReload(prevImports, output!)
+    hmrShouldReload(prevImports, output!);
 
   if (sourceMap) {
     if (output.script && !output.script.src) {
@@ -73,7 +73,7 @@ export function parse(options: SFCParseOptions): SFCDescriptor {
         output.script.content,
         sourceRoot,
         compilerParseOptions.pad
-      )
+      );
     }
     if (output.styles) {
       output.styles.forEach(style => {
@@ -84,14 +84,14 @@ export function parse(options: SFCParseOptions): SFCDescriptor {
             style.content,
             sourceRoot,
             compilerParseOptions.pad
-          )
+          );
         }
-      })
+      });
     }
   }
 
-  cache.set(cacheKey, output)
-  return output
+  cache.set(cacheKey, output);
+  return output;
 }
 
 function generateSourceMap(
@@ -99,17 +99,17 @@ function generateSourceMap(
   source: string,
   generated: string,
   sourceRoot: string,
-  pad?: 'line' | 'space' | boolean
+  pad?: "line" | "space" | boolean
 ): RawSourceMap {
   const map = new SourceMapGenerator({
-    file: filename.replace(/\\/g, '/'),
-    sourceRoot: sourceRoot.replace(/\\/g, '/')
-  })
-  let offset = 0
+    file: filename.replace(/\\/g, "/"),
+    sourceRoot: sourceRoot.replace(/\\/g, "/")
+  });
+  let offset = 0;
   if (!pad) {
-    offset = source.split(generated).shift()!.split(splitRE).length - 1
+    offset = source.split(generated).shift()!.split(splitRE).length - 1;
   }
-  map.setSourceContent(filename, source)
+  map.setSourceContent(filename, source);
   generated.split(splitRE).forEach((line, index) => {
     if (!emptyRE.test(line)) {
       map.addMapping({
@@ -122,8 +122,8 @@ function generateSourceMap(
           line: index + 1,
           column: 0
         }
-      })
+      });
     }
-  })
-  return JSON.parse(map.toString())
+  });
+  return JSON.parse(map.toString());
 }

@@ -2,13 +2,13 @@
 // debugger events
 
 export const enum TrackOpTypes {
-  GET = 'get',
-  TOUCH = 'touch'
+  GET = "get",
+  TOUCH = "touch"
 }
 
 export const enum TriggerOpTypes {
-  SET = 'set',
-  ADD = 'add',
-  DELETE = 'delete',
-  ARRAY_MUTATION = 'array mutation'
+  SET = "set",
+  ADD = "add",
+  DELETE = "delete",
+  ARRAY_MUTATION = "array mutation"
 }

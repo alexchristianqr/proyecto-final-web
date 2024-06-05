@@ -1,5 +1,5 @@
-import { isObject, isDef, hasSymbol, isArray } from 'core/util/index'
-import VNode from 'core/vdom/vnode'
+import { isObject, isDef, hasSymbol, isArray } from "core/util/index";
+import VNode from "core/vdom/vnode";
 
 /**
  * Runtime helper for rendering v-for lists.
@@ -12,38 +12,38 @@ export function renderList(
     i,
     l,
     keys,
-    key
-  if (isArray(val) || typeof val === 'string') {
-    ret = new Array(val.length)
+    key;
+  if (isArray(val) || typeof val === "string") {
+    ret = new Array(val.length);
     for (i = 0, l = val.length; i < l; i++) {
-      ret[i] = render(val[i], i)
+      ret[i] = render(val[i], i);
     }
-  } else if (typeof val === 'number') {
-    ret = new Array(val)
+  } else if (typeof val === "number") {
+    ret = new Array(val);
     for (i = 0; i < val; i++) {
-      ret[i] = render(i + 1, i)
+      ret[i] = render(i + 1, i);
     }
   } else if (isObject(val)) {
     if (hasSymbol && val[Symbol.iterator]) {
-      ret = []
-      const iterator: Iterator<any> = val[Symbol.iterator]()
-      let result = iterator.next()
+      ret = [];
+      const iterator: Iterator<any> = val[Symbol.iterator]();
+      let result = iterator.next();
       while (!result.done) {
-        ret.push(render(result.value, ret.length))
-        result = iterator.next()
+        ret.push(render(result.value, ret.length));
+        result = iterator.next();
       }
     } else {
-      keys = Object.keys(val)
-      ret = new Array(keys.length)
+      keys = Object.keys(val);
+      ret = new Array(keys.length);
       for (i = 0, l = keys.length; i < l; i++) {
-        key = keys[i]
-        ret[i] = render(val[key], key, i)
+        key = keys[i];
+        ret[i] = render(val[key], key, i);
       }
     }
   }
   if (!isDef(ret)) {
-    ret = []
+    ret = [];
   }
-  ;(ret as any)._isVList = true
-  return ret
+  ;(ret as any)._isVList = true;
+  return ret;
 }

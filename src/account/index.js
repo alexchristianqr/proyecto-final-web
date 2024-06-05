@@ -9,7 +9,8 @@ new Vue({
       fecha_salida: null
     }
   }),
-  mounted() {},
+  mounted() {
+  },
   methods: {
     submitFormLogin() {
       this.itemsReservaciones.push(this.formReservacion);

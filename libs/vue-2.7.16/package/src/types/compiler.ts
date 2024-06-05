@@ -1,4 +1,4 @@
-import { BindingMetadata } from 'sfc/types'
+import { BindingMetadata } from "sfc/types";
 
 export type CompilerOptions = {
   warn?: Function // allow customizing warning in different environments; e.g. node
@@ -9,7 +9,7 @@ export type CompilerOptions = {
   canBeLeftOpenTag?: (tag: string) => boolean | undefined // check if a tag can be left opened
   isReservedTag?: (tag: string) => boolean | undefined // check if a tag is a native for the platform
   preserveWhitespace?: boolean // preserve whitespace between elements? (Deprecated)
-  whitespace?: 'preserve' | 'condense' // whitespace handling strategy
+  whitespace?: "preserve" | "condense" // whitespace handling strategy
   optimize?: boolean // optimize static content?
 
   // web specific

@@ -1,8 +1,8 @@
-import { TrackOpTypes, TriggerOpTypes } from './reactivity/operations'
+import { TrackOpTypes, TriggerOpTypes } from "./reactivity/operations";
 
 export interface DebuggerOptions {
-  onTrack?: (event: DebuggerEvent) => void
-  onTrigger?: (event: DebuggerEvent) => void
+  onTrack?: (event: DebuggerEvent) => void;
+  onTrigger?: (event: DebuggerEvent) => void;
 }
 
 export type DebuggerEvent = {

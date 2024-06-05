@@ -1,15 +1,16 @@
-import { Vue } from './vue'
-import { VNode } from './vnode'
-import { ComponentOptions as Vue2ComponentOptions } from './options'
-import { EmitsOptions, SetupContext } from './v3-setup-context'
-import { Data, LooseRequired, UnionToIntersection } from './common'
+import { Vue } from "./vue";
+import { VNode } from "./vnode";
+import { ComponentOptions as Vue2ComponentOptions } from "./options";
+import { EmitsOptions, SetupContext } from "./v3-setup-context";
+import { Data, LooseRequired, UnionToIntersection } from "./common";
 import {
   ComponentPropsOptions,
   ExtractDefaultPropTypes,
   ExtractPropTypes
-} from './v3-component-props'
-import { CreateComponentPublicInstance } from './v3-component-public-instance'
-export { ComponentPropsOptions } from './v3-component-props'
+} from "./v3-component-props";
+import { CreateComponentPublicInstance } from "./v3-component-public-instance";
+
+export { ComponentPropsOptions } from "./v3-component-props";
 
 /**
  * Interface for declaring custom options.
@@ -27,14 +28,15 @@ export { ComponentPropsOptions } from './v3-component-props'
  * }
  * ```
  */
-export interface ComponentCustomOptions {}
+export interface ComponentCustomOptions {
+}
 
 export type ComputedGetter<T> = (ctx?: any) => T
 export type ComputedSetter<T> = (v: T) => void
 
 export interface WritableComputedOptions<T> {
-  get: ComputedGetter<T>
-  set: ComputedSetter<T>
+  get: ComputedGetter<T>;
+  set: ComputedSetter<T>;
 }
 
 export type ComputedOptions = Record<
@@ -43,7 +45,7 @@ export type ComputedOptions = Record<
 >
 
 export interface MethodOptions {
-  [key: string]: Function
+  [key: string]: Function;
 }
 
 export type SetupFunction<
@@ -57,16 +59,16 @@ export type SetupFunction<
 ) => RawBindings | (() => VNode | null) | void
 
 type ExtractOptionProp<T> = T extends ComponentOptionsBase<
-  infer P, // Props
-  any, // RawBindings
-  any, // D
-  any, // C
-  any, // M
-  any, // Mixin
-  any, // Extends
-  any, // EmitsOptions
-  any // Defaults
->
+    infer P, // Props
+    any, // RawBindings
+    any, // D
+    any, // C
+    any, // M
+    any, // Mixin
+    any, // Extends
+    any, // EmitsOptions
+    any // Defaults
+  >
   ? unknown extends P
     ? {}
     : P
@@ -84,36 +86,36 @@ export interface ComponentOptionsBase<
   EmitNames extends string = string,
   Defaults = {}
 > extends Omit<
-      Vue2ComponentOptions<Vue, D, M, C, Props>,
-      'data' | 'computed' | 'methods' | 'setup' | 'props' | 'mixins' | 'extends'
-    >,
-    ComponentCustomOptions {
+  Vue2ComponentOptions<Vue, D, M, C, Props>,
+  "data" | "computed" | "methods" | "setup" | "props" | "mixins" | "extends"
+>,
+  ComponentCustomOptions {
   // allow any options
-  [key: string]: any
+  [key: string]: any;
 
   // rewrite options api types
   data?: (
     this: CreateComponentPublicInstance<Props, {}, {}, {}, M, Mixin, Extends>,
     vm: CreateComponentPublicInstance<Props, {}, {}, {}, M, Mixin, Extends>
-  ) => D
-  computed?: C
-  methods?: M
-  mixins?: Mixin[]
-  extends?: Extends
-  emits?: (Emits | EmitNames[]) & ThisType<void>
+  ) => D;
+  computed?: C;
+  methods?: M;
+  mixins?: Mixin[];
+  extends?: Extends;
+  emits?: (Emits | EmitNames[]) & ThisType<void>;
   setup?: SetupFunction<
     Readonly<
       LooseRequired<
         Props &
-          UnionToIntersection<ExtractOptionProp<Mixin>> &
-          UnionToIntersection<ExtractOptionProp<Extends>>
+        UnionToIntersection<ExtractOptionProp<Mixin>> &
+        UnionToIntersection<ExtractOptionProp<Extends>>
       >
     >,
     RawBindings,
     Emits
-  >
+  >;
 
-  __defaults?: Defaults
+  __defaults?: Defaults;
 }
 
 export type ComponentOptionsMixin = ComponentOptionsBase<
@@ -133,8 +135,8 @@ export type ExtractComputedReturns<T extends any> = {
   [key in keyof T]: T[key] extends { get: (...args: any[]) => infer TReturn }
     ? TReturn
     : T[key] extends (...args: any[]) => infer TReturn
-    ? TReturn
-    : never
+      ? TReturn
+      : never
 }
 
 export type ComponentOptionsWithProps<
@@ -163,17 +165,17 @@ export type ComponentOptionsWithProps<
 > & {
   props?: PropsOptions
 } & ThisType<
-    CreateComponentPublicInstance<
-      Props,
-      RawBindings,
-      D,
-      C,
-      M,
-      Mixin,
-      Extends,
-      Emits
-    >
+  CreateComponentPublicInstance<
+    Props,
+    RawBindings,
+    D,
+    C,
+    M,
+    Mixin,
+    Extends,
+    Emits
   >
+>
 
 export type ComponentOptionsWithArrayProps<
   PropNames extends string = string,
@@ -200,17 +202,17 @@ export type ComponentOptionsWithArrayProps<
 > & {
   props?: PropNames[]
 } & ThisType<
-    CreateComponentPublicInstance<
-      Props,
-      RawBindings,
-      D,
-      C,
-      M,
-      Mixin,
-      Extends,
-      Emits
-    >
+  CreateComponentPublicInstance<
+    Props,
+    RawBindings,
+    D,
+    C,
+    M,
+    Mixin,
+    Extends,
+    Emits
   >
+>
 
 export type ComponentOptionsWithoutProps<
   Props = {},
@@ -236,17 +238,17 @@ export type ComponentOptionsWithoutProps<
 > & {
   props?: undefined
 } & ThisType<
-    CreateComponentPublicInstance<
-      Props,
-      RawBindings,
-      D,
-      C,
-      M,
-      Mixin,
-      Extends,
-      Emits
-    >
+  CreateComponentPublicInstance<
+    Props,
+    RawBindings,
+    D,
+    C,
+    M,
+    Mixin,
+    Extends,
+    Emits
   >
+>
 
 export type WithLegacyAPI<T, D, C, M, Props> = T &
   Omit<Vue2ComponentOptions<Vue, D, M, C, Props>, keyof T>

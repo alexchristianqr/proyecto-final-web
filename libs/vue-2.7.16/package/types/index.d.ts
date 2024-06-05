@@ -1,11 +1,12 @@
-import { Vue } from './vue'
-import './umd'
-import './jsx'
-export * from './jsx'
+import { Vue } from "./vue";
+import "./umd";
+import "./jsx";
 
-export default Vue
+export * from "./jsx";
 
-export { CreateElement, VueConstructor } from './vue'
+export default Vue;
+
+export { CreateElement, VueConstructor } from "./vue";
 
 export {
   Component,
@@ -21,9 +22,9 @@ export {
   WatchOptionsWithHandler,
   DirectiveFunction,
   DirectiveOptions
-} from './options'
+} from "./options";
 
-export { PluginFunction, PluginObject } from './plugin'
+export { PluginFunction, PluginObject } from "./plugin";
 
 export {
   VNodeChildren,
@@ -33,17 +34,17 @@ export {
   VNodeData,
   VNodeDirective,
   ComponentCustomProps
-} from './vnode'
+} from "./vnode";
 
-export * from './v3-manual-apis'
-export * from './v3-generated'
+export * from "./v3-manual-apis";
+export * from "./v3-generated";
 // <script setup> helpers
-export * from './v3-setup-helpers'
+export * from "./v3-setup-helpers";
 
-export { Data } from './common'
-export { SetupContext } from './v3-setup-context'
-export { defineComponent, DefineComponent } from './v3-define-component'
-export { defineAsyncComponent } from './v3-define-async-component'
+export { Data } from "./common";
+export { SetupContext } from "./v3-setup-context";
+export { defineComponent, DefineComponent } from "./v3-define-component";
+export { defineAsyncComponent } from "./v3-define-async-component";
 export {
   SetupFunction,
   // v2 already has option with same name and it's for a single computed
@@ -56,19 +57,19 @@ export {
   ComponentOptionsWithArrayProps,
   ComponentOptionsWithProps,
   ComponentOptionsBase
-} from './v3-component-options'
+} from "./v3-component-options";
 export {
   ComponentInstance,
   ComponentPublicInstance,
   CreateComponentPublicInstance,
   ComponentCustomProperties
-} from './v3-component-public-instance'
+} from "./v3-component-public-instance";
 export {
   // PropType,
   // PropOptions,
   ExtractPropTypes,
   ExtractDefaultPropTypes
-} from './v3-component-props'
+} from "./v3-component-props";
 export {
   DirectiveModifiers,
   DirectiveBinding,
@@ -76,6 +77,6 @@ export {
   ObjectDirective,
   FunctionDirective,
   Directive
-} from './v3-directive'
+} from "./v3-directive";
 
-export * from './built-in-components'
+export * from "./built-in-components";

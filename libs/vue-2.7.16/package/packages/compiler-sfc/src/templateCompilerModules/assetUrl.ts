@@ -1,10 +1,10 @@
 // vue compiler module for transforming `<tag>:<attribute>` to `require`
 
-import { urlToRequire } from './utils'
-import { ASTNode, ASTAttr } from 'types/compiler'
+import { urlToRequire } from "./utils";
+import { ASTNode, ASTAttr } from "types/compiler";
 
 export interface AssetURLOptions {
-  [name: string]: string | string[]
+  [name: string]: string | string[];
 }
 
 export interface TransformAssetUrlsOptions {
@@ -12,21 +12,21 @@ export interface TransformAssetUrlsOptions {
    * If base is provided, instead of transforming relative asset urls into
    * imports, they will be directly rewritten to absolute urls.
    */
-  base?: string
+  base?: string;
   /**
    * If true, also processes absolute urls.
    */
-  includeAbsolute?: boolean
+  includeAbsolute?: boolean;
 }
 
 const defaultOptions: AssetURLOptions = {
-  audio: 'src',
-  video: ['src', 'poster'],
-  source: 'src',
-  img: 'src',
-  image: ['xlink:href', 'href'],
-  use: ['xlink:href', 'href']
-}
+  audio: "src",
+  video: ["src", "poster"],
+  source: "src",
+  img: "src",
+  image: ["xlink:href", "href"],
+  use: ["xlink:href", "href"]
+};
 
 export default (
   userOptions?: AssetURLOptions,
@@ -34,13 +34,13 @@ export default (
 ) => {
   const options = userOptions
     ? Object.assign({}, defaultOptions, userOptions)
-    : defaultOptions
+    : defaultOptions;
 
   return {
     postTransformNode: (node: ASTNode) => {
-      transform(node, options, transformAssetUrlsOption)
+      transform(node, options, transformAssetUrlsOption);
     }
-  }
+  };
 }
 
 function transform(
@@ -48,20 +48,20 @@ function transform(
   options: AssetURLOptions,
   transformAssetUrlsOption?: TransformAssetUrlsOptions
 ) {
-  if (node.type !== 1 || !node.attrs) return
+  if (node.type !== 1 || !node.attrs) return;
   for (const tag in options) {
-    if (tag === '*' || node.tag === tag) {
-      const attributes = options[tag]
-      if (typeof attributes === 'string') {
+    if (tag === "*" || node.tag === tag) {
+      const attributes = options[tag];
+      if (typeof attributes === "string") {
         node.attrs!.some(attr =>
           rewrite(attr, attributes, transformAssetUrlsOption)
-        )
+        );
       } else if (Array.isArray(attributes)) {
         attributes.forEach(item =>
           node.attrs!.some(attr =>
             rewrite(attr, item, transformAssetUrlsOption)
           )
-        )
+        );
       }
     }
   }
@@ -73,12 +73,12 @@ function rewrite(
   transformAssetUrlsOption?: TransformAssetUrlsOptions
 ) {
   if (attr.name === name) {
-    const value = attr.value
+    const value = attr.value;
     // only transform static URLs
-    if (value.charAt(0) === '"' && value.charAt(value.length - 1) === '"') {
-      attr.value = urlToRequire(value.slice(1, -1), transformAssetUrlsOption)
-      return true
+    if (value.charAt(0) === "\"" && value.charAt(value.length - 1) === "\"") {
+      attr.value = urlToRequire(value.slice(1, -1), transformAssetUrlsOption);
+      return true;
     }
   }
-  return false
+  return false;
 }

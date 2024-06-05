@@ -1,5 +1,5 @@
-import Vue from './runtime/index'
+import Vue from "./runtime/index";
 
-export default Vue
+export default Vue;
 
-export * from 'v3'
+export * from "v3";

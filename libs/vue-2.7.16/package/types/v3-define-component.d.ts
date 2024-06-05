@@ -2,7 +2,7 @@ import {
   ComponentPropsOptions,
   ExtractDefaultPropTypes,
   ExtractPropTypes
-} from './v3-component-props'
+} from "./v3-component-props";
 import {
   MethodOptions,
   ComputedOptions,
@@ -11,14 +11,14 @@ import {
   ComponentOptionsWithProps,
   ComponentOptionsMixin,
   ComponentOptionsBase
-} from './v3-component-options'
+} from "./v3-component-options";
 import {
   ComponentPublicInstanceConstructor,
   CreateComponentPublicInstance
-} from './v3-component-public-instance'
-import { Data, HasDefined } from './common'
-import { EmitsOptions } from './v3-setup-context'
-import { CreateElement, RenderContext } from './umd'
+} from "./v3-component-public-instance";
+import { Data, HasDefined } from "./common";
+import { EmitsOptions } from "./v3-setup-context";
+import { CreateElement, RenderContext } from "./umd";
 
 export type DefineComponent<
   PropsOrPropOptions = {},
@@ -50,7 +50,7 @@ export type DefineComponent<
     Defaults,
     true
   > &
-    Props
+  Props
 > &
   ComponentOptionsBase<
     Props,
@@ -64,8 +64,8 @@ export type DefineComponent<
     EE,
     Defaults
   > & {
-    props: PropsOrPropOptions
-  }
+  props: PropsOrPropOptions
+}
 
 /**
  * overload 1: object format with no props
@@ -152,28 +152,28 @@ export function defineComponent<
 >(
   options: HasDefined<Props> extends true
     ? { functional?: never } & ComponentOptionsWithProps<
-        PropsOptions,
-        RawBindings,
-        D,
-        C,
-        M,
-        Mixin,
-        Extends,
-        Emits,
-        EmitsNames,
-        Props
-      >
+    PropsOptions,
+    RawBindings,
+    D,
+    C,
+    M,
+    Mixin,
+    Extends,
+    Emits,
+    EmitsNames,
+    Props
+  >
     : { functional?: never } & ComponentOptionsWithProps<
-        PropsOptions,
-        RawBindings,
-        D,
-        C,
-        M,
-        Mixin,
-        Extends,
-        Emits,
-        EmitsNames
-      >
+    PropsOptions,
+    RawBindings,
+    D,
+    C,
+    M,
+    Mixin,
+    Extends,
+    Emits,
+    EmitsNames
+  >
 ): DefineComponent<PropsOptions, RawBindings, D, C, M, Mixin, Extends, Emits>
 
 /**

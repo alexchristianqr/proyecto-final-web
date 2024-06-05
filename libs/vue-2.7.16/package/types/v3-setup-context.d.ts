@@ -1,6 +1,6 @@
-import { VNode } from './vnode'
-import { Data, UnionToIntersection } from './common'
-import { Vue } from './vue'
+import { VNode } from "./vnode";
+import { Data, UnionToIntersection } from "./common";
+import { Vue } from "./vue";
 
 export type Slot = (...args: any[]) => VNode[]
 
@@ -20,22 +20,23 @@ export type EmitFn<
 > = Options extends Array<infer V>
   ? (event: V, ...args: any[]) => ReturnType
   : {} extends Options // if the emit is empty object (usually the default value for emit) should be converted to function
-  ? (event: string, ...args: any[]) => ReturnType
-  : UnionToIntersection<
+    ? (event: string, ...args: any[]) => ReturnType
+    : UnionToIntersection<
       {
         [key in Event]: Options[key] extends (...args: infer Args) => any
-          ? (event: key, ...args: Args) => ReturnType
-          : (event: key, ...args: any[]) => ReturnType
+        ? (event: key, ...args: Args) => ReturnType
+        : (event: key, ...args: any[]) => ReturnType
       }[Event]
     >
 
 export interface SetupContext<E extends EmitsOptions = {}> {
-  attrs: Data
+  attrs: Data;
   /**
    * Equivalent of `this.$listeners`, which is Vue 2 only.
    */
-  listeners: Record<string, Function | Function[]>
-  slots: Slots
-  emit: EmitFn<E>
-  expose(exposed?: Record<string, any>): void
+  listeners: Record<string, Function | Function[]>;
+  slots: Slots;
+  emit: EmitFn<E>;
+
+  expose(exposed?: Record<string, any>): void;
 }

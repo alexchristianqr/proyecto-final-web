@@ -1,7 +1,7 @@
-import VNode from 'core/vdom/vnode'
-import { Ref } from 'v3'
-import { Component } from './component'
-import { ASTModifiers } from './compiler'
+import VNode from "core/vdom/vnode";
+import { Ref } from "v3";
+import { Component } from "./component";
+import { ASTModifiers } from "./compiler";
 
 /**
  * @internal
@@ -71,38 +71,38 @@ export type VNodeWithData = VNode & {
  * @internal
  */
 export interface VNodeData {
-  key?: string | number
-  slot?: string
-  ref?: string | Ref | ((el: any) => void)
-  is?: string
-  pre?: boolean
-  tag?: string
-  staticClass?: string
-  class?: any
-  staticStyle?: { [key: string]: any }
-  style?: string | Array<Object> | Object
-  normalizedStyle?: Object
-  props?: { [key: string]: any }
-  attrs?: { [key: string]: string }
-  domProps?: { [key: string]: any }
-  hook?: { [key: string]: Function }
-  on?: { [key: string]: Function | Array<Function> }
-  nativeOn?: { [key: string]: Function | Array<Function> }
-  transition?: Object
-  show?: boolean // marker for v-show
+  key?: string | number;
+  slot?: string;
+  ref?: string | Ref | ((el: any) => void);
+  is?: string;
+  pre?: boolean;
+  tag?: string;
+  staticClass?: string;
+  class?: any;
+  staticStyle?: { [key: string]: any };
+  style?: string | Array<Object> | Object;
+  normalizedStyle?: Object;
+  props?: { [key: string]: any };
+  attrs?: { [key: string]: string };
+  domProps?: { [key: string]: any };
+  hook?: { [key: string]: Function };
+  on?: { [key: string]: Function | Array<Function> };
+  nativeOn?: { [key: string]: Function | Array<Function> };
+  transition?: Object;
+  show?: boolean; // marker for v-show
   inlineTemplate?: {
     render: Function
     staticRenderFns: Array<Function>
-  }
-  directives?: Array<VNodeDirective>
-  keepAlive?: boolean
-  scopedSlots?: { [key: string]: Function }
+  };
+  directives?: Array<VNodeDirective>;
+  keepAlive?: boolean;
+  scopedSlots?: { [key: string]: Function };
   model?: {
     value: any
     callback: Function
-  }
+  };
 
-  [key: string]: any
+  [key: string]: any;
 }
 
 /**

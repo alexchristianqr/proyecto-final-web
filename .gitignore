@@ -2,5 +2,5 @@
 .vscode
 
 build
-dist
+/dist
 assets/css/backup

@@ -1,10 +1,10 @@
-import { BindingMetadata } from './types'
-import { SFCDescriptor } from './parseComponent'
-import { PluginCreator } from 'postcss'
-import hash from 'hash-sum'
-import { prefixIdentifiers } from './prefixIdentifiers'
+import { BindingMetadata } from "./types";
+import { SFCDescriptor } from "./parseComponent";
+import { PluginCreator } from "postcss";
+import hash from "hash-sum";
+import { prefixIdentifiers } from "./prefixIdentifiers";
 
-export const CSS_VARS_HELPER = `useCssVars`
+export const CSS_VARS_HELPER = `useCssVars`;
 
 export function genCssVarsFromList(
   vars: string[],
@@ -16,48 +16,48 @@ export function genCssVarsFromList(
     .map(
       key => `"${isSSR ? `--` : ``}${genVarName(id, key, isProd)}": (${key})`
     )
-    .join(',\n  ')}\n}`
+    .join(",\n  ")}\n}`;
 }
 
 function genVarName(id: string, raw: string, isProd: boolean): string {
   if (isProd) {
-    return hash(id + raw)
+    return hash(id + raw);
   } else {
-    return `${id}-${raw.replace(/([^\w-])/g, '_')}`
+    return `${id}-${raw.replace(/([^\w-])/g, "_")}`;
   }
 }
 
 function normalizeExpression(exp: string) {
-  exp = exp.trim()
+  exp = exp.trim();
   if (
     (exp[0] === `'` && exp[exp.length - 1] === `'`) ||
     (exp[0] === `"` && exp[exp.length - 1] === `"`)
   ) {
-    return exp.slice(1, -1)
+    return exp.slice(1, -1);
   }
-  return exp
+  return exp;
 }
 
-const vBindRE = /v-bind\s*\(/g
+const vBindRE = /v-bind\s*\(/g;
 
 export function parseCssVars(sfc: SFCDescriptor): string[] {
-  const vars: string[] = []
+  const vars: string[] = [];
   sfc.styles.forEach(style => {
-    let match
+    let match;
     // ignore v-bind() in comments /* ... */
-    const content = style.content.replace(/\/\*([\s\S]*?)\*\//g, '')
+    const content = style.content.replace(/\/\*([\s\S]*?)\*\//g, "");
     while ((match = vBindRE.exec(content))) {
-      const start = match.index + match[0].length
-      const end = lexBinding(content, start)
+      const start = match.index + match[0].length;
+      const end = lexBinding(content, start);
       if (end !== null) {
-        const variable = normalizeExpression(content.slice(start, end))
+        const variable = normalizeExpression(content.slice(start, end));
         if (!vars.includes(variable)) {
-          vars.push(variable)
+          vars.push(variable);
         }
       }
     }
-  })
-  return vars
+  });
+  return vars;
 }
 
 const enum LexerState {
@@ -67,77 +67,77 @@ const enum LexerState {
 }
 
 function lexBinding(content: string, start: number): number | null {
-  let state: LexerState = LexerState.inParens
-  let parenDepth = 0
+  let state: LexerState = LexerState.inParens;
+  let parenDepth = 0;
 
   for (let i = start; i < content.length; i++) {
-    const char = content.charAt(i)
+    const char = content.charAt(i);
     switch (state) {
       case LexerState.inParens:
         if (char === `'`) {
-          state = LexerState.inSingleQuoteString
+          state = LexerState.inSingleQuoteString;
         } else if (char === `"`) {
-          state = LexerState.inDoubleQuoteString
+          state = LexerState.inDoubleQuoteString;
         } else if (char === `(`) {
-          parenDepth++
+          parenDepth++;
         } else if (char === `)`) {
           if (parenDepth > 0) {
-            parenDepth--
+            parenDepth--;
           } else {
-            return i
+            return i;
           }
         }
-        break
+        break;
       case LexerState.inSingleQuoteString:
         if (char === `'`) {
-          state = LexerState.inParens
+          state = LexerState.inParens;
         }
-        break
+        break;
       case LexerState.inDoubleQuoteString:
         if (char === `"`) {
-          state = LexerState.inParens
+          state = LexerState.inParens;
         }
-        break
+        break;
     }
   }
-  return null
+  return null;
 }
 
 // for compileStyle
 export interface CssVarsPluginOptions {
-  id: string
-  isProd: boolean
+  id: string;
+  isProd: boolean;
 }
 
 export const cssVarsPlugin: PluginCreator<CssVarsPluginOptions> = opts => {
-  const { id, isProd } = opts!
+  const { id, isProd } = opts!;
   return {
-    postcssPlugin: 'vue-sfc-vars',
+    postcssPlugin: "vue-sfc-vars",
     Declaration(decl) {
       // rewrite CSS variables
-      const value = decl.value
+      const value = decl.value;
       if (vBindRE.test(value)) {
-        vBindRE.lastIndex = 0
-        let transformed = ''
-        let lastIndex = 0
-        let match
+        vBindRE.lastIndex = 0;
+        let transformed = "";
+        let lastIndex = 0;
+        let match;
         while ((match = vBindRE.exec(value))) {
-          const start = match.index + match[0].length
-          const end = lexBinding(value, start)
+          const start = match.index + match[0].length;
+          const end = lexBinding(value, start);
           if (end !== null) {
-            const variable = normalizeExpression(value.slice(start, end))
+            const variable = normalizeExpression(value.slice(start, end));
             transformed +=
               value.slice(lastIndex, match.index) +
-              `var(--${genVarName(id, variable, isProd)})`
-            lastIndex = end + 1
+              `var(--${genVarName(id, variable, isProd)})`;
+            lastIndex = end + 1;
           }
         }
-        decl.value = transformed + value.slice(lastIndex)
+        decl.value = transformed + value.slice(lastIndex);
       }
     }
-  }
-}
-cssVarsPlugin.postcss = true
+  };
+};
+cssVarsPlugin.postcss = true;
 
 export function genCssVarsCode(
   vars: string[],
@@ -145,14 +145,14 @@ export function genCssVarsCode(
   id: string,
   isProd: boolean
 ) {
-  const varsExp = genCssVarsFromList(vars, id, isProd)
+  const varsExp = genCssVarsFromList(vars, id, isProd);
   return `_${CSS_VARS_HELPER}((_vm, _setup) => ${prefixIdentifiers(
     `(${varsExp})`,
     false,
     false,
     undefined,
     bindings
-  )})`
+  )})`;
 }
 
 // <script setup> already gets the calls injected as part of the transform
@@ -175,5 +175,5 @@ export function genNormalScriptCssVarsCode(
     `__default__.setup = __setup__\n` +
     `  ? (props, ctx) => { __injectCSSVars__();return __setup__(props, ctx) }\n` +
     `  : __injectCSSVars__\n`
-  )
+  );
 }

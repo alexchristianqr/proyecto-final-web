@@ -1,4 +1,4 @@
-import { AsyncComponent, Component } from './options'
+import { AsyncComponent, Component } from "./options";
 
 export type AsyncComponentResolveResult<T = Component> = T | { default: T } // es modules
 
@@ -7,18 +7,18 @@ export type AsyncComponentLoader<T = any> = () => Promise<
 >
 
 export interface AsyncComponentOptions {
-  loader: AsyncComponentLoader
-  loadingComponent?: Component
-  errorComponent?: Component
-  delay?: number
-  timeout?: number
+  loader: AsyncComponentLoader;
+  loadingComponent?: Component;
+  errorComponent?: Component;
+  delay?: number;
+  timeout?: number;
   // suspensible?: boolean
   onError?: (
     error: Error,
     retry: () => void,
     fail: () => void,
     attempts: number
-  ) => any
+  ) => any;
 }
 
 export function defineAsyncComponent(

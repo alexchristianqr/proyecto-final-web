@@ -1,6 +1,6 @@
-import Dep from './dep'
-import VNode from '../vdom/vnode'
-import { arrayMethods } from './array'
+import Dep from "./dep";
+import VNode from "../vdom/vnode";
+import { arrayMethods } from "./array";
 import {
   def,
   warn,
@@ -14,21 +14,21 @@ import {
   isServerRendering,
   hasChanged,
   noop
-} from '../util/index'
-import { isReadonly, isRef, TrackOpTypes, TriggerOpTypes } from '../../v3'
+} from "../util/index";
+import { isReadonly, isRef, TrackOpTypes, TriggerOpTypes } from "../../v3";
 
-const arrayKeys = Object.getOwnPropertyNames(arrayMethods)
+const arrayKeys = Object.getOwnPropertyNames(arrayMethods);
 
-const NO_INITIAL_VALUE = {}
+const NO_INITIAL_VALUE = {};
 
 /**
  * In some cases we may want to disable observation inside a component's
  * update computation.
  */
-export let shouldObserve: boolean = true
+export let shouldObserve: boolean = true;
 
 export function toggleObserving(value: boolean) {
-  shouldObserve = value
+  shouldObserve = value;
 }
 
 // ssr mock dep
@@ -37,7 +37,7 @@ const mockDep = {
   depend: noop,
   addSub: noop,
   removeSub: noop
-} as Dep
+} as Dep;
 
 /**
  * Observer class that is attached to each observed
@@ -46,29 +46,29 @@ const mockDep = {
  * collect dependencies and dispatch updates.
  */
 export class Observer {
-  dep: Dep
-  vmCount: number // number of vms that have this object as root $data
+  dep: Dep;
+  vmCount: number; // number of vms that have this object as root $data
 
   constructor(public value: any, public shallow = false, public mock = false) {
     // this.value = value
-    this.dep = mock ? mockDep : new Dep()
-    this.vmCount = 0
-    def(value, '__ob__', this)
+    this.dep = mock ? mockDep : new Dep();
+    this.vmCount = 0;
+    def(value, "__ob__", this);
     if (isArray(value)) {
       if (!mock) {
         if (hasProto) {
           /* eslint-disable no-proto */
-          ;(value as any).__proto__ = arrayMethods
+          ;(value as any).__proto__ = arrayMethods;
           /* eslint-enable no-proto */
         } else {
           for (let i = 0, l = arrayKeys.length; i < l; i++) {
-            const key = arrayKeys[i]
-            def(value, key, arrayMethods[key])
+            const key = arrayKeys[i];
+            def(value, key, arrayMethods[key]);
           }
         }
       }
       if (!shallow) {
-        this.observeArray(value)
+        this.observeArray(value);
       }
     } else {
       /**
@@ -76,10 +76,10 @@ export class Observer {
        * getter/setters. This method should only be called when
        * value type is Object.
        */
-      const keys = Object.keys(value)
+      const keys = Object.keys(value);
       for (let i = 0; i < keys.length; i++) {
-        const key = keys[i]
-        defineReactive(value, key, NO_INITIAL_VALUE, undefined, shallow, mock)
+        const key = keys[i];
+        defineReactive(value, key, NO_INITIAL_VALUE, undefined, shallow, mock);
       }
     }
   }
@@ -89,7 +89,7 @@ export class Observer {
    */
   observeArray(value: any[]) {
     for (let i = 0, l = value.length; i < l; i++) {
-      observe(value[i], false, this.mock)
+      observe(value[i], false, this.mock);
     }
   }
 }
@@ -106,8 +106,8 @@ export function observe(
   shallow?: boolean,
   ssrMockReactivity?: boolean
 ): Observer | void {
-  if (value && hasOwn(value, '__ob__') && value.__ob__ instanceof Observer) {
-    return value.__ob__
+  if (value && hasOwn(value, "__ob__") && value.__ob__ instanceof Observer) {
+    return value.__ob__;
   }
   if (
     shouldObserve &&
@@ -118,7 +118,7 @@ export function observe(
     !isRef(value) &&
     !(value instanceof VNode)
   ) {
-    return new Observer(value, shallow, ssrMockReactivity)
+    return new Observer(value, shallow, ssrMockReactivity);
   }
 }
 
@@ -134,68 +134,68 @@ export function defineReactive(
   mock?: boolean,
   observeEvenIfShallow = false
 ) {
-  const dep = new Dep()
+  const dep = new Dep();
 
-  const property = Object.getOwnPropertyDescriptor(obj, key)
+  const property = Object.getOwnPropertyDescriptor(obj, key);
   if (property && property.configurable === false) {
-    return
+    return;
   }
 
   // cater for pre-defined getter/setters
-  const getter = property && property.get
-  const setter = property && property.set
+  const getter = property && property.get;
+  const setter = property && property.set;
   if (
     (!getter || setter) &&
     (val === NO_INITIAL_VALUE || arguments.length === 2)
   ) {
-    val = obj[key]
+    val = obj[key];
   }
 
-  let childOb = shallow ? val && val.__ob__ : observe(val, false, mock)
+  let childOb = shallow ? val && val.__ob__ : observe(val, false, mock);
   Object.defineProperty(obj, key, {
     enumerable: true,
     configurable: true,
     get: function reactiveGetter() {
-      const value = getter ? getter.call(obj) : val
+      const value = getter ? getter.call(obj) : val;
       if (Dep.target) {
         if (__DEV__) {
           dep.depend({
             target: obj,
             type: TrackOpTypes.GET,
             key
-          })
+          });
         } else {
-          dep.depend()
+          dep.depend();
         }
         if (childOb) {
-          childOb.dep.depend()
+          childOb.dep.depend();
           if (isArray(value)) {
-            dependArray(value)
+            dependArray(value);
           }
         }
       }
-      return isRef(value) && !shallow ? value.value : value
+      return isRef(value) && !shallow ? value.value : value;
     },
     set: function reactiveSetter(newVal) {
-      const value = getter ? getter.call(obj) : val
+      const value = getter ? getter.call(obj) : val;
       if (!hasChanged(value, newVal)) {
-        return
+        return;
       }
       if (__DEV__ && customSetter) {
-        customSetter()
+        customSetter();
       }
       if (setter) {
-        setter.call(obj, newVal)
+        setter.call(obj, newVal);
       } else if (getter) {
         // #7981: for accessor properties without setter
-        return
+        return;
       } else if (!shallow && isRef(value) && !isRef(newVal)) {
-        value.value = newVal
-        return
+        value.value = newVal;
+        return;
       } else {
-        val = newVal
+        val = newVal;
       }
-      childOb = shallow ? newVal && newVal.__ob__ : observe(newVal, false, mock)
+      childOb = shallow ? newVal && newVal.__ob__ : observe(newVal, false, mock);
       if (__DEV__) {
         dep.notify({
           type: TriggerOpTypes.SET,
@@ -203,14 +203,14 @@ export function defineReactive(
           key,
           newValue: newVal,
           oldValue: value
-        })
+        });
       } else {
-        dep.notify()
+        dep.notify();
       }
     }
-  })
+  });
 
-  return dep
+  return dep;
 }
 
 /**
@@ -228,39 +228,39 @@ export function set(
   if (__DEV__ && (isUndef(target) || isPrimitive(target))) {
     warn(
       `Cannot set reactive property on undefined, null, or primitive value: ${target}`
-    )
+    );
   }
   if (isReadonly(target)) {
-    __DEV__ && warn(`Set operation on key "${key}" failed: target is readonly.`)
-    return
+    __DEV__ && warn(`Set operation on key "${key}" failed: target is readonly.`);
+    return;
   }
-  const ob = (target as any).__ob__
+  const ob = (target as any).__ob__;
   if (isArray(target) && isValidArrayIndex(key)) {
-    target.length = Math.max(target.length, key)
-    target.splice(key, 1, val)
+    target.length = Math.max(target.length, key);
+    target.splice(key, 1, val);
     // when mocking for SSR, array methods are not hijacked
     if (ob && !ob.shallow && ob.mock) {
-      observe(val, false, true)
+      observe(val, false, true);
     }
-    return val
+    return val;
   }
   if (key in target && !(key in Object.prototype)) {
-    target[key] = val
-    return val
+    target[key] = val;
+    return val;
   }
   if ((target as any)._isVue || (ob && ob.vmCount)) {
     __DEV__ &&
-      warn(
-        'Avoid adding reactive properties to a Vue instance or its root $data ' +
-          'at runtime - declare it upfront in the data option.'
-      )
-    return val
+    warn(
+      "Avoid adding reactive properties to a Vue instance or its root $data " +
+      "at runtime - declare it upfront in the data option."
+    );
+    return val;
   }
   if (!ob) {
-    target[key] = val
-    return val
+    target[key] = val;
+    return val;
   }
-  defineReactive(ob.value, key, val, undefined, ob.shallow, ob.mock)
+  defineReactive(ob.value, key, val, undefined, ob.shallow, ob.mock);
   if (__DEV__) {
     ob.dep.notify({
       type: TriggerOpTypes.ADD,
@@ -268,11 +268,11 @@ export function set(
       key,
       newValue: val,
       oldValue: undefined
-    })
+    });
   } else {
-    ob.dep.notify()
+    ob.dep.notify();
   }
-  return val
+  return val;
 }
 
 /**
@@ -284,41 +284,41 @@ export function del(target: any[] | object, key: any) {
   if (__DEV__ && (isUndef(target) || isPrimitive(target))) {
     warn(
       `Cannot delete reactive property on undefined, null, or primitive value: ${target}`
-    )
+    );
   }
   if (isArray(target) && isValidArrayIndex(key)) {
-    target.splice(key, 1)
-    return
+    target.splice(key, 1);
+    return;
   }
-  const ob = (target as any).__ob__
+  const ob = (target as any).__ob__;
   if ((target as any)._isVue || (ob && ob.vmCount)) {
     __DEV__ &&
-      warn(
-        'Avoid deleting properties on a Vue instance or its root $data ' +
-          '- just set it to null.'
-      )
-    return
+    warn(
+      "Avoid deleting properties on a Vue instance or its root $data " +
+      "- just set it to null."
+    );
+    return;
   }
   if (isReadonly(target)) {
     __DEV__ &&
-      warn(`Delete operation on key "${key}" failed: target is readonly.`)
-    return
+    warn(`Delete operation on key "${key}" failed: target is readonly.`);
+    return;
   }
   if (!hasOwn(target, key)) {
-    return
+    return;
   }
-  delete target[key]
+  delete target[key];
   if (!ob) {
-    return
+    return;
   }
   if (__DEV__) {
     ob.dep.notify({
       type: TriggerOpTypes.DELETE,
       target: target,
       key
-    })
+    });
   } else {
-    ob.dep.notify()
+    ob.dep.notify();
   }
 }
 
@@ -328,12 +328,12 @@ export function del(target: any[] | object, key: any) {
  */
 function dependArray(value: Array<any>) {
   for (let e, i = 0, l = value.length; i < l; i++) {
-    e = value[i]
+    e = value[i];
     if (e && e.__ob__) {
-      e.__ob__.dep.depend()
+      e.__ob__.dep.depend();
     }
     if (isArray(e)) {
-      dependArray(e)
+      dependArray(e);
     }
   }
 }
