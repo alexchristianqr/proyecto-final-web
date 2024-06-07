@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <title>Hotel "EL BANDIDO"</title>
@@ -39,19 +39,19 @@
 
       <div id="wrapper">
         <!-- Inicio -->
-        <section class="wrapper style1 fullscreen fade-up" id="inicio">
+        <section class="wrapper fullscreen style1 fade-up" id="inicio">
           <div class="inner">
-            <h1>Hotel <span style="font-weight: 900; font-size: 75px">EL BANDIDO</span></h1>
-            <p style="opacity: 0.75; color: rgba(255, 255, 255, 0.55)">Donde tus aventuras empiezan y tus preocupaciones desaparecen.</p>
-            <ul class="actions">
-              <li><a class="button scrolly" href="#multimedia">Obtener mas información</a></li>
+            <h1 class="major">Hotel <span style="font-weight: 500; font-size: 95px">EL BANDIDO</span></h1>
+            <div class="small" style="color: rgba(255, 255, 255, 0.75); line-height: 3; letter-spacing: 0.1em">Donde tus aventuras empiezan y tus preocupaciones desaparecen.</div>
+            <ul class="list-group">
+              <li class="utp"><a class="button large scrolly" href="#galeria">Obtener mas información</a></li>
             </ul>
           </div>
         </section>
         <!-- -->
 
         <!-- Fotos y Videos -->
-        <section class="wrapper style2 section-container" id="galeria">
+        <section class="wrapper fullscreen style2 section-container" id="galeria">
           <section>
             <div>
               <div class="features">
@@ -207,12 +207,12 @@
         </section>
         <!-- -->
 
-        <!-- Reservaciones -->
-        <section class="wrapper vh-100 bg-white py-xl-5" id="reservaciones">
-          <div class="pt-xl-5 px-xl-5 pb-xl-1">
-            <h1 class="color-black">Mis Reservaciones</h1>
+        <!-- Reservaciones Disponibles -->
+        <section class="wrapper fullscreen bg-white py-xl-5" id="reservaciones">
+          <div class="px-xl-5">
+            <h1 class="color-black">Reservaciones Disponibles</h1>
           </div>
-          <div class="pt-xl-5 px-xl-5 pb-xl-2">
+          <div class="py-xl-5 px-xl-5">
             <div>
               <b-form @submit.prevent="submitFormListaReservaciones">
                 <b-row>
@@ -245,7 +245,7 @@
                   </b-col>
                   <b-col cols="3">
                     <b-form-group label="." class="text-white" label-size="lg">
-                      <b-dropdown id="dropdown-form" text="Personas" ref="dropdown" size="lg" variant="secondary" block>
+                      <b-dropdown id="dropdown-form" text="Personas" ref="dropdown" size="lg" variant="secondary" block menu-class="w-100">
                         <b-dropdown-form class="w-100">
                           <b-form-group label="Adultos">
                             <div>
@@ -280,11 +280,11 @@
               </b-form>
             </div>
           </div>
-          <div class="px-xl-5 pb-xl-5">
+          <div class="px-xl-5">
             <b-row>
               <b-col cols="12">
-                <div class="mp-xl-5">
-                  <b-table :fields="fieldsReservaciones" :items="itemsReservaciones" hover striped sticky-header head-variant="light" style="max-height: 200px;">
+                <div class="">
+                  <b-table :fields="fieldsReservaciones" :items="itemsReservaciones" hover striped sticky-header head-variant="light" style="max-height: 350px">
                     <template #cell(actions)="row">
                       <b-button v-b-tooltip.hover title="Ver detalle de la Reserva" size="lg" class="mr-1" variant="info">
                         <b-icon icon="search"></b-icon>
@@ -295,7 +295,6 @@
                     </template>
                   </b-table>
                 </div>
-                
               </b-col>
             </b-row>
           </div>
@@ -303,82 +302,98 @@
         <!-- -->
 
         <!-- Boletin Informativo -->
-        <section class="wrapper bg-light py-xl-5" id="suscripcion">
-          <div class="pt-xl-5 px-xl-5 pb-xl-1">
-            <h1 class="color-black">Boletín Informativo</h1>
+        <section class="wrapper fullscreen bg-light py-xl-5" id="suscripcion">
+          <div class="px-xl-5 text-center">
+            <h1>Boletín Informativo</h1>
           </div>
-          <b-row>
-            <b-col cols="8" class="offset-2">
-              <div class="py-xl-5">
-                <b-card class="align-middle shadow-lg p-0 m-0">
-                  <b-card-body class="p-0 m-0">
-                    <div class="p-xl-3">
-                      <b-form>
-                        <b-row>
-                          <b-col cols="9">
-                            <b-form-group description="Suscríbete para obtener información relevante, novedades y promociones.">
-                              <b-form-input autocomplete="on" size="lg" type="text" v-model="formReservacion.nombre" placeholder="Correo electrónico"></b-form-input>
-                            </b-form-group>
-                          </b-col>
-                          <b-col cols="3">
-                            <b-button variant="danger" size="lg" block> Suscriberme</b-button>
-                          </b-col>
-                        </b-row>
-                      </b-form>
-                    </div>
-                  </b-card-body>
-                </b-card>
-              </div>
-            </b-col>
-          </b-row>
+          <div class="px-xl-5">
+            <b-row>
+              <b-col cols="10" class="offset-1">
+                <div class="py-xl-5">
+                  <b-card class="align-middle shadow-lg p-0 m-0">
+                    <b-card-body class="p-0 m-0">
+                      <div class="p-xl-3">
+                        <b-form>
+                          <b-row>
+                            <b-col cols="9">
+                              <b-form-group description="Suscríbete para obtener información relevante, novedades y promociones.">
+                                <b-form-input autocomplete="on" size="lg" type="text" v-model="formReservacion.nombre" placeholder="Correo electrónico"></b-form-input>
+                              </b-form-group>
+                            </b-col>
+                            <b-col cols="3">
+                              <b-button variant="danger" size="lg" block> Suscriberme</b-button>
+                            </b-col>
+                          </b-row>
+                        </b-form>
+                      </div>
+                    </b-card-body>
+                  </b-card>
+                </div>
+              </b-col>
+            </b-row>
+          </div>
         </section>
         <!-- -->
       </div>
       <!-- -->
 
       <!-- Footer -->
-      <footer class="wrapper style1-alt py-xl-3" id="footer">
-        <div class="inner">
+      <footer class="wrapper style1-alt py-xl-5" id="footer">
+        <div class="px-xl-5">
           <b-row>
-            <b-col cols="5">
-              <h1 class="text-white">Hotel <b>El Bandido</b></h3>
-              <ul class="list-group text-muted" style="line-height: 2;">
-                <li>Direccion: Av. Jose Pardo 191 - Miraflores - Lima- Peru</li>
-                <li>Telefono: (01) 442-1210</li>
-                <li>Atención: Todos los días</li>
+            <b-col cols="6">
+              <h1 class="major text-white">Hotel <span style="font-weight: 500; font-size: 50px">EL BANDIDO</span></h1>
+              <ul class="list-group text-muted" style="line-height: 2">
+                <li>Dirección: Avenida Jose Pardo 293 Piso 7 - Miraflores - Lima- Perú</li>
                 <li>Email: ventas@hotelelbandido.com</li>
-              </ul>
-            </b-col>
-
-            <b-col cols="4">
-              <h2 class="text-transparent">.</h2>
-              <h3 class="text-white">Menu</h3>
-              <ul class="list-group text-muted" style="line-height: 2;">
-                <li><a href="#inicio"><i class="bi bi-link"></i> Inicio</a></li>
-                <li><a href="#galeria"><i class="bi bi-link"></i> Galeria</a></li>
-                <li><a href="#reservaciones"><i class="bi bi-link"></i> Reservaciones</a></li>
-                <li><a href="#suscripcion"><i class="bi bi-link"></i> Boletín Informativo</a></li>
-                <li><a href="login.html"><i class="bi bi-link"></i> Iniciar Sesión</a></li>
+                <li>Telefono: (01) 442-1210</li>
+                <li>WhatsApp: (51) 995-778-123</li>
+                <li>Atención: LUN. - DOM. y FERIADOS / 24 Horas</li>
               </ul>
             </b-col>
 
             <b-col cols="3">
               <h2 class="text-transparent">.</h2>
-              <h3 class="text-white">Redes Sociales</h3>
-              <ul class="list-group text-muted" style="line-height: 2;">
+              <h5 class="text-white">Menu</h5>
+              <ul class="list-group text-muted" style="line-height: 2">
+                <li>
+                  <a href="#inicio"><i class="bi bi-link"></i> Inicio</a>
+                </li>
+                <li>
+                  <a href="#galeria"><i class="bi bi-link"></i> Galeria</a>
+                </li>
+                <li>
+                  <a href="#reservaciones"><i class="bi bi-link"></i> Reservaciones</a>
+                </li>
+                <li>
+                  <a href="#suscripcion"><i class="bi bi-link"></i> Boletín Informativo</a>
+                </li>
+                <li>
+                  <a href="login.html"><i class="bi bi-link"></i> Iniciar Sesión</a>
+                </li>
+              </ul>
+            </b-col>
+
+            <b-col cols="3">
+              <h2 class="text-transparent">.</h2>
+              <h5 class="text-white">Redes Sociales</h5>
+              <ul class="list-group text-muted" style="line-height: 2">
                 <li><i class="bi bi-facebook"></i> Facebook</li>
                 <li><i class="bi bi-instagram"></i> Instagram</li>
                 <li><i class="bi bi-linkedin"></i> LinkedIn</li>
                 <li><i class="bi bi-tiktok"></i> Tiktok</li>
+                <li><i class="bi bi-youtube"></i> Youtube</li>
               </ul>
             </b-col>
           </b-row>
-          <div class="text-muted py-xl-5">
+          <div class="text-muted pt-xl-5">
             <div class="float-left">
-              <div class="my-auto"><i class="bi bi-c-circle"></i>  Todos los derechos reservados.</div>
+              <div class="my-auto"><i class="bi bi-c-circle"></i> Todos los Derechos Reservados desde 1993 - {{ new Date().getFullYear() }}</div>
             </div>
-            <div class="float-right">Desarrollado por: <a href="https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-de-software">ALUMNOS UTP</a></div>
-          </ul>
+            <div class="float-right">
+              <div>Desarrollado por: <a href="https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-de-software">ALUMNOS del 5to Ciclo de la UTP</a></div>
+            </div>
+          </div>
         </div>
       </footer>
       <!-- -->

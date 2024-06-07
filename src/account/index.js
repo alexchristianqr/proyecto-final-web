@@ -8,8 +8,7 @@ new Vue({
       repeat_password: null
     }
   }),
-  mounted() {
-  },
+  mounted() {},
   methods: {
     submitFormAccount() {
       console.log(this.formAccount);

@@ -70,6 +70,19 @@ new Vue({
       nombre: null,
       fecha_entrada: null,
       fecha_salida: null
+    },
+    formReservacion: {
+      nombre: null,
+      email: null,
+      destino: null,
+      habitacion: "simple",
+      fecha_entrada: null,
+      fecha_salida: null,
+      ajustes: {
+        adultos: 1,
+        infantes: 0,
+        habitaciones: 1
+      }
     }
   }),
   mounted() {},
