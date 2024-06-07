@@ -1,75 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Inicio de Sesión</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inicio de Sesión</title>
 
-  <script src="libs/jquery.min.js"></script>
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/vue-2.7.16/package/dist/vue.js"></script>
 
-  <script src="libs/vue-2.7.16/package/dist/vue.js"></script>
+    <link href="libs/bootstrap-4.6.2/package/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="libs/bootstrap-icons-1.11.3/package/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.2/package/dist/js/bootstrap.js"></script>
 
-  <link href="libs/bootstrap-4.6.2/package/dist/css/bootstrap.css" rel="stylesheet" />
-  <script src="libs/bootstrap-4.6.2/package/dist/js/bootstrap.js"></script>
-  <link href="libs/bootstrap-icons-1.11.3/package/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.css" rel="stylesheet" />
+    <script src="libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.js"></script>
 
-  <link href="libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.css" rel="stylesheet" />
-  <script src="libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.js"></script>
-
-  <link href="assets/css/main-app.css" rel="stylesheet" />
-</head>
-<body>
-<div id="app">
-  <div class="container container-fluid">
-    <b-row class="vh-100">
-      <b-col cols="6" class="offset-3 my-auto">
-        <div class="py-lg-5">
-          <h1>Inicio de Sesión</h1>
-        </div>
-        <b-form ref="formLogin" @submit.prevent="submitFormLogin">
-          <b-row>
-            <b-col cols="12">
-              <b-form-group label="Email:" label-size="lg">
-                <b-form-input autocomplete="on" size="lg" type="email" v-model="formLogin.email"></b-form-input>
-              </b-form-group>
-            </b-col>
-            <b-col cols="12">
-              <b-form-group label="Contraseña:" label-size="lg">
-                <b-form-input autocomplete="on" size="lg" type="password" v-model="formLogin.email"></b-form-input>
-              </b-form-group>
-            </b-col>
-            <b-col cols="12">
-              <b-form-group class="py-3">
-                <b-button size="lg" type="submit" variant="danger">
-                  <i class="bi bi-box-arrow-in-right"></i>
-                  Entrar
-                </b-button>
-              </b-form-group>
-            </b-col>
-            <b-col cols="12">
-              <b-form-group class="py-2 text-center">
-                <div>
-                  ¡Soy nuevo! entonces,
-                  <b-link variant="link" class="font-weight-bold" href="account.html" size="lg">crear cuenta
-                  </b-link>
-                </div>
-              </b-form-group>
-            </b-col>
-            <b-col cols="12">
-              <b-form-group class="py-0 my-0 text-center" style="font-size: 13px">
-                <div>
-                  Visítanos en:
-                  <b-link variant="link" href="index.html">
-                    https://alexchristianqr.github.io/hotelelbandido
-                  </b-link>
-                </div>
-              </b-form-group>
-            </b-col>
-          </b-row>
-        </b-form>
-      </b-col>
-    </b-row>
-  </div>
-</div>
-<script src="src/login/index.js"></script>
-</body>
+    <link href="assets/css/main-app.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="container container-fluid">
+        <b-row class="vh-100">
+          <b-col cols="6" class="offset-3 my-auto">
+            <div class="py-lg-5">
+              <h1>Inicio de Sesión</h1>
+            </div>
+            <b-form ref="formLogin" @submit.prevent="submitFormLogin">
+              <b-row>
+                <b-col cols="12">
+                  <b-form-group label="Email:" label-size="lg">
+                    <b-form-input autocomplete="on" size="lg" type="email" v-model="formLogin.email"></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col cols="12">
+                  <b-form-group label="Contraseña:" label-size="lg">
+                    <b-form-input autocomplete="on" size="lg" type="password" v-model="formLogin.email"></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col cols="12">
+                  <b-form-group class="py-3">
+                    <b-button size="lg" type="submit" variant="danger">
+                      <i class="bi bi-box-arrow-in-right"></i>
+                      Entrar
+                    </b-button>
+                  </b-form-group>
+                </b-col>
+                <b-col cols="12">
+                  <b-form-group class="py-2 text-center">
+                    <div>
+                      ¡Soy nuevo! entonces,
+                      <b-link variant="link" class="font-weight-bold" href="account.html" size="lg">crear cuenta </b-link>
+                    </div>
+                  </b-form-group>
+                </b-col>
+                <b-col cols="12">
+                  <b-form-group class="py-0 my-0 text-center" style="font-size: 13px">
+                    <div>
+                      Visítanos en:
+                      <b-link variant="link" href="index.html"> https://hotelelbandido.com </b-link>
+                    </div>
+                  </b-form-group>
+                </b-col>
+              </b-row>
+            </b-form>
+          </b-col>
+        </b-row>
+      </div>
+    </div>
+    <script src="src/login/index.js"></script>
+  </body>
 </html>

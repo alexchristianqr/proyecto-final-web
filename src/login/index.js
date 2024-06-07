@@ -9,8 +9,7 @@ new Vue({
       fecha_salida: null
     }
   }),
-  mounted() {
-  },
+  mounted() {},
   methods: {
     submitFormLogin() {
       console.log(this.formLogin);

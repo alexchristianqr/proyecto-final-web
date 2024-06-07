@@ -66,21 +66,13 @@ new Vue({
       { key: "doble", value: "Habitacion Doble" },
       { key: "suite", value: "Habitacion Suite Matrimonial" }
     ],
-    formReservacion: {
-      nombre: null,
-      email: null,
-      habitacion: "simple",
-      fecha_entrada: null,
-      fecha_salida: null
-    },
     formListaReservaciones: {
       nombre: null,
       fecha_entrada: null,
       fecha_salida: null
     }
   }),
-  mounted() {
-  },
+  mounted() {},
   methods: {
     submitFormReservacion() {
       this.itemsReservaciones.push(this.formReservacion);
