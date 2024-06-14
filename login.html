@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <title>Inicio de Sesión</title>
 
-    <script src="libs/jquery.min.js"></script>
-    <script src="libs/vue-2.7.16/package/dist/vue.js"></script>
+    <script src="assets/libs/jquery.min.js"></script>
+    <script src="assets/libs/vue-2.7.16/package/dist/vue.js"></script>
 
-    <link href="libs/bootstrap-4.6.2/package/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="libs/bootstrap-icons-1.11.3/package/font/bootstrap-icons.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.2/package/dist/js/bootstrap.js"></script>
+    <link href="assets/libs/bootstrap-4.6.2/package/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/libs/bootstrap-icons-1.11.3/package/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <script src="assets/libs/bootstrap-4.6.2/package/dist/js/bootstrap.js"></script>
 
-    <link href="libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.css" rel="stylesheet" />
-    <script src="libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.js"></script>
+    <link href="assets/libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.css" rel="stylesheet" />
+    <script src="assets/libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.js"></script>
 
     <link href="assets/css/main-app.css" rel="stylesheet" />
   </head>
@@ -28,12 +28,20 @@
               <b-row>
                 <b-col cols="12">
                   <b-form-group label="Email:" label-size="lg">
-                    <b-form-input autocomplete="on" size="lg" type="email" v-model="formLogin.email"></b-form-input>
+                    <b-form-input autocomplete="on" size="lg" type="email" v-model="formLogin.email" required></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col cols="12">
                   <b-form-group label="Contraseña:" label-size="lg">
-                    <b-form-input autocomplete="on" size="lg" type="password" v-model="formLogin.email"></b-form-input>
+                    <b-input-group>
+                      <b-form-input autocomplete="on" :type="inputTypePass" :id="`type-${inputTypePass}`" size="lg" v-model="formLogin.password" required> </b-form-input>
+                      <b-input-group-append>
+                        <b-button type="button" @click="showPassword" size="lg" variant="primary" :title="labelTypePass">
+                          <i class="bi bi-eye" v-if="inputTypePass === 'password'"></i>
+                          <i class="bi bi-eye-slash" v-if="inputTypePass === 'text'"></i>
+                        </b-button>
+                      </b-input-group-append>
+                    </b-input-group>
                   </b-form-group>
                 </b-col>
                 <b-col cols="12">
@@ -55,7 +63,7 @@
                 <b-col cols="12">
                   <b-form-group class="py-0 my-0 text-center" style="font-size: 13px">
                     <div>
-                      Visítanos en:
+                      Visita nuestro sitio web:
                       <b-link variant="link" href="index.html"> https://hotelelbandido.com </b-link>
                     </div>
                   </b-form-group>
@@ -66,6 +74,8 @@
         </b-row>
       </div>
     </div>
+    <script src="src/@shared/global.service.js"></script>
+    <script src="src/login/service.js"></script>
     <script src="src/login/index.js"></script>
   </body>
 </html>

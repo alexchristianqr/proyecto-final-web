@@ -1,19 +1,36 @@
 new Vue({
   el: "#app",
+  mixins: [mixinGlobalService, mixinLoginService],
   data: () => ({
+    inputTypePass: "password",
+    labelTypePass: "mostrar",
     formLogin: {
-      nombre: null,
-      email: null,
-      habitacion: "simple",
-      fecha_entrada: null,
-      fecha_salida: null
+      email: "admin@gmail.com",
+      password: "Peru2024@"
     }
   }),
-  mounted() {},
   methods: {
-    submitFormLogin() {
+    showPassword() {
+      if (this.inputTypePass === "text") {
+        this.inputTypePass = "password";
+        this.labelTypePass = "mostrar";
+      } else {
+        this.inputTypePass = "text";
+        this.labelTypePass = "ocultar";
+      }
+    },
+    async submitFormLogin() {
       console.log(this.formLogin);
-      window.location.replace("reserva.html");
+
+      const isLoggedIn = await this.login();
+      const { email, password } = this.formLogin;
+
+      if (email === "admin@gmail.com" && password === "Peru2024@") {
+        window.location.replace("reserva.html");
+      } else {
+        alert("Error al iniciar sesión");
+        return;
+      }
     }
   }
 });
