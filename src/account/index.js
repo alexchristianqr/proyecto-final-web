@@ -1,5 +1,6 @@
 new Vue({
   el: "#app",
+  mixins: [mixinGlobalService, mixinAccountService],
   data: () => ({
     formAccount: {
       fullname: null,
@@ -10,8 +11,11 @@ new Vue({
   }),
   mounted() {},
   methods: {
-    submitFormAccount() {
-      console.log(this.formAccount);
+    async submitFormAccount() {
+      await this.register();
+      this.showAlert("Usuario creado satisfactoriamente. Ir a iniciar sesión");
+      const urlRedirect = `login.html?email=${this.formAccount.email}`;
+      window.location.replace(urlRedirect);
     }
   }
 });

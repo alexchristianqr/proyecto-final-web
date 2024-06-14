@@ -1,16 +1,13 @@
 const mixinLoginService = {
-  data: () => ({}),
   methods: {
     async login() {
       const url = `${this.baseUrl}/post`;
+      const data = { username: "admin", password: "Peru2024." };
+
       const response = await fetch(url, {
         method: "POST",
-        body: JSON.stringify({
-          username: "admin",
-          password: "Peru2024."
-        })
+        body: JSON.stringify(data)
       });
-      console.log({ response });
 
       const { status } = response;
 
@@ -23,10 +20,10 @@ const mixinLoginService = {
     },
     async logout() {
       const url = `${this.baseUrl}/post`;
+      
       const response = await fetch(url, {
         method: "POST"
       });
-      console.log({ response });
 
       const { status } = response;
 

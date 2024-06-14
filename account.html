@@ -38,7 +38,7 @@
                 </b-col>
                 <b-col cols="12">
                   <b-form-group label="Contraseña:" label-size="lg">
-                    <b-form-input autocomplete="on" size="lg" type="password" v-model="formAccount.email"></b-form-input>
+                    <b-form-input autocomplete="on" size="lg" type="password" v-model="formAccount.password"></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col cols="12">
@@ -63,6 +63,8 @@
         </b-row>
       </div>
     </div>
+    <script src="src/@shared/global.service.js"></script>
+    <script src="src/account/service.js"></script>
     <script src="src/account/index.js"></script>
   </body>
 </html>

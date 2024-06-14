@@ -9,6 +9,9 @@ new Vue({
       password: "Peru2024@"
     }
   }),
+  mounted() {
+    this.setRedirectEmail();
+  },
   methods: {
     showPassword() {
       if (this.inputTypePass === "text") {
@@ -28,8 +31,17 @@ new Vue({
       if (email === "admin@gmail.com" && password === "Peru2024@") {
         window.location.replace("reserva.html");
       } else {
-        alert("Error al iniciar sesión");
+        this.showAlert("Error al iniciar sesión");
         return;
+      }
+    },
+    setRedirectEmail() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const email = urlParams.get("email");
+      if (email) {
+        this.formLogin.email = email;
+        this.formLogin.password = null;
+        this.$refs.utpInputPassword.focus(); // Aplicar focus
       }
     }
   }

@@ -34,7 +34,7 @@
                 <b-col cols="12">
                   <b-form-group label="Contraseña:" label-size="lg">
                     <b-input-group>
-                      <b-form-input autocomplete="on" :type="inputTypePass" :id="`type-${inputTypePass}`" size="lg" v-model="formLogin.password" required> </b-form-input>
+                      <b-form-input ref="utpInputPassword" autocomplete="on" :type="inputTypePass" :id="`type-${inputTypePass}`" size="lg" v-model="formLogin.password" required> </b-form-input>
                       <b-input-group-append>
                         <b-button type="button" @click="showPassword" size="lg" variant="primary" :title="labelTypePass">
                           <i class="bi bi-eye" v-if="inputTypePass === 'password'"></i>
