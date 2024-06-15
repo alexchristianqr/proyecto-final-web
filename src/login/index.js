@@ -10,7 +10,7 @@ new Vue({
     }
   }),
   mounted() {
-    this.setRedirectEmail();
+    this.setCompleteEmail();
   },
   methods: {
     showPassword() {
@@ -35,7 +35,7 @@ new Vue({
         return;
       }
     },
-    setRedirectEmail() {
+    setCompleteEmail() {
       const urlParams = new URLSearchParams(window.location.search);
       const email = urlParams.get("email");
       if (email) {

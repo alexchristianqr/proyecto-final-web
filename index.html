@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <title>Hotel "EL BANDIDO"</title>
@@ -282,19 +282,11 @@
           </div>
           <div class="px-xl-5">
             <b-row>
-              <b-col cols="12">
-                <div class="">
-                  <b-table :fields="fieldsReservaciones" :items="itemsReservaciones" hover striped sticky-header head-variant="light" style="max-height: 350px">
-                    <template #cell(actions)="row">
-                      <b-button v-b-tooltip.hover title="Ver detalle de la Reserva" size="lg" class="mr-1" variant="info">
-                        <b-icon icon="search"></b-icon>
-                      </b-button>
-                      <b-button v-b-tooltip.hover title="Descargar Comprobante de Pago" size="lg" class="mr-1" variant="danger">
-                        <b-icon icon="download"></b-icon>
-                      </b-button>
-                    </template>
-                  </b-table>
-                </div>
+              <b-col v-for="(item, index) in itemsReservaciones" :key="index" cols="6">
+                  <b-card img-src="assets/imagenes/001.jpg" img-alt="Card image" img-left img-width="250" img-height="200" title-tag="h5" class="mb-3" :title="item.destino" :sub-title="item.region">
+                    <div class="small mt-3 mb-1">{{item.personas}}</div>
+                    <b-button variant="danger" size="sm">Reservar</b-link>
+                  </b-card>
               </b-col>
             </b-row>
           </div>
