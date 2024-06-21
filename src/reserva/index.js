@@ -109,12 +109,11 @@ new Vue({
       }
     }
   }),
+  beforeMount() {
+    this.checkAccessToken();
+  },
   mounted() {},
   methods: {
-    onHidden() {
-      // Return focus to the button once hidden
-      this.$refs.button.focus();
-    },
     submitFormReserva() {
       this.loading.button = true;
       this.itemsReservaciones.push(this.formReservacion);

@@ -2,7 +2,6 @@ new Vue({
   el: "#app",
   mixins: [mixinGlobalService, mixinLoginService],
   data: () => ({
-    loading: false,
     inputTypePass: "password",
     labelTypePass: "mostrar",
     formLogin: {
@@ -10,6 +9,9 @@ new Vue({
       password: "Peru2024."
     }
   }),
+  beforeMount() {
+    this.existsAccessToken();
+  },
   mounted() {
     this.setCompleteEmail();
   },
@@ -24,17 +26,17 @@ new Vue({
       }
     },
     async submitFormLogin() {
-      this.loading = true;
+      this.loading.button = true;
       console.log(this.formLogin);
 
       const isLoggedIn = await this.login();
       const { email, password } = this.formLogin;
 
       if (password === "Peru2024.") {
-        this.loading = false;
-        window.location.replace("reserva.html");
+        const url = "/reserva.html";
+        this.redirectUrl(url, 5000);
       } else {
-        this.loading = false;
+        this.loading.button = false;
         this.showAlert("Error al iniciar sesión");
         return;
       }
@@ -43,7 +45,7 @@ new Vue({
       const urlParams = new URLSearchParams(window.location.search);
       const email = urlParams.get("email");
       if (email) {
-        this.formLogin.email = email;
+        this.formLogin.email = email === "null" ? "" : email;
         this.formLogin.password = null;
         this.$refs.utpInputPassword.focus(); // Aplicar focus
       }

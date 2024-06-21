@@ -46,17 +46,12 @@
                 </b-col>
                 <b-col cols="12">
                   <b-form-group class="py-3">
-                    <template v-if="loading">
-                      <b-button size="lg" type="submit" variant="danger" disabled>
-                        <div>entrando...</div>
-                      </b-button>
-                    </template>
-                    <template v-else>
+                    <b-overlay :show="loading.button" rounded opacity="0.6" spinner-small spinner-variant="danger" class="d-inline-block" @hidden="loading.button">
                       <b-button size="lg" type="submit" variant="danger">
                         <i class="bi bi-box-arrow-in-right"></i>
                         Entrar
                       </b-button>
-                    </template>
+                    </b-overlay>
                   </b-form-group>
                 </b-col>
                 <b-col cols="12">
