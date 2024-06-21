@@ -1,5 +1,6 @@
 new Vue({
   el: "#app",
+  mixins: [mixinGlobalService],
   data: () => ({
     items: [
       { age: 40, first_name: "Dickerson", last_name: "Macdonald" },
@@ -18,10 +19,11 @@ new Vue({
       { age: 89, first_name: "Geneva", last_name: "Wilson" },
       { age: 38, first_name: "Jami", last_name: "Carney" }
     ],
-    selected: "reservar",
+    selected: "reserva",
     options: [
-      { text: "RESERVA", value: "reservar" },
-      { text: "MIS RESERVACIONES", value: "mis_reservaciones" }
+      { text: "DESTINOS", value: "destinos", icon: "bi bi-search" },
+      { text: "RESERVA", value: "reserva", icon: "bi bi-file-earmark-text" },
+      { text: "MIS RESERVACIONES", value: "mis_reservaciones", icon: "bi bi-list-check" }
     ],
     fieldsReservaciones: [
       {
@@ -109,11 +111,46 @@ new Vue({
   }),
   mounted() {},
   methods: {
-    submitFormReservacion() {
-      this.itemsReservaciones.push(this.formReservacion);
+    onHidden() {
+      // Return focus to the button once hidden
+      this.$refs.button.focus();
     },
-    submitFormListaReservaciones() {
-      alert(123);
+    submitFormReserva() {
+      this.loading.button = true;
+      this.itemsReservaciones.push(this.formReservacion);
+
+      setInterval(() => {
+        this.loading.button = false;
+      }, 5000);
+    },
+    seleccionarMenu(value) {
+      this.loading.radio = true;
+
+      console.log({ value });
+      switch (value) {
+        case "reserva":
+          setTimeout(() => {
+            this.initFormReserva();
+            this.loading.radio = false;
+          }, 3000);
+          break;
+        case "mis_reservaciones":
+          setTimeout(() => {
+            this.listarReservaciones();
+            this.loading.radio = false;
+          }, 3000);
+          break;
+        default:
+          console.error("Opcion no permitida");
+      }
+
+      // this.loading.radio = false;
+    },
+    initFormReserva() {
+      // alert("Formulario reserva");
+    },
+    listarReservaciones() {
+      // alert("Mi lista de reservaciones");
     },
     onSeleccionarFechaEntrada(ctx) {
       this.formatted = ctx.selectedFormatted;

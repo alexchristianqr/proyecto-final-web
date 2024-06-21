@@ -1,6 +1,10 @@
 const mixinGlobalService = {
   data: () => ({
-    baseUrl: "https://httpbin.org"
+    baseUrl: "https://httpbin.org",
+    loading: {
+      button: false,
+      radio: false,
+    }
   }),
   methods: {
     showAlert(message) {
