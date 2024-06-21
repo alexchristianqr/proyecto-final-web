@@ -214,21 +214,21 @@
           </div>
           <div class="py-xl-5 px-xl-5">
             <div>
-              <b-form @submit.prevent="submitFormListaReservaciones">
+              <b-form @submit.prevent="submitFilterListaReservaciones">
                 <b-row>
                   <b-col cols="3">
                     <b-form-group label="Destino:" label-size="lg">
-                      <b-form-select size="lg" v-model="formReservacion.destino">
-                        <b-form-select-option v-for="(v,k) in optionsDestinos" :key="k" :value="v.key">{{v.value}} </b-form-select-option>
+                      <b-form-select size="lg" v-model="filterReservacion.destino">
+                        <b-form-select-option v-for="(v,k) in optionsDestinos" :key="k" :value="v.value">{{v.text}} </b-form-select-option>
                       </b-form-select>
                     </b-form-group>
                   </b-col>
                   <b-col cols="3">
                     <b-form-group label="Fecha de entrada:" label-size="lg">
                       <b-input-group size="lg">
-                        <b-form-input autocomplete="off" id="fecha_entrada" placeholder="YYYY-MM-DD" readonly type="text" v-model="formListaReservaciones.fecha_entrada"></b-form-input>
+                        <b-form-input autocomplete="off" id="fecha_entrada" placeholder="YYYY-MM-DD" readonly type="text" v-model="filterReservacion.fecha_entrada"></b-form-input>
                         <b-input-group-append>
-                          <b-form-datepicker @context="onSeleccionarFechaEntrada" aria-controls="fecha_entrada" button-only right v-model="formListaReservaciones.fecha_entrada"></b-form-datepicker>
+                          <b-form-datepicker @context="onSeleccionarFechaEntrada" aria-controls="fecha_entrada" button-only right v-model="filterReservacion.fecha_entrada"></b-form-datepicker>
                         </b-input-group-append>
                       </b-input-group>
                     </b-form-group>
@@ -236,9 +236,9 @@
                   <b-col cols="3">
                     <b-form-group label="Fecha de salida:" label-size="lg">
                       <b-input-group size="lg">
-                        <b-form-input autocomplete="off" id="fecha_salida" placeholder="YYYY-MM-DD" readonly type="text" v-model="formListaReservaciones.fecha_salida"></b-form-input>
+                        <b-form-input autocomplete="off" id="fecha_salida" placeholder="YYYY-MM-DD" readonly type="text" v-model="filterReservacion.fecha_salida"></b-form-input>
                         <b-input-group-append>
-                          <b-form-datepicker @context="onSeleccionarFechaSalida" aria-controls="fecha_salida" button-only right v-model="formListaReservaciones.fecha_salida"></b-form-datepicker>
+                          <b-form-datepicker @context="onSeleccionarFechaSalida" aria-controls="fecha_salida" button-only right v-model="filterReservacion.fecha_salida"></b-form-datepicker>
                         </b-input-group-append>
                       </b-input-group>
                     </b-form-group>
@@ -249,19 +249,19 @@
                         <b-dropdown-form class="w-100">
                           <b-form-group label="Adultos">
                             <div>
-                              <b-form-spinbutton id="demo-sb" v-model="formReservacion.ajustes.adultos" min="1" max="100"></b-form-spinbutton>
+                              <b-form-spinbutton id="demo-sb" v-model="filterReservacion.ajustes.adultos" min="1" max="100"></b-form-spinbutton>
                             </div>
                           </b-form-group>
                           <b-dropdown-divider></b-dropdown-divider>
                           <b-form-group label="Infantes">
                             <div>
-                              <b-form-spinbutton id="demo-sb" v-model="formReservacion.ajustes.infantes" min="0" max="5"></b-form-spinbutton>
+                              <b-form-spinbutton id="demo-sb" v-model="filterReservacion.ajustes.infantes" min="0" max="5"></b-form-spinbutton>
                             </div>
                           </b-form-group>
                           <b-dropdown-divider></b-dropdown-divider>
                           <b-form-group label="Habitaciones">
                             <div>
-                              <b-form-spinbutton id="demo-sb" v-model="formReservacion.ajustes.habitaciones" min="1" max="99"></b-form-spinbutton>
+                              <b-form-spinbutton id="demo-sb" v-model="filterReservacion.ajustes.habitaciones" min="1" max="99"></b-form-spinbutton>
                             </div>
                           </b-form-group>
                         </b-dropdown-form>
@@ -282,7 +282,7 @@
           </div>
           <div class="px-xl-5">
             <b-row>
-              <b-col v-for="(item, index) in itemsReservaciones" :key="index" cols="6">
+              <b-col v-for="(item, index) in items" :key="index" cols="6">
                   <b-card :img-src="item.imagen" img-alt="Card image" img-left img-width="250" img-height="200" title-tag="h5" class="mb-3" :title="item.destino" :sub-title="item.region">
                     <div class="small mt-3 mb-1">{{item.personas}}</div>
                     <b-button variant="danger" size="sm" @click="redirectLogin">Reservar</b-link>
@@ -309,7 +309,7 @@
                           <b-row>
                             <b-col cols="9">
                               <b-form-group description="Suscríbete para obtener información relevante, novedades y promociones.">
-                                <b-form-input autocomplete="on" size="lg" type="text" v-model="formReservacion.nombre" placeholder="Correo electrónico"></b-form-input>
+                                <b-form-input autocomplete="on" size="lg" type="text" v-model="filterReservacion.nombre" placeholder="Correo electrónico"></b-form-input>
                               </b-form-group>
                             </b-col>
                             <b-col cols="3">
@@ -391,6 +391,7 @@
       <!-- -->
     </div>
 
+    <script src="src/@shared/global.service.js"></script>
     <script src="src/index.js"></script>
   </body>
 </html>

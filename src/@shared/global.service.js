@@ -4,9 +4,141 @@ const mixinGlobalService = {
     loading: {
       button: false,
       radio: false
-    }
+    },
+    itemsDestinosTuristicos: [
+      {
+        imagen: "assets/imagenes/001.jpg",
+        region: "CUSCO",
+        destino: "Machu Picchu",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cusco_003.jpeg",
+        region: "CUSCO",
+        destino: "Cuatro Lagunas",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cusco_002.jpeg",
+        region: "CUSCO",
+        destino: "Nevado del Ausangate",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+
+      {
+        imagen: "assets/imagenes/arequipa_001.jpeg",
+        region: "AREQUIPA",
+        destino: "Cañon del Colca",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/arequipa_002.jpeg",
+        region: "AREQUIPA",
+        destino: "Circuito de Playas Camaná",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: null,
+        region: "AREQUIPA",
+        destino: "Ruta del Sillar",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+
+      {
+        imagen: null,
+        region: "ICA",
+        destino: "Cerro Blanco",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/ica_001.jpg",
+        region: "ICA",
+        destino: "Islas Ballestas",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: null,
+        region: "ICA",
+        destino: "Lineas de Nazca",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+
+      {
+        imagen: null,
+        region: "CAJAMARCA",
+        destino: "Baños del Inca",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: null,
+        region: "CAJAMARCA",
+        destino: "Provincia de San Pablo",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: null,
+        region: "CAJAMARCA",
+        destino: "Ventanillas de Combayo",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+
+      {
+        imagen: null,
+        region: "LIMA",
+        destino: "Circuito Mágico del Agua",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: null,
+        region: "LIMA",
+        destino: "Lunahuana",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: null,
+        region: "LIMA",
+        destino: "Huaral",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      }
+    ]
   }),
   methods: {
+    load(callback) {
+      // if (!this.getStorage("destinos_turisticos")) {
+      this.setStorage("destinos_turisticos", this.itemsDestinosTuristicos, true);
+      callback(this.itemsDestinosTuristicos);
+      // }
+    },
     showAlert(message) {
       alert(message);
     },

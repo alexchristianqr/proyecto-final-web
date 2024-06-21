@@ -1,13 +1,14 @@
 new Vue({
   el: "#app",
+  mixins: [mixinGlobalService],
   data: () => ({
     optionsDestinos: [
-      { key: null, value: "-- Seleccionar --" },
-      { key: "cusco", value: "Cusco" },
-      { key: "arequipa", value: "Arequipa" },
-      { key: "ica", value: "Ica" },
-      { key: "cajamarca", value: "Cajamarca" },
-      { key: "lima", value: "Lima" }
+      { text: "Todos", value: null },
+      { text: "Cusco", value: "cusco" },
+      { text: "Arequipa", value: "arequipa" },
+      { text: "Ica", value: "ica" },
+      { text: "Cajamarca", value: "cajamarca" },
+      { text: "Lima", value: "lima" }
     ],
     fieldsReservaciones: [
       {
@@ -40,138 +41,13 @@ new Vue({
         sortable: false
       }
     ],
-    itemsReservaciones: [
-      {
-        imagen: "assets/imagenes/001.jpg",
-        region: "cusco",
-        destino: "Machu Picchu",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-      {
-        imagen: "assets/imagenes/cusco_003.jpeg",
-        region: "cusco",
-        destino: "Cuatro Lagunas",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-      {
-        imagen: "assets/imagenes/cusco_002.jpeg",
-        region: "Cusco",
-        destino: "Nevado del Ausangate",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-
-      {
-        imagen: "assets/imagenes/arequipa_001.jpeg",
-        region: "arequipa",
-        destino: "Cañon del Colca",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-      {
-        imagen: "assets/imagenes/arequipa_002.jpeg",
-        region: "arequipa",
-        destino: "Circuito de Playas Camaná",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-      {
-        imagen: null,
-        region: "arequipa",
-        destino: "Ruta del Sillar",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-
-      {
-        imagen: null,
-        region: "ica",
-        destino: "Cerro Blanco",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-      {
-        imagen: "assets/imagenes/ica_001.jpg",
-        region: "ica",
-        destino: "Islas Ballestas",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-      {
-        imagen: null,
-        region: "ica",
-        destino: "Lineas de Nazca",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-
-      {
-        imagen: null,
-        region: "cajamarca",
-        destino: "Baños del Inca",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-      {
-        imagen: null,
-        region: "cajamarca",
-        destino: "Provincia de San Pablo",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-      {
-        imagen: null,
-        region: "cajamarca",
-        destino: "Ventanillas de Combayo",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-
-      {
-        imagen: null,
-        region: "lima",
-        destino: "Circuito Mágico del Agua",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-      {
-        imagen: null,
-        region: "lima",
-        destino: "Lunahuana",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      },
-      {
-        imagen: null,
-        region: "lima",
-        destino: "Huaral",
-        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
-        fecha_entrada: "31-05-2024",
-        fecha_salida: "31-05-2024"
-      }
-    ],
+    items: [],
     tipoHabitaciones: [
       { key: "simple", value: "Habitacion Simple" },
       { key: "doble", value: "Habitacion Doble" },
       { key: "suite", value: "Habitacion Suite Matrimonial" }
     ],
-    formReservacion: {
+    filterReservacion: {
       nombre: null,
       email: null,
       destino: null,
@@ -183,20 +59,27 @@ new Vue({
         infantes: 0,
         habitaciones: 1
       }
-    },
-    formListaReservaciones: {
-      nombre: null,
-      fecha_entrada: null,
-      fecha_salida: null
     }
   }),
-  mounted() {},
+  mounted() {
+    this.load((items) => {
+      this.items = items;
+    });
+  },
   methods: {
     submitFormReservacion() {
       this.itemsReservaciones.push(this.formReservacion);
     },
-    submitFormListaReservaciones() {
-      alert("Filtrando...");
+    submitFilterListaReservaciones() {
+      const items = this.getStorage("destinos_turisticos", true);
+
+      if (!this.filterReservacion.destino) {
+        this.items = items; // Todos los destinos
+      } else {
+        this.items = items.filter((item) => {
+          return item.region.toUpperCase() === this.filterReservacion.destino.toUpperCase(); // Destino en específico
+        });
+      }
     },
     redirectLogin() {
       const urlRedirect = `account.html`;
@@ -204,11 +87,11 @@ new Vue({
     },
     onSeleccionarFechaEntrada(ctx) {
       this.formatted = ctx.selectedFormatted;
-      this.formReservacion.fecha_entrada = ctx.selectedYMD;
+      this.filterReservacion.fecha_entrada = ctx.selectedYMD;
     },
     onSeleccionarFechaSalida(ctx) {
       this.formatted = ctx.selectedFormatted;
-      this.formReservacion.fecha_entrada = ctx.selectedYMD;
+      this.filterReservacion.fecha_entrada = ctx.selectedYMD;
     }
   }
 });
