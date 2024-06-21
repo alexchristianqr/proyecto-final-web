@@ -1,7 +1,7 @@
 const mixinAccountService = {
   methods: {
     async register() {
-      const url = `${this.baseUrl}/post`;
+      const url = `${this.baseUrl}/post`;// https://api.php/
       const data = {};
 
       const response = await fetch(url, {

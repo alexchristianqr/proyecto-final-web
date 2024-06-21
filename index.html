@@ -283,9 +283,9 @@
           <div class="px-xl-5">
             <b-row>
               <b-col v-for="(item, index) in itemsReservaciones" :key="index" cols="6">
-                  <b-card img-src="assets/imagenes/001.jpg" img-alt="Card image" img-left img-width="250" img-height="200" title-tag="h5" class="mb-3" :title="item.destino" :sub-title="item.region">
+                  <b-card :img-src="item.imagen" img-alt="Card image" img-left img-width="250" img-height="200" title-tag="h5" class="mb-3" :title="item.destino" :sub-title="item.region">
                     <div class="small mt-3 mb-1">{{item.personas}}</div>
-                    <b-button variant="danger" size="sm">Reservar</b-link>
+                    <b-button variant="danger" size="sm" @click="redirectLogin">Reservar</b-link>
                   </b-card>
               </b-col>
             </b-row>

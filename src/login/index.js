@@ -2,11 +2,12 @@ new Vue({
   el: "#app",
   mixins: [mixinGlobalService, mixinLoginService],
   data: () => ({
+    loading: false,
     inputTypePass: "password",
     labelTypePass: "mostrar",
     formLogin: {
       email: "admin@gmail.com",
-      password: "Peru2024@"
+      password: "Peru2024."
     }
   }),
   mounted() {
@@ -23,14 +24,17 @@ new Vue({
       }
     },
     async submitFormLogin() {
+      this.loading = true;
       console.log(this.formLogin);
 
       const isLoggedIn = await this.login();
       const { email, password } = this.formLogin;
 
-      if (email === "admin@gmail.com" && password === "Peru2024@") {
+      if (password === "Peru2024.") {
+        this.loading = false;
         window.location.replace("reserva.html");
       } else {
+        this.loading = false;
         this.showAlert("Error al iniciar sesión");
         return;
       }

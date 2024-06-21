@@ -2,7 +2,7 @@ const mixinLoginService = {
   methods: {
     async login() {
       const url = `${this.baseUrl}/post`;
-      const data = { username: "admin", password: "Peru2024." };
+      const data = { username: "admin@gmail.com", password: "Peru2024." };
 
       const response = await fetch(url, {
         method: "POST",
@@ -20,7 +20,7 @@ const mixinLoginService = {
     },
     async logout() {
       const url = `${this.baseUrl}/post`;
-      
+
       const response = await fetch(url, {
         method: "POST"
       });

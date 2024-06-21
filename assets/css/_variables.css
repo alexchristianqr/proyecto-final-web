@@ -1,20 +1,28 @@
 :root {
-    --primary: #000;
-    --secondary: darkred;
-    --tertiary: #666;
-    --primary-color-text: var(--primary);
-    --secondary-color-text: var(--secondary);
-    --color-dark: #1e1f22;
-    --color-black: #000;
-    --color-black-transparent: rgba(0, 0, 0, 0.5);
-    --color-white: #fff;
-    --border-color-red: var(--secondary);
-    --border-color-white: #FFF;
-    /*--font-family: Arial, Helvetica, sans-serif, monospace;*/
-    --font-family: "Sintony", sans-serif !important;
+  --primary: #000;
+  --secondary: darkred;
+  --tertiary: #666;
+  --primary-color-text: var(--primary);
+  --secondary-color-text: var(--secondary);
+  --color-dark: #1e1f22;
+  --color-black: #000;
+  --color-black-transparent: rgba(0, 0, 0, 0.5);
+  --color-white: #fff;
+  --border-color-red: var(--secondary);
+  --border-color-white: #fff;
+  /*--font-family: Arial, Helvetica, sans-serif, monospace;*/
+  --font-family: "Sintony", sans-serif !important;
 }
 
 /** {*/
 /*    font-family: "Sintony",sans-serif;*/
 /*    !*font-family: var(--font-family) !important;*!*/
 /*}*/
+
+.bg-black {
+  background-color: #000;
+}
+
+.color-white {
+  color: #fff;
+}

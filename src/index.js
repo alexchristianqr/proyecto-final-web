@@ -42,6 +42,7 @@ new Vue({
     ],
     itemsReservaciones: [
       {
+        imagen: "assets/imagenes/001.jpg",
         region: "cusco",
         destino: "Machu Picchu",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -49,6 +50,7 @@ new Vue({
         fecha_salida: "31-05-2024"
       },
       {
+        imagen: "assets/imagenes/cusco_003.jpeg",
         region: "cusco",
         destino: "Cuatro Lagunas",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -56,6 +58,7 @@ new Vue({
         fecha_salida: "31-05-2024"
       },
       {
+        imagen: "assets/imagenes/cusco_002.jpeg",
         region: "Cusco",
         destino: "Nevado del Ausangate",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -64,6 +67,7 @@ new Vue({
       },
 
       {
+        imagen: "assets/imagenes/arequipa_001.jpeg",
         region: "arequipa",
         destino: "Cañon del Colca",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -71,6 +75,7 @@ new Vue({
         fecha_salida: "31-05-2024"
       },
       {
+        imagen: "assets/imagenes/arequipa_002.jpeg",
         region: "arequipa",
         destino: "Circuito de Playas Camaná",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -78,6 +83,7 @@ new Vue({
         fecha_salida: "31-05-2024"
       },
       {
+        imagen: null,
         region: "arequipa",
         destino: "Ruta del Sillar",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -86,6 +92,7 @@ new Vue({
       },
 
       {
+        imagen: null,
         region: "ica",
         destino: "Cerro Blanco",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -93,6 +100,7 @@ new Vue({
         fecha_salida: "31-05-2024"
       },
       {
+        imagen: "assets/imagenes/ica_001.jpg",
         region: "ica",
         destino: "Islas Ballestas",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -100,6 +108,7 @@ new Vue({
         fecha_salida: "31-05-2024"
       },
       {
+        imagen: null,
         region: "ica",
         destino: "Lineas de Nazca",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -108,6 +117,7 @@ new Vue({
       },
 
       {
+        imagen: null,
         region: "cajamarca",
         destino: "Baños del Inca",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -115,6 +125,7 @@ new Vue({
         fecha_salida: "31-05-2024"
       },
       {
+        imagen: null,
         region: "cajamarca",
         destino: "Provincia de San Pablo",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -122,6 +133,7 @@ new Vue({
         fecha_salida: "31-05-2024"
       },
       {
+        imagen: null,
         region: "cajamarca",
         destino: "Ventanillas de Combayo",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -130,6 +142,7 @@ new Vue({
       },
 
       {
+        imagen: null,
         region: "lima",
         destino: "Circuito Mágico del Agua",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -137,6 +150,7 @@ new Vue({
         fecha_salida: "31-05-2024"
       },
       {
+        imagen: null,
         region: "lima",
         destino: "Lunahuana",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -144,6 +158,7 @@ new Vue({
         fecha_salida: "31-05-2024"
       },
       {
+        imagen: null,
         region: "lima",
         destino: "Huaral",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -181,7 +196,11 @@ new Vue({
       this.itemsReservaciones.push(this.formReservacion);
     },
     submitFormListaReservaciones() {
-      alert("Listando reservaciones");
+      alert("Filtrando...");
+    },
+    redirectLogin() {
+      const urlRedirect = `account.html`;
+      window.location.replace(urlRedirect);
     },
     onSeleccionarFechaEntrada(ctx) {
       this.formatted = ctx.selectedFormatted;
