@@ -1,22 +1,36 @@
 const mixinLoginService = {
   methods: {
-    async login() {
-      const url = `${this.baseUrl}/post`;
-      const data = { username: "admin@gmail.com", password: "Peru2024." };
+    async login(username, password) {
+      let success = false;
 
-      const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(data)
-      });
+      try {
+        const url = `${this.baseUrl}/post`;
+        const data = { username, password };
+        // const data = { username: "admin@gmail.com", password: "Peru2024." };
 
-      const { status } = response;
+        const response = await fetch(url, {
+          method: "POST",
+          body: JSON.stringify(data)
+        });
 
-      if (status === 200) {
-        this.setStorage("accessToken", "abc123");
-        return true;
+        const { status } = response;
+
+        if (status === 200) {
+          const exists = this.mapStorage("usuarios", true, (items) => {
+            return items.find((item) => item.email === username && item.password === password);
+          });
+          if (!exists) {
+            success = false;
+          } else {
+            this.setStorage("accessToken", "abc123");
+            success = true;
+          }
+        }
+      } catch (e) {
+        console.error(e);
       }
 
-      return false;
+      return this.response({ success });
     },
     async logout() {
       const url = `${this.baseUrl}/post`;

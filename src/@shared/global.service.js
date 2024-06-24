@@ -133,6 +133,13 @@ const mixinGlobalService = {
     ]
   }),
   methods: {
+    response({ success = false, message = null, result = null }) {
+      return {
+        success,
+        message,
+        result
+      };
+    },
     load(callback) {
       // if (!this.getStorage("destinos_turisticos")) {
       this.setStorage("destinos_turisticos", this.itemsDestinosTuristicos, true);
@@ -141,6 +148,23 @@ const mixinGlobalService = {
     },
     showAlert(message) {
       alert(message);
+    },
+    mapStorage(item, isJson = false, callback) {
+      let dataItem = this.getStorage(item, isJson);
+
+      if (!Array.isArray(dataItem)) throw new Error("[dataItem] no es un arreglo");
+
+      return callback(dataItem);
+    },
+    pushStorage(item, data, isJson = false) {
+      let dataItem = this.getStorage(item, isJson);
+
+      if (typeof data === "Object") throw new Error("[data] no es un objeto");
+      if (!dataItem) dataItem = [];
+      if (!Array.isArray(dataItem)) throw new Error("[dataItem] no es un arreglo");
+
+      dataItem.push(data);
+      this.setStorage(item, dataItem, isJson);
     },
     getStorage(item, isJson = false) {
       const data = localStorage.getItem(item);

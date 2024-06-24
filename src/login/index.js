@@ -27,19 +27,18 @@ new Vue({
     },
     async submitFormLogin() {
       this.loading.button = true;
-      console.log(this.formLogin);
 
-      const isLoggedIn = await this.login();
       const { email, password } = this.formLogin;
+      const { success } = await this.login(email, password);
 
-      if (password === "Peru2024.") {
-        const url = "/reserva.html";
-        this.redirectUrl(url, 5000);
-      } else {
+      if (!success) {
         this.loading.button = false;
         this.showAlert("Error al iniciar sesión");
         return;
       }
+
+      const url = "/reserva.html";
+      this.redirectUrl(url, 5000);
     },
     setCompleteEmail() {
       const urlParams = new URLSearchParams(window.location.search);
