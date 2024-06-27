@@ -5,8 +5,8 @@ new Vue({
     inputTypePass: "password",
     labelTypePass: "mostrar",
     formLogin: {
-      email: "admin@gmail.com",
-      password: "Peru2024."
+      email: "",
+      password: ""
     }
   }),
   beforeMount() {
