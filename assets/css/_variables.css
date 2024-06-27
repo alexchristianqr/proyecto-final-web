@@ -10,19 +10,5 @@
   --color-white: #fff;
   --border-color-red: var(--secondary);
   --border-color-white: #fff;
-  /*--font-family: Arial, Helvetica, sans-serif, monospace;*/
   --font-family: "Sintony", sans-serif !important;
-}
-
-/** {*/
-/*    font-family: "Sintony",sans-serif;*/
-/*    !*font-family: var(--font-family) !important;*!*/
-/*}*/
-
-.bg-black {
-  background-color: #000;
-}
-
-.color-white {
-  color: #fff;
 }
