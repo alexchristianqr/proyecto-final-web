@@ -4,3 +4,5 @@
 build
 /dist
 assets/css/backup
+
+/api/v1/.env
