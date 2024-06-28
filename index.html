@@ -12,9 +12,9 @@
     <link href="assets/libs/bootstrap-icons-1.11.3/package/font/bootstrap-icons.min.css" rel="stylesheet" />
 
     <link href="assets/libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.css" rel="stylesheet" />
-    <link href="assets/libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue-icons.css" rel="stylesheet" />
+    <!-- <link href="assets/libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue-icons.css" rel="stylesheet" /> -->
     <script src="assets/libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue.js"></script>
-    <script src="assets/libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue-icons.js"></script>
+    <!-- <script src="assets/libs/bootstrap-vue-2.23.1/package/dist/bootstrap-vue-icons.js"></script> -->
 
     <link href="assets/css/main.css" rel="stylesheet" />
   </head>
@@ -26,7 +26,7 @@
         <div class="inner">
           <nav>
             <ul>
-              <li><a href="#inicio" >Inicio</a></li>
+              <li><a href="#inicio">Inicio</a></li>
               <li><a href="#galeria">Galeria</a></li>
               <li><a href="#reservaciones">Reservaciones</a></li>
               <li><a href="#suscripcion">Boletín</a></li>
@@ -41,8 +41,10 @@
         <!-- Inicio -->
         <section class="wrapper fullscreen style1 fade-up" id="inicio">
           <div class="inner">
-            <h1 class="major">Hotel <span style="font-weight: 500; font-size: 95px">EL BANDIDO</span></h1>
-            <div class="small" style="color: rgba(255, 255, 255, 0.75); line-height: 3; letter-spacing: 0.1em">Donde tus aventuras empiezan y tus preocupaciones desaparecen.</div>
+            <h1>Hotel <span style="font-weight: 500; font-size: 95px">EL BANDIDO</span></h1>
+            <div class="pt-xl-3 pb-xl-3">
+              <div class="small" style="color: rgba(255, 255, 255, 0.75); line-height: 3; letter-spacing: 0.1em">Donde tus aventuras empiezan y tus preocupaciones desaparecen.</div>
+            </div>
             <ul class="list-group">
               <li class="utp"><a class="button large scrolly" href="account.html">Crear Cuenta</a></li>
             </ul>
@@ -271,7 +273,7 @@
                   <b-col cols="3">
                     <b-form-group label="." class="text-white" label-size="lg">
                       <b-button size="lg" type="submit" variant="danger">
-                        <b-icon-filter></b-icon-filter>
+                        <i class="bi bi-filter"></i>
                         Filtrar
                       </b-button>
                     </b-form-group>
@@ -283,10 +285,10 @@
           <div class="px-xl-5">
             <b-row>
               <b-col v-for="(item, index) in items" :key="index" cols="6">
-                  <b-card :img-src="item.imagen" img-alt="Card image" img-left img-width="250" img-height="200" title-tag="h5" class="mb-3" :title="item.destino" :sub-title="item.region">
-                    <div class="small mt-3 mb-1">{{item.personas}}</div>
-                    <b-button variant="danger" size="sm" @click="redirectLogin">Reservar</b-link>
-                  </b-card>
+                <b-card :img-src="item.imagen" img-alt="Card image" img-left img-width="250" img-height="200" title-tag="h5" class="mb-3" :title="item.destino" :sub-title="item.region">
+                  <div class="small mt-3 mb-1">{{item.personas}}</div>
+                  <b-button variant="danger" size="sm" @click="redirectLogin">Reservar</b-button>
+                </b-card>
               </b-col>
             </b-row>
           </div>

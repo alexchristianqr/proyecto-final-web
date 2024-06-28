@@ -1,22 +1,28 @@
 const mixinAccountService = {
   methods: {
     async register() {
-      const url = `${this.baseUrl}/post`;// https://api.php/
-      const data = {};
+      let success = false;
 
-      const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(data)
-      });
+      try {
+        const url = `${this.baseUrl}/post`; // https://api.php/
+        const data = {};
 
-      const { status } = response;
+        const response = await fetch(url, {
+          method: "POST",
+          body: JSON.stringify(data)
+        });
 
-      if (status === 200) {
-        this.setStorage("user", this.formAccount, true);
-        return true;
+        const { status } = response;
+
+        if (status === 200) {
+          this.pushStorage("usuarios", { ...this.formAccount }, true);
+          success = true;
+        }
+      } catch (e) {
+        console.error(e);
       }
 
-      return false;
+      return this.response({ success });
     }
   }
 };

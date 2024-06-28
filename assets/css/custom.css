@@ -1,0 +1,15 @@
+ul {
+  list-style-type: none;
+}
+
+.color-black {
+  color: var(--color-black);
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.color-white {
+  color: #fff;
+}

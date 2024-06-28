@@ -16,7 +16,15 @@ new Vue({
   methods: {
     async submitFormAccount() {
       this.loading.button = true;
-      await this.register();
+      const response = await this.register();
+
+      const { success } = response;
+
+      if (!success) {
+        this.loading.button = false;
+        return;
+      }
+
       this.showAlert("Usuario creado satisfactoriamente. Ir a iniciar sesión");
       const url = `login.html?email=${this.formAccount.email}`;
       this.redirectUrl(url, 0);

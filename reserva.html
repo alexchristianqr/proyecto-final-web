@@ -22,7 +22,7 @@
       <b-navbar variant="faded" type="light" class="shadow-sm">
         <b-navbar-brand href="index.html">
           <div class="pa-lg-2 bg-black">
-            <div class="major color-white bg-black px-lg-2">Hotel <span style="font-weight: 500; font-size: 25px">EL BANDIDO</span></div>
+            <div class="color-white bg-black px-lg-2">Hotel <span style="font-weight: 500; font-size: 25px">EL BANDIDO</span></div>
           </div>
         </b-navbar-brand>
         <b-collapse id="nav-collapse" is-nav>
@@ -146,7 +146,7 @@
                             </b-col>
                             <b-col cols="12">
                               <b-form-group class="py-3">
-                                <b-overlay :show="loading.button" rounded opacity="0.6" spinner-small spinner-variant="danger" class="d-inline-block" @hidden="loading.button">
+                                <b-overlay :show="loading.button" rounded opacity="0.6" spinner-small spinner-variant="danger" class="d-inline-block" :hidden="loading.button">
                                   <b-button ref="button" :disabled="loading.button" type="submit" variant="danger" size="lg">
                                     <i class="bi bi-save"></i>
                                     Guardar
