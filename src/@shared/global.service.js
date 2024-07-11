@@ -48,7 +48,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/arequipa_003.jpg",
         region: "AREQUIPA",
         destino: "Ruta del Sillar",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -57,7 +57,7 @@ const mixinGlobalService = {
       },
 
       {
-        imagen: null,
+        imagen: "assets/imagenes/ica_002.jpg",
         region: "ICA",
         destino: "Cerro Blanco",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -73,7 +73,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/ica_003.jpg",
         region: "ICA",
         destino: "Lineas de Nazca",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -82,7 +82,7 @@ const mixinGlobalService = {
       },
 
       {
-        imagen: null,
+        imagen: "assets/imagenes/cajamarca_001.jpg",
         region: "CAJAMARCA",
         destino: "Baños del Inca",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -90,7 +90,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/cajamarca_002.jpg",
         region: "CAJAMARCA",
         destino: "Provincia de San Pablo",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -98,7 +98,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/cajamarca_003.jpg",
         region: "CAJAMARCA",
         destino: "Ventanillas de Combayo",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -107,7 +107,7 @@ const mixinGlobalService = {
       },
 
       {
-        imagen: null,
+        imagen: "assets/imagenes/lima_001.jpg",
         region: "LIMA",
         destino: "Circuito Mágico del Agua",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -115,7 +115,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/lima_002.png",
         region: "LIMA",
         destino: "Lunahuana",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -123,7 +123,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/lima_003.jpg",
         region: "LIMA",
         destino: "Huaral",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
