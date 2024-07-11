@@ -35,7 +35,7 @@ $uriSegments = explode('/', trim($uri, '/'));
 // Definir rutas y métodos
 switch ($method) {
   case 'POST':
-    if ($uriSegments[3] === 'login.php') {
+    if ($uriSegments[2] === 'login.php') {
       login();
     }
     break;
