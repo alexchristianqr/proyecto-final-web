@@ -55,8 +55,8 @@ class Database
       $stmt->execute($params);
       return $this->conn->lastInsertId();
     } catch (PDOException $e) {
-      echo "Error en INSERT: " . $e->getMessage();
-      return false;
+//      echo "Error en INSERT: " . $e->getMessage();
+      throw new ErrorException($e);
     }
   }
 
