@@ -6,7 +6,6 @@ const mixinLoginService = {
       try {
         const url = `${this.baseUrl}/login.php`;
         const data = { username, password };
-        // const data = { username: "admin@gmail.com", password: "Peru2024." };
 
         const response = await fetch(url, {
           method: "POST",
