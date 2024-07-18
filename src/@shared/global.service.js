@@ -1,6 +1,6 @@
 const mixinGlobalService = {
   data: () => ({
-    baseUrl: "https://httpbin.org",
+    baseUrl: "http://proyecto-final-web.test/api/v1/service",
     loading: {
       button: false,
       radio: false
