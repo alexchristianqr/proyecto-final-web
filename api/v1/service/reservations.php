@@ -16,8 +16,8 @@ function reservations()
   $estado = Request::json("estado", null);
 
   $params = [];
-  $sql = "SELECT r.*, c.nombres as cliente_nombres, c.apellidos as cliente_apellidos, 
-            h.descripcion as habitacion_descripcion, e.nombres as empleado_nombres, e.apellidos as empleado_apellidos 
+  $sql = "SELECT r.*, c.nombre as cliente_nombres, c.apellido as cliente_apellidos, 
+            h.descripcion as habitacion_descripcion, e.nombre as empleado_nombres, e.apellido as empleado_apellidos 
             FROM reservas r 
             JOIN clientes cl ON r.id_cliente = cl.id
             JOIN personas c ON cl.id_persona = c.id
@@ -44,6 +44,19 @@ function reservations()
   if (count($condiciones) > 0) {
     $sql .= " WHERE " . implode(" AND ", $condiciones);
   }
+  
+  $reserva = $db->select($sql, $params);
+
+  if(count($reserva) > 0){
+    $success = true;
+    $message = "Reservas obtenidas correctamente";
+    $result = ["success" => $success, "message" => $message, "result" => $reserva];
+
+  }else{
+    $message = "No se encontraron reservas";
+    $result = ["success" => $success, "message" => $message];
+  }
+
   return jsonResponse($result);
 }
 
@@ -53,7 +66,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uriSegments = explode('/', trim($uri, '/'));
 switch ($method) {
-  case 'POST':
+  case 'GET':
     if ($uriSegments[3] === 'reservations.php') reservations();
     break;
   default:
