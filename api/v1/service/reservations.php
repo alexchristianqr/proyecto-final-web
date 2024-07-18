@@ -1,7 +1,7 @@
 <?php
 require_once "../database.php";
 
-// Función para crear reseva
+// Función lista reservas
 function reservations()
 {
   $db = new Database();
