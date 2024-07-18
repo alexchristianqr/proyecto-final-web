@@ -14,6 +14,25 @@ if (!function_exists('dd')) {
 	}
 }
 
+if (!function_exists('getParams')) {
+	function getParams($allData)
+	{
+		// Convertir array asociativo a array no asociativo manteniendo tipos de datos
+		$nonAssociativeData = array_values($allData);
+		return array_map(function ($value) {
+			// Intentar convertir el valor al tipo de dato original
+			if (is_numeric($value)) {
+				if (strpos($value, '.') !== false) {
+					return (float)$value;
+				} else {
+					return (int)$value;
+				}
+			}
+			return $value;
+		}, $nonAssociativeData);
+	}
+}
+
 if (!function_exists('jsonResponse')) {
 	/**
 	 * Enviar una respuesta JSON.
@@ -26,7 +45,7 @@ if (!function_exists('jsonResponse')) {
 		header('Content-Type: application/json');
 		http_response_code($status_code);
 		echo json_encode($data);
-		exit();
+		return;
 	}
 }
 
@@ -100,43 +119,10 @@ if (!class_exists('Request')) {
 			
 			// Devolver valor específico si se proporciona una clave
 			if ($specificKey !== null) {
-				if (isset($allData[$specificKey])) {
-					// Convertir array asociativo a array no asociativo manteniendo tipos de datos
-					$nonAssociativeData = array_values($allData[$specificKey]);
-					return array_map(function ($value) {
-						// Intentar convertir el valor al tipo de dato original
-						if (is_numeric($value)) {
-							if (strpos($value, '.') !== false) {
-								return (float)$value;
-							} else {
-								return (int)$value;
-							}
-						}
-						return $value;
-					}, $nonAssociativeData);
-				} else {
-					return null;
-				}
+				return isset($allData[$specificKey]) ? $allData[$specificKey] : null;
 			}
 			
 			return $allData;
-		}
-		
-		public static function getParams($allData)
-		{
-			// Convertir array asociativo a array no asociativo manteniendo tipos de datos
-			$nonAssociativeData = array_values($allData);
-			return array_map(function ($value) {
-				// Intentar convertir el valor al tipo de dato original
-				if (is_numeric($value)) {
-					if (strpos($value, '.') !== false) {
-						return (float)$value;
-					} else {
-						return (int)$value;
-					}
-				}
-				return $value;
-			}, $nonAssociativeData);
 		}
 	}
 }
