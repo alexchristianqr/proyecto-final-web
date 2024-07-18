@@ -16,8 +16,8 @@ function reservations()
   $estado = Request::json("estado", null);
 
   $params = [];
-  $sql = "SELECT r.*, c.nombres as cliente_nombres, c.apellidos as cliente_apellidos, 
-            h.descripcion as habitacion_descripcion, e.nombres as empleado_nombres, e.apellidos as empleado_apellidos 
+  $sql = "SELECT r.*, c.nombre as cliente_nombres, c.apellido as cliente_apellidos, 
+            h.descripcion as habitacion_descripcion, e.nombre as empleado_nombres, e.apellido as empleado_apellidos 
             FROM reservas r 
             JOIN clientes cl ON r.id_cliente = cl.id
             JOIN personas c ON cl.id_persona = c.id
