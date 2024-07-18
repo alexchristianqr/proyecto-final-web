@@ -25,7 +25,7 @@ const mixinGlobalService = {
       {
         imagen: "assets/imagenes/cusco_002.jpeg",
         region: "CUSCO",
-        destino: "Nevado del Ausangate",
+        destino: "Nevado del Auzangate",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
@@ -48,7 +48,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/arequipa_003.jpg",
         region: "AREQUIPA",
         destino: "Ruta del Sillar",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -57,7 +57,7 @@ const mixinGlobalService = {
       },
 
       {
-        imagen: null,
+        imagen: "assets/imagenes/ica_002.jpg",
         region: "ICA",
         destino: "Cerro Blanco",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -73,7 +73,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/ica_003.jpg",
         region: "ICA",
         destino: "Lineas de Nazca",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -82,7 +82,7 @@ const mixinGlobalService = {
       },
 
       {
-        imagen: null,
+        imagen: "assets/imagenes/cajamarca_001.jpg",
         region: "CAJAMARCA",
         destino: "Baños del Inca",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -90,7 +90,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/cajamarca_002.jpg",
         region: "CAJAMARCA",
         destino: "Provincia de San Pablo",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -98,7 +98,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/cajamarca_003.jpg",
         region: "CAJAMARCA",
         destino: "Ventanillas de Combayo",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -107,7 +107,7 @@ const mixinGlobalService = {
       },
 
       {
-        imagen: null,
+        imagen: "assets/imagenes/lima_001.jpg",
         region: "LIMA",
         destino: "Circuito Mágico del Agua",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -115,7 +115,7 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/lima_002.png",
         region: "LIMA",
         destino: "Lunahuana",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -123,13 +123,293 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
-        imagen: null,
+        imagen: "assets/imagenes/lima_003.jpg",
         region: "LIMA",
         destino: "Huaral",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
-      }
+      },
+      {
+        imagen: "assets/imagenes/cusco_004.jfif",
+        region: "CUSCO",
+        destino: "Sacaywaman",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cusco_005.jpg",
+        region: "CUSCO",
+        destino: "Centro Historico de Cusco",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cusco_006.jfif",
+        region: "CUSCO",
+        destino: "Qorikancha",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cusco_007.jfif",
+        region: "CUSCO",
+        destino: "Santuario animal de Cochahuasi",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cusco_008.jpg",
+        region: "CUSCO",
+        destino: "Tambomachay",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cusco_009.jfif",
+        region: "CUSCO",
+        destino: "Cerro 7 colores",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cusco_010.jpg",
+        region: "CUSCO",
+        destino: "Islay",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/arequipa_004.jpg",
+        region: "AREQUIPA",
+        destino: "Puerto Inka",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/arequipa_005.jfif",
+        region: "AREQUIPA",
+        destino: "Chachani",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/arequipa_006.jpg",
+        region: "AREQUIPA",
+        destino: "Reserva Nacional de Salinas y Aguada Blanca",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/arequipa_007.jpg",
+        region: "AREQUIPA",
+        destino: "Yanahuara",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/arequipa_008.avif",
+        region: "AREQUIPA",
+        destino: "Mirador Carmen Alto",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/arequipa_009.jpg",
+        region: "AREQUIPA",
+        destino: "Misti",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/arequipa_010.jpg",
+        region: "AREQUIPA",
+        destino: "Cañon de Cotahuasi",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/ica_004.jfif",
+        region: "ICA",
+        destino: "Huacachina",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/ica_005.avif",
+        region: "ICA",
+        destino: "Tacama",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/ica_006.jpg",
+        region: "ICA",
+        destino: "Tambo Colorado",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/ica_007.jfif",
+        region: "ICA",
+        destino: "Reserva Nacional San Fernando",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/ica_008.jfif",
+        region: "ICA",
+        destino: "Ciudad de Chincha",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/ica_009.jfif",
+        region: "ICA",
+        destino: "Cañon de los Perdidos",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/ica_010.jpg",
+        region: "ICA",
+        destino: "Tabernero",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cajamarca_004.avif",
+        region: "CAJAMARCA",
+        destino: "Cerro Santa Apolonia",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cajamarca_005.avif",
+        region: "CAJAMARCA",
+        destino: "Laguna San Nicolas",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cajamarca_006.jpg",
+        region: "CAJAMARCA",
+        destino: "Granja Porcón",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cajamarca_007.jpg",
+        region: "CAJAMARCA",
+        destino: "Jaén",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cajamarca_008.jfif",
+        region: "CAJAMARCA",
+        destino: "Ventanillas de Otuzco",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cajamarca_009.jpg",
+        region: "CAJAMARCA",
+        destino: "Parque Nacional Cutervo",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/cajamarca_010.jpg",
+        region: "CAJAMARCA",
+        destino: "Ciudad de Cajabamba",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/lima_004.jfif",
+        region: "LIMA",
+        destino: "Barranco",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/lima_005.jpg",
+        region: "LIMA",
+        destino: "Catacumbas Museo San Francisco",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/lima_006.webp",
+        region: "LIMA",
+        destino: "Centro Historico de Lima",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/lima_007.avif",
+        region: "LIMA",
+        destino: "Palacio de Gobierno",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/lima_008.png",
+        region: "LIMA",
+        destino: "Santiago de Surco",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/lima_009.jpg",
+        region: "LIMA",
+        destino: "Barrio Chino",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
+      {
+        imagen: "assets/imagenes/lima_010.jpg",
+        region: "LIMA",
+        destino: "Plaza San Martin",
+        personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
+        fecha_entrada: "31-05-2024",
+        fecha_salida: "31-05-2024"
+      },
     ]
   }),
   methods: {
