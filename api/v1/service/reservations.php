@@ -44,6 +44,19 @@ function reservations()
   if (count($condiciones) > 0) {
     $sql .= " WHERE " . implode(" AND ", $condiciones);
   }
+  
+  $reserva = $db->select($sql, $params);
+
+  if(count($reserva) > 0){
+    $success = true;
+    $message = "Reservas obtenidas correctamente";
+    $result = ["success" => $success, "message" => $message, "result" => $reserva];
+
+  }else{
+    $message = "No se encontraron reservas";
+    $result = ["success" => $success, "message" => $message];
+  }
+
   return jsonResponse($result);
 }
 
@@ -53,7 +66,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uriSegments = explode('/', trim($uri, '/'));
 switch ($method) {
-  case 'POST':
+  case 'GET':
     if ($uriSegments[3] === 'reservations.php') reservations();
     break;
   default:
