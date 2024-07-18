@@ -4,7 +4,7 @@ const mixinLoginService = {
       let success = false;
 
       try {
-        const url = `${this.baseUrl}/post`;
+        const url = `${this.baseUrl}/login.php`;
         const data = { username, password };
         // const data = { username: "admin@gmail.com", password: "Peru2024." };
 
@@ -13,18 +13,20 @@ const mixinLoginService = {
           body: JSON.stringify(data)
         });
 
+        console.log({response});
+
         const { status } = response;
 
         if (status === 200) {
-          const exists = this.mapStorage("usuarios", true, (items) => {
-            return items.find((item) => item.email === username && item.password === password);
-          });
-          if (!exists) {
-            success = false;
-          } else {
+          // const exists = this.mapStorage("usuarios", true, (items) => {
+          //   return items.find((item) => item.email === username && item.password === password);
+          // });
+          // if (!exists) {
+          //   success = false;
+          // } else {
             this.setStorage("accessToken", "abc123");
             success = true;
-          }
+          // }
         }
       } catch (e) {
         console.error(e);

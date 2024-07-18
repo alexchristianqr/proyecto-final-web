@@ -1,8 +1,8 @@
 <?php
 
-require_once "./database.php";
+require_once "../database.php";
 
-// Definir funciones
+// Función para inciar sesión
 function login()
 {
   $db = new Database();
@@ -14,7 +14,10 @@ function login()
 
   $username = Request::json("username");
   $pwd = Request::json("password");
-  $users = $db->select("select * from usuarios u where u.username = ? and u.pwd = ? and u.estado = 'activo' limit 1;", [$username, $pwd]);
+  $params = [$username, $pwd];
+  $sql = "select * from usuarios u where u.username = ? and u.pwd = ? and u.estado = 'activo' limit 1;";
+
+  $users = $db->select($sql, $params);
 
   if (count($users) > 0) {
     Session::start();
@@ -27,18 +30,16 @@ function login()
   return jsonResponse($result);
 }
 
+/* RUTA */
 // Procesar la solicitud
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uriSegments = explode('/', trim($uri, '/'));
-
-// Definir rutas y métodos
 switch ($method) {
   case 'POST':
-    if ($uriSegments[2] === 'login.php') {
-      login();
-    }
+    if ($uriSegments[3] === 'login.php') login();
     break;
   default:
     return jsonResponse(['status' => 'error', 'message' => 'Ruta no encontrada'], 404);
 }
+/* FIN RUTA */

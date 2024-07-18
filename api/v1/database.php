@@ -1,7 +1,7 @@
 <?php
 
-include "./helpers.php";
-Env::load();
+include "./../helpers.php";
+Env::load("../.env");
 
 class Database
 {
