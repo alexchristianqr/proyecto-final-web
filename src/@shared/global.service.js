@@ -5,8 +5,38 @@ const mixinGlobalService = {
       button: false,
       radio: false
     },
+    configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },
     itemsDestinosTuristicos: [
       {
+        configuracion: {
+          hotel: {
+            id: 1,
+            nombre: "Hotel de 3 estrellas",
+            habitaciones: [
+              {
+                id: 1,
+                nombre: "Habitacion 001",
+                personas: {
+                  adultos:2,infantes: 2
+                },
+              }
+            ]
+          }
+        },
         imagen: "assets/imagenes/001.jpg",
         region: "CUSCO",
         destino: "Machu Picchu",
@@ -15,6 +45,21 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
       {
+        configuracion: {
+          hotel: {
+            id: 1,
+            nombre: "Hotel de 3 estrellas",
+            habitaciones: [
+              {
+                id: 1,
+                nombre: "Habitacion 001",
+                personas: {
+                  adultos:1,infantes: 1
+                },
+              }
+            ]
+          }
+        },
         imagen: "assets/imagenes/cusco_003.jpeg",
         region: "CUSCO",
         destino: "Cuatro Lagunas",
@@ -22,8 +67,21 @@ const mixinGlobalService = {
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/cusco_002.jpeg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/cusco_002.jpeg",
         region: "CUSCO",
         destino: "Nevado del Auzangate",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -31,24 +89,63 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
 
-      {
-        imagen: "assets/imagenes/arequipa_001.jpeg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:2,infantes: 2
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/arequipa_001.jpeg",
         region: "AREQUIPA",
         destino: "Cañon del Colca",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/arequipa_002.jpeg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/arequipa_002.jpeg",
         region: "AREQUIPA",
         destino: "Circuito de Playas Camaná",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/arequipa_003.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/arequipa_003.jpg",
         region: "AREQUIPA",
         destino: "Ruta del Sillar",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -56,24 +153,63 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
 
-      {
-        imagen: "assets/imagenes/ica_002.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/ica_002.jpg",
         region: "ICA",
         destino: "Cerro Blanco",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/ica_001.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/ica_001.jpg",
         region: "ICA",
         destino: "Islas Ballestas",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/ica_003.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/ica_003.jpg",
         region: "ICA",
         destino: "Lineas de Nazca",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -81,24 +217,63 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
 
-      {
-        imagen: "assets/imagenes/cajamarca_001.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/cajamarca_001.jpg",
         region: "CAJAMARCA",
         destino: "Baños del Inca",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/cajamarca_002.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/cajamarca_002.jpg",
         region: "CAJAMARCA",
         destino: "Provincia de San Pablo",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/cajamarca_003.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/cajamarca_003.jpg",
         region: "CAJAMARCA",
         destino: "Ventanillas de Combayo",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -106,64 +281,168 @@ const mixinGlobalService = {
         fecha_salida: "31-05-2024"
       },
 
-      {
-        imagen: "assets/imagenes/lima_001.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/lima_001.jpg",
         region: "LIMA",
         destino: "Circuito Mágico del Agua",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/lima_002.png",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:2,infantes: 2
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/lima_002.png",
         region: "LIMA",
         destino: "Lunahuana",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/lima_003.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/lima_003.jpg",
         region: "LIMA",
         destino: "Huaral",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/cusco_004.jfif",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/cusco_004.jfif",
         region: "CUSCO",
         destino: "Sacaywaman",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/cusco_005.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/cusco_005.jpg",
         region: "CUSCO",
         destino: "Centro Historico de Cusco",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/cusco_006.jfif",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/cusco_006.jfif",
         region: "CUSCO",
         destino: "Qorikancha",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/cusco_007.jfif",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:2,infantes: 2
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/cusco_007.jfif",
         region: "CUSCO",
         destino: "Santuario animal de Cochahuasi",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-      {
-        imagen: "assets/imagenes/cusco_008.jpg",
+      {configuracion: {
+      hotel: {
+        id: 1,
+        nombre: "Hotel de 3 estrellas",
+        habitaciones: [
+          {
+            id: 1,
+            nombre: "Habitacion 001",
+            personas: {
+              adultos:1,infantes: 1
+            },
+          }
+        ]
+      }
+    },imagen: "assets/imagenes/cusco_008.jpg",
         region: "CUSCO",
         destino: "Tambomachay",
         personas: "1 Adultos - 0 Infantes - 1 Habitacion(es)",
@@ -410,9 +689,14 @@ const mixinGlobalService = {
         fecha_entrada: "31-05-2024",
         fecha_salida: "31-05-2024"
       },
-    ]
+    ],
+
   }),
   methods: {
+    redirectLogin() {
+      const urlRedirect = `account.html`;
+      window.location.replace(urlRedirect);
+    },
     response({ success = false, message = null, result = null }) {
       return {
         success,
@@ -439,7 +723,7 @@ const mixinGlobalService = {
     pushStorage(item, data, isJson = false) {
       let dataItem = this.getStorage(item, isJson);
 
-      if (typeof data === "Object") throw new Error("[data] no es un objeto");
+      if (typeof data === "object") throw new Error("[data] no es un objeto");
       if (!dataItem) dataItem = [];
       if (!Array.isArray(dataItem)) throw new Error("[dataItem] no es un arreglo");
 
@@ -461,11 +745,9 @@ const mixinGlobalService = {
       }
 
       localStorage.setItem(item, data);
-      return;
     },
     removeStorage(item) {
       localStorage.removeItem(item);
-      return;
     },
     existsAccessToken() {
       const currentPathname = window.location.pathname;
@@ -481,25 +763,18 @@ const mixinGlobalService = {
             console.error("La página web no existe");
         }
       }
-
-      return;
     },
     checkAccessToken() {
       if (!this.isValidAccessToken()) {
         const url = "/login.html";
         this.redirectUrl(url);
         this.showAlert("Su token ha expirado, por favor, inicie sesión nuevamente");
-        return;
       }
-
-      return;
     },
     isValidAccessToken() {
       let esValido = false;
 
-      const accessToken = this.getStorage("accessToken") || false;
-      esValido = accessToken;
-
+      esValido = this.getStorage("accessToken") || false;
       return esValido;
     },
     logout() {

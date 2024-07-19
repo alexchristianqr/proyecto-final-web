@@ -37,7 +37,7 @@
             <!-- -->
             <!-- CUENTA -->
             <b-nav-item-dropdown right size="lg">
-              <template #button-content> Alex Christian </template>
+              <template #button-content> {{getStorage("fullname")}} </template>
               <b-dropdown-item href="#" size="lg">
                 <i class="bi bi-person-square"></i>
                 <span>Perfil</span>
@@ -78,6 +78,86 @@
                 </b-row>
               </div>
               <!-- -->
+              <template v-if="selected === 'destinos'">
+                <div class="py-xl-5 ">
+                  <div>
+                    <b-form @submit.prevent="submitFilterListaReservaciones">
+                      <b-row>
+                        <b-col cols="3">
+                          <b-form-group label="Destino:" label-size="lg">
+                            <b-form-select size="lg" v-model="filterReservacion.destino">
+                              <b-form-select-option v-for="(v,k) in optionsDestinos" :key="k" :value="v.value">{{v.text}} </b-form-select-option>
+                            </b-form-select>
+                          </b-form-group>
+                        </b-col>
+                        <b-col cols="3">
+                          <b-form-group label="Fecha de entrada:" label-size="lg">
+                            <b-input-group size="lg">
+                              <b-form-input autocomplete="off" id="fecha_entrada" placeholder="YYYY-MM-DD" readonly type="text" v-model="filterReservacion.fecha_entrada"></b-form-input>
+                              <b-input-group-append>
+                                <b-form-datepicker @context="onSeleccionarFechaEntrada" aria-controls="fecha_entrada" button-only right v-model="filterReservacion.fecha_entrada"></b-form-datepicker>
+                              </b-input-group-append>
+                            </b-input-group>
+                          </b-form-group>
+                        </b-col>
+                        <b-col cols="3">
+                          <b-form-group label="Fecha de salida:" label-size="lg">
+                            <b-input-group size="lg">
+                              <b-form-input autocomplete="off" id="fecha_salida" placeholder="YYYY-MM-DD" readonly type="text" v-model="filterReservacion.fecha_salida"></b-form-input>
+                              <b-input-group-append>
+                                <b-form-datepicker @context="onSeleccionarFechaSalida" aria-controls="fecha_salida" button-only right v-model="filterReservacion.fecha_salida"></b-form-datepicker>
+                              </b-input-group-append>
+                            </b-input-group>
+                          </b-form-group>
+                        </b-col>
+                        <b-col cols="3">
+                          <b-form-group label="." class="text-white" label-size="lg">
+                            <b-dropdown id="dropdown-form" text="Personas" ref="dropdown" size="lg" variant="secondary" block menu-class="w-100">
+                              <b-dropdown-form class="w-100">
+                                <b-form-group label="Adultos">
+                                  <div>
+                                    <b-form-spinbutton id="demo-sb" v-model="filterReservacion.ajustes.adultos" min="1" max="100"></b-form-spinbutton>
+                                  </div>
+                                </b-form-group>
+                                <b-dropdown-divider></b-dropdown-divider>
+                                <b-form-group label="Infantes">
+                                  <div>
+                                    <b-form-spinbutton id="demo-sb" v-model="filterReservacion.ajustes.infantes" min="0" max="5"></b-form-spinbutton>
+                                  </div>
+                                </b-form-group>
+                                <b-dropdown-divider></b-dropdown-divider>
+                                <b-form-group label="Habitaciones">
+                                  <div>
+                                    <b-form-spinbutton id="demo-sb" v-model="filterReservacion.ajustes.habitaciones" min="1" max="99"></b-form-spinbutton>
+                                  </div>
+                                </b-form-group>
+                              </b-dropdown-form>
+                            </b-dropdown>
+                          </b-form-group>
+                        </b-col>
+                        <b-col cols="3">
+                          <b-form-group label="." class="text-white" label-size="lg">
+                            <b-button size="lg" type="submit" variant="danger">
+                              <i class="bi bi-filter"></i>
+                              Filtrar
+                            </b-button>
+                          </b-form-group>
+                        </b-col>
+                      </b-row>
+                    </b-form>
+                  </div>
+                </div>
+                <div class="">
+                <b-row>
+                  <b-col v-for="(item, index) in items" :key="index" cols="6">
+                    <b-card :img-src="item.imagen" img-alt="Card image" img-left img-width="250" img-height="200" title-tag="h5" class="mb-3" :title="item.destino" :sub-title="item.region">
+                      <div class="small mt-3 mb-1">{{item.personas}}</div>
+                      <b-button variant="danger" size="sm" @click="redirectLogin">Reservar</b-button>
+                    </b-card>
+                  </b-col>
+                </b-row>
+                </div>
+              </template>
               <!-- RESERVAR -->
               <template v-if="selected === 'reserva'">
                 <template v-if="loading.radio">

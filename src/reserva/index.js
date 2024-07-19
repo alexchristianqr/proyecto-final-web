@@ -2,22 +2,15 @@ new Vue({
   el: "#app",
   mixins: [mixinGlobalService],
   data: () => ({
+    optionsDestinos: [
+      { text: "Todos", value: null },
+      { text: "Cusco", value: "cusco" },
+      { text: "Arequipa", value: "arequipa" },
+      { text: "Ica", value: "ica" },
+      { text: "Cajamarca", value: "cajamarca" },
+      { text: "Lima", value: "lima" }
+    ],
     items: [
-      { age: 40, first_name: "Dickerson", last_name: "Macdonald" },
-      { age: 21, first_name: "Larsen", last_name: "Shaw" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 89, first_name: "Geneva", last_name: "Wilson" },
-      { age: 38, first_name: "Jami", last_name: "Carney" }
     ],
     selected: "reserva",
     options: [
@@ -107,13 +100,41 @@ new Vue({
         infantes: 0,
         habitaciones: 1
       }
+    },
+    filterReservacion: {
+      nombre: null,
+      email: null,
+      destino: null,
+      habitacion: "simple",
+      fecha_entrada: null,
+      fecha_salida: null,
+      ajustes: {
+        adultos: 1,
+        infantes: 0,
+        habitaciones: 1
+      }
     }
   }),
   beforeMount() {
     this.checkAccessToken();
   },
-  mounted() {},
+  mounted() {
+    this.load((items) => {
+      this.items = items;
+    });
+  },
   methods: {
+    submitFilterListaReservaciones() {
+      const items = this.getStorage("destinos_turisticos", true);
+
+      if (!this.filterReservacion.destino) {
+        this.items = items; // Todos los destinos
+      } else {
+        this.items = items.filter((item) => {
+          return item.region.toUpperCase() === this.filterReservacion.destino.toUpperCase(); // Destino en específico
+        });
+      }
+    },
     submitFormReserva() {
       this.loading.button = true;
       this.itemsReservaciones.push(this.formReservacion);

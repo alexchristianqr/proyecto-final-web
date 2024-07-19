@@ -81,10 +81,6 @@ new Vue({
         });
       }
     },
-    redirectLogin() {
-      const urlRedirect = `account.html`;
-      window.location.replace(urlRedirect);
-    },
     onSeleccionarFechaEntrada(ctx) {
       this.formatted = ctx.selectedFormatted;
       this.filterReservacion.fecha_entrada = ctx.selectedYMD;

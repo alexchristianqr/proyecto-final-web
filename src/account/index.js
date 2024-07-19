@@ -16,7 +16,28 @@ new Vue({
   methods: {
     async submitFormAccount() {
       this.loading.button = true;
-      const response = await this.register();
+      const data = {
+        "data_persona": {
+          "nombre": this.formAccount.fullname,
+          "apellido": "",
+          "tipo_documento": null,
+          "nrodocumento": null,
+          "sexo": null,
+          "edad": null
+        },
+        "data_cliente": {
+          "empresa": "Personal"
+        },
+        "data_usuario": {
+          "nombres":this.formAccount.fullname,
+          "apellidos": "",
+          "rol": "cliente",
+          "username": this.formAccount.email,
+          "pwd": this.formAccount.password,
+          "estado": "activo"
+        }
+      }
+      const response = await this.register(data);
 
       const { success } = response;
 
